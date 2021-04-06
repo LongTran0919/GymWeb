@@ -19,6 +19,8 @@
       5.Các bài tập: Người dùng sẽ tập theo từng bước mà app đưa ra và có thời gian đếm ngược đối với một số bước. Sẽ có thời gian để chuẩn bị giữa các bước trong một bài tập. Đối       với từng bước hoàn thành hệ thống sẽ lưu lại số Kcal đã tiêu hao.<br/>
  **Hướng dẫn sử dụng:**<br/>
   
+ Chào mấy bạn, mình là Tân bên môn Quản lý dự án phần mềm. Rất vui khi được làm việc cùng mấy bạn nha <3
+ Link fb : https://www.facebook.com/profile.php?id=100010951126378
  
 
  
