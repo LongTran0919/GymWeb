@@ -1,7 +1,7 @@
 **Đề tài môn Công nghệ phần mền** <br/>
 **Tên đề tài:** App Tập thể hình<br/>
 **Sinh viên phụ trách quản lý đề tài:** <br/>
-  18110360-Lê Đức Tân</br/>
+  18110360-Lê Đức Tân<br/>
 **Nhóm thực hiện:**<br/>
   18110151-Trần Hoàng Long<br/>
   18110178-Trần Gia Phúc<br/>
