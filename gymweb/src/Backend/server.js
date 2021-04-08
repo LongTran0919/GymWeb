@@ -15,7 +15,10 @@ const  connection =async()=>{
     console.log("mongoose connect");
 } 
  
+// app.get("/", (req, res) => {
+//   // res.redirect('/home');
+// });
 connection()
-app.listen(5000,()=>{console.log("server is running!!")});
+app.listen(4000,()=>{console.log("server is running!!")});
 
 module.exports = connection;
