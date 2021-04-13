@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import FormSignUp from './FormSignUp';
-import FormSuccess from './FormSuccess';
+import FormSignUp from './formSignIn';
+import FormSuccess from './formSuccess';
 import '../Form.css';
 
 
