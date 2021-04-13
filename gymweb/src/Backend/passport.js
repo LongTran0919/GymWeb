@@ -35,7 +35,7 @@ passport.use(new LocalStrategy((username,password,done)=>{
 
      if(!user) return done(null,false);
 
-     user.comparePassword(password,done);
+       user.comparePassword(password,done);
  })   
 })
 

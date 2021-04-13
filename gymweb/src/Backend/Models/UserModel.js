@@ -31,14 +31,11 @@ UserSchema.pre('save',function(next){
     })
 })
 
-UserSchema.method.comparePassword=function(password,cb){
+UserSchema.methods.comparePassword=function(password,cb){
     bcrypt.compare(password,this.password,(err,isMatch)=>{
         if(err)return cb(err);
-     
-         if(!isMatch)return cb(null,isMatch);
-
-         return(null,this);
-        
+            if(!isMatch)return cb(null,isMatch);
+            return cb(null,this);
     });
 }
 module.exports=mongose.model('User',UserSchema)
