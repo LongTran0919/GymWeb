@@ -2,7 +2,7 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from './Frontend/component/Navbar';
 import Header from './Frontend/component/Header';
-import Form from './Frontend/component/Form';
+import Form from './Frontend/component/FromLogin/Form';
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
 
 
