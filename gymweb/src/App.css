@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
 :root{
   --primary-white:#fff;
@@ -59,7 +58,7 @@ nav ul li{
 
 .header-wraper{
   position: relative;
-  background: url(./Frontend/IMG/wibuu.png) no-repeat;
+  background: url(./Frontend/IMG/Gym.jpg) no-repeat;
   background-size: cover;
   background-position: center;
   height: 90vh;
@@ -122,13 +121,6 @@ nav ul li{
   z-index: 1;
 }
 
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'PT Sans', sans-serif;
-}
 
 @media(max-width:768px)
 {
