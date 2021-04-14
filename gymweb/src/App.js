@@ -2,7 +2,8 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from './Frontend/component/Navbar';
 import Header from './Frontend/component/Header';
-import Form from './Frontend/component/Form';
+import Form from './Frontend/component/FormRegister/Form';
+import FormLoginMain from './Frontend/component/FormLogin/FormLoginMain';
 
 
 
@@ -18,6 +19,7 @@ function App() {
         <Switch>
             <Route path="/home" component={Header}/>
             <Route path="/signup" component={Form}/>
+            <Route path="/login" component={FormLoginMain}/>
         
         </Switch>
  </Router>

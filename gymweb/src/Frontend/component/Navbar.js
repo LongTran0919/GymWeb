@@ -29,7 +29,6 @@ function Navbar(){
                 <li className="nav-item">
                 <a className="nav-link" href="/signup">Sign Up</a>
                 </li>
-
                 </ul>
             </div>
             </div>

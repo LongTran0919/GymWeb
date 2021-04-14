@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import FormSignUp from './FormSignUp';
-import FormSuccess from './FormSuccess';
-import './Form.css';
+import FormLogin from './FormLogin';
+import '../Form.css';
 
 
 
@@ -18,8 +17,7 @@ const Form = () => {
             <div className="form-content-left">
                 <img className="form-img" src="img/img-2.svg" alt="spaceship"></img>
             </div>
-            {!isSubmitted ? <FormSignUp submitForm=
-            {submitForm}/> :<FormSuccess/>}
+           <FormLogin/>
         </div>
         </>
     );
