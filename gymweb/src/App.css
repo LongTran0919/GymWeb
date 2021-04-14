@@ -156,6 +156,33 @@ nav ul li{
     justify-content: space-between;
     flex-wrap:wrap;
 }
+.main_cbcontent{
+  display: flex;
+  align-items: center;
+  position:relative;
+  width:70%;
+  height:100%;
+  margin:50px auto;
+  padding:50px 0 0;
+  box-sizing: border-box;
+  justify-content: center;
+  flex-wrap:wrap;
+}
+.cbselect{
+  width: 40% !important;
+  margin-right: 10px;
+}
+.btnTim{
+  background-color:#ffff;
+  border-radius:5px;
+  padding:6px 15px;
+  text-align: center;
+}
+.btnTim:hover{
+  background-color:#0000;
+  color:#ffff;
+  border-color:#ffff;
+}
 .card{
   width:30%;
   border-radius: 15px;
@@ -169,14 +196,14 @@ nav ul li{
   margin-top:.1vw;
 }
 .card_img img{
-  width:200px;
+  width:100%
 }
 .card_header{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color:#555;
+  color:#ffff ;
   margin:25px 0;
 }
 .card_header h2{
@@ -198,7 +225,7 @@ nav ul li{
   vertical-align:top;
 }
 .card:hover{
-  background-color:aqua;
+  background-color: #ffff;
   transform: scale(1.1);
   cursor:pointer;
 }
@@ -211,4 +238,7 @@ nav ul li{
 }
 .btn:hover{
     background-color:#f33501;
+}
+.cbNhomCo{
+  display:flex;
 }
