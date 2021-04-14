@@ -9,13 +9,15 @@ const UserSchema = new mongose.Schema(
             min:5,
             max:20
         },
+        useID:{type:String
+        },
         password:{
             type:String,
             require:true,
         },
         role:{
             type:String,
-            enum:['user','admin']
+            enum:['user','admin','teacher']
         },
     }
 )

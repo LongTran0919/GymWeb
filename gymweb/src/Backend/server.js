@@ -3,10 +3,10 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser')
-
 app.use(cookieParser());
 app.use(express.json());
 
+ 
 dotenv.config();
 const uri=process.env.URI;
 
@@ -21,5 +21,7 @@ const  connection =async()=>{
 connection()
 const userRouter = require('./routes/UserRouter');
 app.use('/user',userRouter);
+const excRouter=require('./Routes/ExcRouter')
+app.use('/exercise',excRouter);
 app.listen(5000,
   ()=>{console.log("server is running!!")});
