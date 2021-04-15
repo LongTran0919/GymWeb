@@ -5,23 +5,26 @@ import Header from './Frontend/component/Header';
 import Form from './Frontend/component/FormRegister/Form';
 import FormLoginMain from './Frontend/component/FormLogin/FormLoginMain';
 import MainContent from './Frontend/component/product/mainContent';
-
+import Details from './Frontend/component/product/Details';
+import DataProvider from './Frontend/component/product/data/DataProvider';
 
 
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
 
 function App() {
   return (
-    <Router>
-        <Navbar/>
-        <Switch>
-            <Route path="/home" component={Header}/>
-            <Route path="/signup" component={Form}/>
-            <Route path="/products" component={MainContent}/>
-            <Route path="/login" component={FormLoginMain}/>
-        
-        </Switch>
- </Router>
+    <DataProvider>
+      <Router>
+          <Navbar/>
+            <section>
+              <Route path="/home" component={Header}/>
+              <Route path="/signup" component={Form}/>
+              <Route path="/products" component={MainContent}/>
+              <Route path="/product/:id" component={Details}/>
+              <Route path="/login" component={FormLoginMain}/>
+            </section>
+      </Router>
+    </DataProvider>
   );
 }
 
