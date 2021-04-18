@@ -12,7 +12,7 @@ export default function MainContent(){
     const [lv,setLV]=useState("");
     return(
         <div className="Container">  
-         <div className="main_cbcontent">
+            <div className="main_cbcontent">
                 <select className="custom-select cbselect" value={nhomCo} onChange={(e)=>{
                     const selectNhomCo=e.target.value;
                     setnhomCo(selectNhomCo);
@@ -33,9 +33,9 @@ export default function MainContent(){
                 </select>
                 <button className="btnTim">Tìm kiếm</button>
             </div>
-            {
-                products.map(product =>(
-                    <div className="main_content">
+            <div className="main_content">
+            {            
+                    products.map(product =>(
                     <div className="card" key={product.id}>
                         <Link to={`/product/${product.id}`}>
                         <div className="card_img">
@@ -48,9 +48,9 @@ export default function MainContent(){
                         </div>
                         </Link>
                     </div>
-                </div>
-                ))
+                ))  
             }
+            </div>
         </div>
     )
 }
