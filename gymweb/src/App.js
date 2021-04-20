@@ -21,7 +21,7 @@ function App() {
               <Route path="/signup" component={Form}/>
               <Route path="/products" component={MainContent}/>
               <Route path="/product/:id" component={Details}/>
-              <Route path="/login" component={FormLoginMain}/>
+              <Route path="/signin" component={FormLoginMain}/>
             </section>
       </Router>
     </DataProvider>
