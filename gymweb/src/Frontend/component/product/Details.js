@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import { useParams } from 'react-router';
 import {DataContext} from './data/DataProvider'
-import IMg from '../../IMG/soi.jpg'
+import IMg from '../../IMG/Soi.jpg'
 import '../Form.css'
 
 export default function Details(){

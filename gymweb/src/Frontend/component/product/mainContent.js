@@ -6,7 +6,7 @@ import {DataContext} from './data/DataProvider';
 
 
 export default function MainContent(){
-    const [products,setProducts]=useContext(DataContext);
+    const [products,setProducts]=useContext();
     console.log(products);
     const [nhomCo,setnhomCo]=useState("");
     const [lv,setLV]=useState("");

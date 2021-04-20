@@ -1,10 +1,10 @@
 import React from 'react';
 import validate from './validateInfo';
-import useForm from './useForm';
+import useFormRe from './useFormRe';
 import '../Form.css';
 
 const FormSignup = ({ submitForm }) => {
-  const { handleChange, handleSubmit, values, errors } = useForm(
+  const { handleChange, handleSubmit, values, errors } = useFormRe(
     submitForm,
     validate
   );

@@ -1,11 +1,12 @@
 import React from "react";
-import logo from "../IMG/soi.jpg"
+import logo from "../IMG/Soi.jpg"
+import './Form.css';
 function Navbar(){
     
 
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-light bg-blue">
             <div className="container">
             <a className="navbar-brand" href="/home"><img className="logo" src={logo} alt="logo...."></img></a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
 import FormLogin from './FormLogin';
 import '../Form.css';
+import FormSuccess from '../FormRegister/FormSuccess';
 
 
 
-const Form = () => {
+const FormLoginMain = () => {
     const [isSubmitted,setIsSubmitted]=useState(false);
 
-    function submitForm(){
+    function submitFormLogin(){
         setIsSubmitted(true);
     }
     return (
         <>
         <div className="form-container">
-            <span className="close-btn"></span>
-            <div className="form-content-left">
-                <img className="form-img" src="img/img-2.svg" alt="spaceship"></img>
-            </div>
-           <FormLogin/>
+            {/* {!isSubmitted ? <FormLogin submitForm=
+            {submitFormLogin}/> :<FormSuccess/>} */}
+            {!isSubmitted ? <FormLogin submitForm=
+            {submitFormLogin}/> :<FormSuccess/>}
         </div>
         </>
     );
 };
 
-export default Form;
+export default FormLoginMain;

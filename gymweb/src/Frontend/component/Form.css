@@ -1,12 +1,18 @@
+.bg-blue{
+  background: linear-gradient(
+      90deg,
+      rgb(39, 176, 255) 0%,
+      rgb(0, 232, 236) 100%
+    );
+}
 .form-container {
-    margin: 100px auto;
-    width: 1000px;
+    margin: auto;
+    width: 100%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
     position: relative;
-    border-radius: 10px;
-    height: 600px;
+    height: 880px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    background: linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%);
   }
   
   .close-btn {
@@ -25,7 +31,6 @@
       rgb(39, 176, 255) 0%,
       rgb(0, 232, 236) 100%
     );
-    border-radius: 10px 0 0 10px;
     position: relative;
   }
   
@@ -55,7 +60,8 @@
   }
   
   .form-content-right {
-    border-radius: 0 10px 10px 0;
+    margin: auto;
+    width: 50%;
     position: relative;
     background: linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%);
   }
@@ -115,9 +121,10 @@
   }
   
   .form-input-btn {
+    padding:10px;
     width: 80%;
-    height: 50px;
-    margin-top: 10px;
+    height: 200px;
+    margin-top: 3  0px;
     border-radius: 2px;
     background: linear-gradient(
       90deg,
