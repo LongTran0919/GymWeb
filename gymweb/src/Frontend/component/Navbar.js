@@ -28,7 +28,10 @@ function Navbar(){
                     <a className="nav-link" href="/contacts">Contacts</a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" href="/signup">Sign Up</a>
+                <a className="btn-sign-up nav-link" href="/signup">Sign Up</a>
+                </li>
+                <li className="nav-item">
+                    <a className="btn-sign-up nav-link" href="/login">Sign In</a>
                 </li>
                 </ul>
             </div>

@@ -6,8 +6,7 @@ import {DataContext} from './data/DataProvider';
 
 
 export default function MainContent(){
-    const [products,setProducts]=useContext();
-    console.log(products);
+    const [products,setProducts]=useContext(DataContext);
     const [nhomCo,setnhomCo]=useState("");
     const [lv,setLV]=useState("");
     return(
@@ -36,13 +35,13 @@ export default function MainContent(){
             <div className="main_content">
             {            
                     products.map(product =>(
-                    <div className="card" key={product.id}>
-                        <Link to={`/product/${product.id}`}>
+                    <div className="card" key={product._id}>
+                        <Link to={`/product/${product._id}`}>
                         <div className="card_img">
                             <img src={IMg} alt="soi..."/>
                         </div>
                         <div className="card_header">
-                            <h2 className="text-dark">{product.name}</h2>
+                            <h2 className="text-dark">{product.product_name}</h2>
                             <p>{product.description}</p>
                             <p className="price">{product.price}<span>{product.currency}</span></p>
                         </div>

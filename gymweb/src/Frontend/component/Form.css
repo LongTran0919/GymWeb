@@ -12,7 +12,8 @@
     position: relative;
     height: 880px;
     display: grid;
-    background: linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%);
+    grid-template-columns: 1fr 1fr;
+    background: url(/src/Frontend/IMG/authen.png) no-repeat;
   }
   
   .close-btn {
@@ -26,11 +27,7 @@
   }
   
   .form-content-left {
-    background: linear-gradient(
-      90deg,
-      rgb(39, 176, 255) 0%,
-      rgb(0, 232, 236) 100%
-    );
+   
     position: relative;
   }
   
@@ -60,10 +57,13 @@
   }
   
   .form-content-right {
-    margin: auto;
-    width: 50%;
+    padding:0;
+    display:flex;
+    justify-content: flex-end;
+    margin: 100px;
+    border-radius: 15px;
     position: relative;
-    background: linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%);
+    background: linear-gradient(90deg, rgb(133, 132, 132) 0%, rgb(124, 124, 124) 100%);
   }
   
   .form {
@@ -84,7 +84,7 @@
     text-align: start;
     width: 80%;
     margin-bottom: 1rem;
-    color: #fff;
+    color: #000;
   }
   
   .form-inputs {
@@ -102,7 +102,7 @@
     display: inline-block;
     font-size: 0.8rem;
     margin-bottom: 6px;
-    color: #fff;
+    color: #000;
   }
   
   .form-input {
@@ -121,10 +121,9 @@
   }
   
   .form-input-btn {
-    padding:10px;
     width: 80%;
-    height: 200px;
-    margin-top: 3  0px;
+    height: 50px;
+    margin-top: 20px;
     border-radius: 2px;
     background: linear-gradient(
       90deg,
@@ -159,4 +158,17 @@
     text-decoration: none;
     color: #27cdff;
     font-weight: 600;
+  }
+  .btn-sign-up{
+    margin:auto;
+    border:2px solid !important;
+    border-radius: 5px;
+    padding:10px 10px;
+  }
+  .btn-sign-up:hover{
+    background-color:#00cccc;
+    color: #000;
+  }
+  .btn-sign-up:hover a {
+    color: #000;
   }

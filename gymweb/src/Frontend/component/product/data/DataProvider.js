@@ -5,7 +5,7 @@ export const DataContext=createContext();
 const DataProvider=(props)=>{    
     const [products,setProducts]=useState([
         {
-            id : 1,
+            _id : 1,
             product_name:"Tay to ",
             description:"Tay cực to thì em mới thích",
             area:"tay",
@@ -13,7 +13,7 @@ const DataProvider=(props)=>{
             price :350
         },
         {
-            id : 2,
+            _id : 2,
             product_name:"Tay to",
             description:"Chân to đứng vứng trong tâm trí em",
             area:"chan",
@@ -21,7 +21,7 @@ const DataProvider=(props)=>{
             price :351
         },
         {
-            id : 3,
+            _id : 3,
             product_name:"Ngực to",
             description:"To hơn ngực em",
             area:"nguc",
@@ -29,7 +29,7 @@ const DataProvider=(props)=>{
     ,        price :350
         },
         {
-            id : 4,
+            _id : 4,
             product_name:"Mông to",
             description:"Giàu sang phú quý",
             area:"mong",
@@ -37,7 +37,7 @@ const DataProvider=(props)=>{
             price :350
         },
         {
-            id : 5,
+            _id : 5,
             product_name:"Bụng to",
             description:"Sơ gan",
             area:"bung",
@@ -45,7 +45,7 @@ const DataProvider=(props)=>{
             price :350
         },
         {
-            id : 6,
+            _id : 6,
             product_name:"Vai to",
             description:"Gánh vác cuộc đời em",
             area:"vai",

@@ -14,8 +14,9 @@ const FormLoginMain = () => {
     return (
         <>
         <div className="form-container">
-            {/* {!isSubmitted ? <FormLogin submitForm=
-            {submitFormLogin}/> :<FormSuccess/>} */}
+            <div className="form-content-left">
+               
+            </div> 
             {!isSubmitted ? <FormLogin submitForm=
             {submitFormLogin}/> :<FormSuccess/>}
         </div>
