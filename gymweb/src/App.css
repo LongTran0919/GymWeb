@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 :root{
   --primary-white:#fff;
@@ -9,7 +9,8 @@
 }
 
 body{
-  font-family: "Roboto Condesed", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: bold;
 }
 
 /***********************Navbar*************************/
@@ -47,11 +48,11 @@ nav ul li{
 }
 
 .navbar-nav>li>a.active, .navbar-nav>li>a.active:focus{
-  border-top:0.1875rem solid var(--primary-orange);
+  border-top:0.1875rem solid var(--primary-red);
 }
 
 .navbar-nav>li>a:hover{
-  border-top:0.1875rem solid var(--primary-orange);
+  border-top:0.1875rem solid var(--primary-red);
 }
 
 /***********************Header*************************/
@@ -221,7 +222,7 @@ nav ul li{
 }
 .price {
   font-size: 25px !important;
-  color:#f9ab00 !important;
+  color:#f90000 !important;
 }
 .price span{
   font-size: 15px;
@@ -230,7 +231,7 @@ nav ul li{
 }
 .card:hover{
   background-color: #ffff;
-  transform: scale(1.1);
+  transform: scale(0.9);
   cursor:pointer;
 }
 .btn{
@@ -241,7 +242,7 @@ nav ul li{
   background-color:aquamarine;
 }
 .btn:hover{
-    background-color:#f33501;
+    background-color:#f30101;
 }
 .cbNhomCo{
   display:flex;

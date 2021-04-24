@@ -52,7 +52,9 @@ const useForm = (callback, validate) => {
          }
        })
        .catch(error => {
-         console.error(error)
+         console.error(error);
+         setIsSubmitting(false);
+         alert('Tài khoản hoặc mật khẩu chưa đúng');
       })
     }
         

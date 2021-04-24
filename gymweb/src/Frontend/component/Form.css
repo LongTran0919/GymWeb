@@ -166,7 +166,11 @@
     padding:10px 10px;
   }
   .btn-sign-up:hover{
-    background-color:#00cccc;
+    background: linear-gradient(
+      90deg,
+      rgb(0, 232, 236) 0%,
+      rgb(39, 176, 255) 100%
+    );
     color: #000;
   }
   .btn-sign-up:hover a {

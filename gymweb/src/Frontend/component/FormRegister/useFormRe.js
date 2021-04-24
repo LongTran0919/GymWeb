@@ -51,14 +51,20 @@ const useFormRe = (callback, validate) => {
           window.location='/signin';
   
          }
+         
        })
        .catch(error => {
-         console.error(error)
+         console.error(error);
+         setIsSubmitting(false);
+        
+           alert('Dang ky that bai');
+        
+       
       })
       }
     },
     [errors,values]
-  );
+   );
 
   return { handleChange, handleSubmit, values, errors };
 };

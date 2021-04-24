@@ -9,7 +9,7 @@ const FormLoginMain = () => {
     const [isSubmitted,setIsSubmitted]=useState(false);
 
     function submitFormLogin(){
-        setIsSubmitted(true);
+        setIsSubmitted(false);
     }
     return (
         <>
