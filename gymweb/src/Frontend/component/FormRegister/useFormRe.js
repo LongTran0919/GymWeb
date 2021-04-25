@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+import {toast} from 'react-toastify';
 const axios = require('axios');
+
 
 const useFormRe = (callback, validate) => {
   const [values, setValues] = useState({
@@ -18,7 +20,7 @@ const useFormRe = (callback, validate) => {
       [name]: value
     });
   };
-
+  
   const handleSubmit = e => {
     e.preventDefault();
     setErrors(validate(values));
@@ -48,18 +50,19 @@ const useFormRe = (callback, validate) => {
          console.log(res.cookies)
          if(res.status==200){
           // setCookie('name', newName, { path: '/' });
+          toast.configure();
+          toast.success('Đăng ký thành công' ,{position:toast.POSITION.BOTTOM_LEFT});
           window.location='/signin';
   
          }
          
        })
        .catch(error => {
-         console.error(error);
-         setIsSubmitting(false);
+        console.error(error);
+        setIsSubmitting(false);
+        toast.configure();
+        toast.error('Đăng ký thật bại' ,{position:toast.POSITION.BOTTOM_LEFT});
         
-           alert('Dang ky that bai');
-        
-       
       })
       }
     },

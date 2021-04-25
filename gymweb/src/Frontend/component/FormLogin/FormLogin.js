@@ -2,7 +2,8 @@ import React from 'react';
 import validate from './validateInfoLogin';
 import '../Form.css';
 import useForm from './useForm';
-
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const FormLogin = ({ submitFormLogin }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(

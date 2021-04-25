@@ -2,12 +2,16 @@ import React from 'react';
 import validate from './validateInfo';
 import useFormRe from './useFormRe';
 import '../Form.css';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const FormSignup = ({ submitForm }) => {
   const { handleChange, handleSubmit, values, errors } = useFormRe(
     submitForm,
     validate
   );
+
+
 
   return (
     <div className='form-content-right'>

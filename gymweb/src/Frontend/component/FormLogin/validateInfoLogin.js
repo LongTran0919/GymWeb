@@ -7,8 +7,5 @@ export default function validateInfo(values) {
     if (!values.password) {
       error.password = 'Password is required';
     }
-    else{
-      error.check=''
-    }
     return error;
   }

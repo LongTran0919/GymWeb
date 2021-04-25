@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
- 
+import {toast} from 'react-toastify';
 const axios = require('axios');
 
 
@@ -26,7 +26,9 @@ const useForm = (callback, validate) => {
     setErrors(validate(values));
     setIsSubmitting(true);
   };
-
+  const onsubmit = e=>{
+    setIsSubmitting(true);
+  }
   useEffect(
     () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {
@@ -54,7 +56,8 @@ const useForm = (callback, validate) => {
        .catch(error => {
          console.error(error);
          setIsSubmitting(false);
-         alert('Tài khoản hoặc mật khẩu chưa đúng');
+         toast.configure();
+        toast.error('Đăng nhập thất bại' ,{position:toast.POSITION.BOTTOM_LEFT});
       })
     }
         
