@@ -14,7 +14,7 @@ const DataProvider=(props)=>{
         },
         {
             _id : 2,
-            product_name:"Tay to",
+            product_name:"Chan to",
             description:"Chân to đứng vứng trong tâm trí em",
             area:"chan",
             level:1,
@@ -41,11 +41,27 @@ const DataProvider=(props)=>{
             product_name:"Bụng to",
             description:"Sơ gan",
             area:"bung",
-            level:1,
+            level:2,
             price :350
         },
         {
             _id : 6,
+            product_name:"Vai to",
+            description:"Gánh vác cuộc đời em",
+            area:"vai",
+            level:3,
+            price :350
+        },
+        {
+            _id : 7,
+            product_name:"Vai to",
+            description:"Gánh vác cuộc đời em",
+            area:"vai",
+            level:1,
+            price :350
+        },
+        {
+            _id : 8,
             product_name:"Vai to",
             description:"Gánh vác cuộc đời em",
             area:"vai",

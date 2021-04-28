@@ -7,6 +7,7 @@ import FormLoginMain from './Frontend/component/FormLogin/FormLoginMain';
 import MainContent from './Frontend/component/product/mainContent';
 import Details from './Frontend/component/product/Details';
 import DataProvider from './Frontend/component/product/data/DataProvider';
+import Footer from './Frontend/component/Footer';
 
 
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
@@ -15,16 +16,15 @@ function App() {
   return (
     <DataProvider>
       <Router>
-          <Navbar/>
-            <section>
-              <body>
-                <Route path="/home" component={Header}/>
+            <Navbar/>
+            <Switch>
+                <Route exact path="/" component={Header}/>
                 <Route path="/signup" component={Form}/>
                 <Route path="/products" component={MainContent}/>
                 <Route path="/product/:id" component={Details}/>
                 <Route path="/signin" component={FormLoginMain}/>
-              </body>
-            </section>
+              </Switch>
+            <Footer/>
       </Router>
     </DataProvider>
   );

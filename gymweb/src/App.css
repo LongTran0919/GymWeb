@@ -59,7 +59,7 @@ nav ul li{
 
 .header-wraper{
   position: relative;
-  background: url(./Frontend/IMG/Gym.jpg) no-repeat;
+  background: url(./Frontend/IMG/background.png) no-repeat;
   background-size: cover;
   background-position: center;
   height: 90vh;
@@ -134,116 +134,4 @@ nav ul li{
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.Container{
-  display: flex;
-  flex-direction: column;
-  width:100%;
-  height:100%;
-  padding:30px 50px 20px 50px;
-  box-sizing: border-box; 
-  background: linear-gradient(
-    90deg,
-    rgb(185, 198, 216) 0%,
-    rgb(75, 75, 75) 100%
-  );
-}
-
-.main_content{
-    display: flex;
-    align-items: center;
-    position:relative;
-    width:70%;
-    height:100%;
-    margin:50px auto;
-    padding:50px 0 0;
-    box-sizing: border-box;
-    justify-content: space-between;
-    flex-wrap:wrap;
-}
-.main_cbcontent{
-  display: flex;
-  align-items: center;
-  position:relative;
-  width:70%;
-  height:100%;
-  margin:50px auto;
-  padding:50px 0 0;
-  box-sizing: border-box;
-  justify-content: center;
-  flex-wrap:wrap;
-}
-.cbselect{
-  width: 40% !important;
-  margin-right: 10px;
-}
-.btnTim{
-  background-color:#ffff;
-  border-radius:5px;
-  padding:6px 15px;
-  text-align: center;
-}
-.btnTim:hover{
-  background-color:#0000;
-  color:#ffff;
-  border-color:#ffff;
-}
-.card{
-  width:30%;
-  border-radius: 15px;
-  flex-direction: column;
-  position: relative;
-  transform:scale(.8);
-  transition:all .3s ease-in-out;
-  margin-bottom: 50px;
-}
-.card_img{
-  margin-top:.1vw;
-}
-.card_img img{
-  width:100%
-}
-.card_header{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color:#ffff ;
-  margin:25px 0;
-}
-.card_header h2{
-  font-size: 20px;
-}
-.card_header p{
-  font-size: 14px;
-  text-align: center;
-  color: #00ce !important;
-  margin:8px 0;
-}
-.price {
-  font-size: 25px !important;
-  color:#f90000 !important;
-}
-.price span{
-  font-size: 15px;
-  display:inline-block;
-  vertical-align:top;
-}
-.card:hover{
-  background-color: #ffff;
-  transform: scale(0.9);
-  cursor:pointer;
-}
-.btn{
-  width:130px;
-  height:35px;
-  font-size:14px;
-  border-radius:35px;
-  background-color:aquamarine;
-}
-.btn:hover{
-    background-color:#f30101;
-}
-.cbNhomCo{
-  display:flex;
 }
