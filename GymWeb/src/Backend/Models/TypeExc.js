@@ -2,9 +2,11 @@ const mongose = require('mongoose');
  
 const TypeExcSchema = new mongose.Schema(
     {
-        typeID:{type:String,
-        require:true},
-        typetame:{
+        typeID:{
+            type:String,
+            require:true
+        },
+        typeName:{
             type:String,
             require:true,
         },
@@ -16,4 +18,4 @@ const TypeExcSchema = new mongose.Schema(
 )
 
 
-module.exports=mongose.model('Exercise',TypeExcSchema)
+module.exports=mongose.model('TypeExercise',TypeExcSchema)

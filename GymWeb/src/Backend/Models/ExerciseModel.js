@@ -5,7 +5,8 @@ const ExerciseSchema = new mongose.Schema(
         excName:{
             type:String,
             require:true,
-        },title:{
+        },
+        title:{
             type:String
         },
          typeExc:{
@@ -23,9 +24,15 @@ const ExerciseSchema = new mongose.Schema(
          comment:{
              type:Array
          },
+         compound:{
+            type:String
+         },
          author:{
              type:String,
              require:true
+         },
+         calories:{
+             type:String
          }
 
     }

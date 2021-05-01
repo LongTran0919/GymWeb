@@ -26,5 +26,7 @@ const userRouter = require('./routes/UserRouter');
 app.use('/user',userRouter);
 const excRouter=require('./Routes/ExcRouter')
 app.use('/exercise',excRouter);
+const TypeExcRouter=require('./Routes/TypeExcRouter')
+app.use('/typeExercise',TypeExcRouter);
 app.listen(5000,
   ()=>{console.log("server is running!!")});
