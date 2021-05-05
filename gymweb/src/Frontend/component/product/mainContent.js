@@ -1,13 +1,17 @@
 import React, {useState,useContext} from 'react';
-import './Card.css';
+import IMg from '../../IMG/soi.jpg';
+import '../../../App.css';
 import {Link} from 'react-router-dom';
 import {DataContext} from './data/DataProvider';
 
 
 export default function MainContent(){
     const [products,setProducts]=useContext(DataContext);
+    console.log(products);
+    
     const [nhomCo,setnhomCo]=useState("");
     const [lv,setLV]=useState("");
+
     return(
         <div className="Container">  
             <div className="main_cbcontent">
@@ -32,28 +36,18 @@ export default function MainContent(){
                 <button className="btnTim">Tìm kiếm</button>
             </div>
             <div className="main_content">
-            {   
-                products.map(product =>(
-                    <div className="card_container" key={product._id}>
-                        <Link to={`/product/${product._id}`}style={{textDecoration: 'none'}}>
-                            <div className="img-container">
-                                <img src="https://images.unsplash.com/photo-1477862096227-3a1bb3b08330?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" alt=""/>
-                            </div>
-                            <div className="card-content">
-                                <div className="card_titlee">
-                                    <h3>{product.product_name}</h3>
-                                </div>
-                                <div className="card_bodyy">
-                                    <p>Mô tả: {product.description}</p>
-                                    <p>Vị trí: {product.area}</p>
-                                    <p>Level: {product.level}</p>
-                                </div>
-                            </div>
-                            <div className="btnInfo">
-                                <button>
-                                    <a>View More</a>
-                                </button>
-                            </div>
+            {            
+                    products.map(product =>(
+                    <div className="card" key={product.id}>
+                        <Link to={`/product/${product.id}`}>
+                        <div className="card_img">
+                            <img src={IMg} alt="soi..."/>
+                        </div>
+                        <div className="card_header">
+                            <h2 className="text-dark">{product.name}</h2>
+                            <p>{product.description}</p>
+                            <p className="price">{product.price}<span>{product.currency}</span></p>
+                        </div>
                         </Link>
                     </div>
                 ))  
