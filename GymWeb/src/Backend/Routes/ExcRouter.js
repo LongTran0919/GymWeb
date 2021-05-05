@@ -3,12 +3,12 @@ const ExcRouter = express.Router();
 const JWT =require('jsonwebtoken')
 const passport = require('passport');
 const passportConfig = require('../passport');
-const Exercise= require('../Models/ExerciseModel');
+const Exc= require('../Models/ExerciseModel');
  
  ExcRouter.post('/add', (req,res)=>{
 const {excName ,title,typeExc,level,content,dare_created,comment,compound,author,caloies}=req.body;
 console.log(excName ,title,typeExc,level,content,dare_created,comment,compound,author,caloies)
-        try{ const newExc = new Exercise({  excName ,title,typeExc,level,content,dare_created,comment,compound,author,caloies  })
+        try{ const newExc = new Exc({  excName ,title,typeExc,level,content,dare_created,comment,compound,author,caloies  })
                  newExc.save(err=>{
                     if(err)res.status(500).json({
                         message:{msgBody:"Error has occured 2"},
@@ -24,22 +24,6 @@ console.log(excName ,title,typeExc,level,content,dare_created,comment,compound,a
 
     })
 
-    ExcRouter.get('/all',(req,res)=>{
-        Exercise.find({}, function(err, exc) {
-            res.send(exc.reduce((exc, item) => {
-                exc[item.id] = item
-                return exc
-            }, {}));
-         });
-    })
-    ExcRouter.get('/select',(req,res)=>{
-        const {id}=req.body
-        Exercise.find({_id:id}, function(err, exc) {
-            res.send(exc.reduce((exc, item) => {
-                exc[item.id] = item
-                return exc
-            }, {}));
-         });
-    })
+
 
 module.exports = ExcRouter;
