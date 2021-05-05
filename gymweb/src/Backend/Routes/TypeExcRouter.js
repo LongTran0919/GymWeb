@@ -23,7 +23,7 @@ console.log(typeID,typeName,compound)
         }
 
     })
-
+   
 
 
 module.exports = TypeExcRouter;
