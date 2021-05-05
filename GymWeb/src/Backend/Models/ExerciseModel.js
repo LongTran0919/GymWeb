@@ -34,6 +34,7 @@ const ExerciseSchema = new mongose.Schema(
          calories:{
              type:String
          }
+
     }
 )
 

@@ -15,7 +15,7 @@ const DataProvider=(props)=>{
         {
             _id : 2,
             product_name:"Chan to",
-            description:"Chân to đứng vứng ",
+            description:"Chân to đứng vứng trong tâm trí em",
             area:"chan",
             level:1,
             price :351
