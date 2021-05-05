@@ -23,7 +23,23 @@ console.log(excName ,title,typeExc,level,content,dare_created,comment,compound,a
         }
 
     })
-
+    ExcRouter.get('/all',(req,res)=>{
+        Exc.find({}, function(err, exc) {
+            res.send(exc.reduce((exc, item) => {
+                exc[item.id] = item
+                return exc
+            }, {}));
+         });
+    })
+    ExcRouter.get('/select',(req,res)=>{
+        const {id}=req.body
+        Exc.find({_id:id}, function(err, exc) {
+            res.send(exc.reduce((exc, item) => {
+                exc[item.id] = item
+                return exc
+            }, {}));
+         });
+    })
 
 
 module.exports = ExcRouter;
