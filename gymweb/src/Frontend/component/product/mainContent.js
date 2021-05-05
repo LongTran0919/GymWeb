@@ -1,13 +1,16 @@
 import React, {useState,useContext} from 'react';
-import './Card.css';
+import '../../../App.css';
 import {Link} from 'react-router-dom';
 import {DataContext} from './data/DataProvider';
 
 
 export default function MainContent(){
     const [products,setProducts]=useContext(DataContext);
+    console.log(products);
+    
     const [nhomCo,setnhomCo]=useState("");
     const [lv,setLV]=useState("");
+
     return(
         <div className="Container">  
             <div className="main_cbcontent">
@@ -37,7 +40,7 @@ export default function MainContent(){
                     <div className="card_container" key={product._id}>
                         <Link to={`/product/${product._id}`}style={{textDecoration: 'none'}}>
                             <div className="img-container">
-                                <img src="https://images.unsplash.com/photo-1477862096227-3a1bb3b08330?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" alt=""/>
+                                <img src="https://images8.content-hci.com/commimg/myhotcourses/blog/post/myhc_94121.jpg" alt=""/>
                             </div>
                             <div className="card-content">
                                 <div className="card_titlee">
