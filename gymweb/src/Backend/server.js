@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -7,10 +8,14 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(function(req, res, next) {
    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+   req.header("Access-Control-Allow-Origin", "*");
    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+   res.header("Access-Control-Allow-Methods", "GET, POST, PUT");
+   
   next();
 });
 dotenv.config();
+app.use(cors())
 const uri=process.env.URI;
 
 const  connection =async()=>{

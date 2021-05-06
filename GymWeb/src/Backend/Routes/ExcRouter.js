@@ -4,6 +4,7 @@ const JWT =require('jsonwebtoken')
 const passport = require('passport');
 const passportConfig = require('../passport');
 const Exc= require('../Models/ExerciseModel');
+const cors = require('cors');
  
  ExcRouter.post('/add', (req,res)=>{
 const {excName ,title,typeExc,level,content,dare_created,comment,compound,author,caloies}=req.body;
@@ -23,7 +24,7 @@ console.log(excName ,title,typeExc,level,content,dare_created,comment,compound,a
         }
 
     })
-    ExcRouter.get('/all',(req,res)=>{
+    ExcRouter.get('/all',cors(),(req,res)=>{
         Exc.find({}, function(err, exc) {
             res.send(exc.reduce((exc, item) => {
                 exc[item.id] = item

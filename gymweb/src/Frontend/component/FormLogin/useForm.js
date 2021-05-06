@@ -49,7 +49,7 @@ const useForm = (callback, validate) => {
          console.log(res.cookies)
          if(res.status==200){
           // setCookie('name', newName, { path: '/' });
-          window.location='/home';
+          window.location='/';
   
          }
        })

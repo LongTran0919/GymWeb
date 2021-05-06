@@ -5,9 +5,18 @@ import {DataContext} from './data/DataProvider';
 
 
 export default function MainContent(){
+
+
     const [products,setProducts]=useContext(DataContext);
     const [nhomCo,setnhomCo]=useState("");
     const [lv,setLV]=useState("");
+    const [data,setdata]=useState("")
+    
+    products[0].then(function(data){ return setdata (data)})
+       
+   
+        console.log(data)
+  
     return(
         <div className="Container">  
             <div className="main_cbcontent">
@@ -33,30 +42,34 @@ export default function MainContent(){
             </div>
             <div className="main_content">
             {   
-                products.map(product =>(
-                    <div className="card_container" key={product._id}>
-                        <Link to={`/product/${product._id}`}style={{textDecoration: 'none'}}>
-                            <div className="img-container">
-                                <img src="https://images.unsplash.com/photo-1477862096227-3a1bb3b08330?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" alt=""/>
-                            </div>
-                            <div className="card-content">
-                                <div className="card_titlee">
-                                    <h3>{product.product_name}</h3>
+                
+               
+                Object.values(data).map(a =>(
+                        <div className="card_container" key={a._id}>
+                            <Link to={`/product/${a._id}`}style={{textDecoration: 'none'}}>
+                                <div className="img-container">
+                                    <img src="https://images8.content-hci.com/commimg/myhotcourses/blog/post/myhc_94121.jpg" alt=""/>
                                 </div>
-                                <div className="card_bodyy">
-                                    <p>Mô tả: {product.description}</p>
-                                    <p>Vị trí: {product.area}</p>
-                                    <p>Level: {product.level}</p>
+                                <div className="card-content">
+                                    <div className="card_titlee">
+                                        <h3>{a.excName}</h3>
+                                    </div>
+                                    <div className="card_bodyy">
+                                        <p>Mô tả: {a.content}</p>
+                                        <p>Vị trí: {a.compound}</p>
+                                        <p>Level: {a.level}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="btnInfo">
-                                <button>
-                                    <a>View More</a>
-                                </button>
-                            </div>
-                        </Link>
-                    </div>
-                ))  
+                                <div className="btnInfo">
+                                    <button>
+                                        View More
+                                    </button>
+                                </div>
+                            </Link>
+                        </div>
+                    ))  
+                  
+               
             }
             </div>
         </div>

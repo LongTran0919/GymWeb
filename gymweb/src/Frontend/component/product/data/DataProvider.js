@@ -1,75 +1,40 @@
 import React,{createContext,useState} from 'react';
-
+const axios = require('axios');
 export const DataContext=createContext();
+ 
+ 
+const DataProvider=(props)=>{  
+    
+    // var Data =       axios.get(`http://localhost:5000/exercise/all`,{ crossdomain: true }).then(  (result )=>{
+        
+    //         // Data=result.data
+    //     //    console.log( result.data);
+    //     return    result.data  ;
+          
+    //       }).catch((error)=>{
+    //         console.log("Error",error);
+    //       })
+    //     //    console.log(Data)
 
-const DataProvider=(props)=>{    
-    const [products,setProducts]=useState([
-        {
-            _id : 1,
-            product_name:"Tay to ",
-            description:"Tay cực to thì em mới thích",
-            area:"tay",
-            level:1,
-            price :350
-        },
-        {
-            _id : 2,
-            product_name:"Chan to",
-            description:"Chân to đứng vứng trong tâm trí em",
-            area:"chan",
-            level:1,
-            price :351
-        },
-        {
-            _id : 3,
-            product_name:"Ngực to",
-            description:"To hơn ngực em",
-            area:"nguc",
-            level:1
-    ,        price :350
-        },
-        {
-            _id : 4,
-            product_name:"Mông to",
-            description:"Giàu sang phú quý",
-            area:"mong",
-            level:1,
-            price :350
-        },
-        {
-            _id : 5,
-            product_name:"Bụng to",
-            description:"Sơ gan",
-            area:"bung",
-            level:2,
-            price :350
-        },
-        {
-            _id : 6,
-            product_name:"Vai to",
-            description:"Gánh vác cuộc đời em",
-            area:"vai",
-            level:3,
-            price :350
-        },
-        {
-            _id : 7,
-            product_name:"Vai to",
-            description:"Gánh vác cuộc đời em",
-            area:"vai",
-            level:1,
-            price :350
-        },
-        {
-            _id : 8,
-            product_name:"Vai to",
-            description:"Gánh vác cuộc đời em",
-            area:"vai",
-            level:1,
-            price :350
-        },
-    ])
+    async function makeGetRequest() {
 
+      let res = await axios.get('http://localhost:5000/exercise/all');
+    return res.data;
+      // console.log(data);
+    }
+    
+    //makeGetRequest();
+    
+      
+
+   
+   
+  
+    
+      const [products,setProducts]=useState([
+        makeGetRequest()
+       ])
+    
     return(
         <DataContext.Provider value={[products,setProducts]}>
             {props.children}
