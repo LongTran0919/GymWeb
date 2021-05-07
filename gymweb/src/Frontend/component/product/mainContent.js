@@ -11,6 +11,7 @@ export default function MainContent(){
     const [nhomCo,setnhomCo]=useState("");
     const [lv,setLV]=useState("");
     const [data,setdata]=useState("")
+    const [seachTerm,setSearchTerm]=useState("");
     
     products[0].then(function(data){ return setdata (data)})
        
@@ -19,7 +20,11 @@ export default function MainContent(){
   
     return(
         <div className="Container">  
-            <div className="main_cbcontent">
+            <div className="box_search">
+                <input type="text" className="input_search" placeholder="Enter the exercise name or part of the body" onChange={event=>{setSearchTerm(event.target.value)}}/>
+                <button className="btnTim">Tìm kiếm</button>
+            </div>
+            {/* <div className="main_cbcontent">
                 <select className="custom-select cbselect" value={nhomCo} onChange={(e)=>{
                     const selectNhomCo=e.target.value;
                     setnhomCo(selectNhomCo);
@@ -38,13 +43,19 @@ export default function MainContent(){
                     <option value="lv2">2</option>
                     <option value="lv3">3</option>
                 </select>
-                <button className="btnTim">Tìm kiếm</button>
-            </div>
+                <button className="btnTim">Lọc</button>
+            </div> */}
             <div className="main_content">
             {   
                 
                
-                Object.values(data).map(a =>(
+                Object.values(data).filter((a)=>{
+                    if(seachTerm ==""){
+                        return a
+                    }else if(a.excName.toLowerCase().includes(seachTerm.toLowerCase())||a.compound.toLowerCase().includes(seachTerm.toLowerCase())||a.level.toLowerCase().includes(seachTerm.toLowerCase())){
+                         return a
+                    }
+                }).map(a =>(
                         <div className="card_container" key={a._id}>
                             <Link to={`/product/${a._id}`}style={{textDecoration: 'none'}}>
                                 <div className="img-container">

@@ -3,7 +3,7 @@ import './Form.css';
 
 function Footer() {
         return (
-            <div className="footer-dark">
+            <div className="footer-dark footer">
                 <footer>
                     <div className="container">
                         <div className="row">

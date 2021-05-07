@@ -24,7 +24,7 @@ function App() {
                 <Route path="/product/:id" component={Details}/>
                 <Route path="/signin" component={FormLoginMain}/>
               </Switch>
-            <Footer/>
+            {/* <Footer/> */}
       </Router>
     </DataProvider>
   );
