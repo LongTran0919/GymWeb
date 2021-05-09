@@ -1,7 +1,7 @@
 import React, {useState,useContext} from 'react';
-import './Card.css';
+import '../product/Card.css';
 import {Link} from 'react-router-dom';
-import {DataContext} from './data/DataProvider';
+import {DataContext} from '../product/data/DataProvider';
 
 
 export default function MainContent(){

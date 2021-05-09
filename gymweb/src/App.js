@@ -8,6 +8,7 @@ import MainContent from './Frontend/component/product/mainContent';
 import Details from './Frontend/component/product/Details';
 import DataProvider from './Frontend/component/product/data/DataProvider';
 import Footer from './Frontend/component/Footer';
+import AdminPro from './Frontend/component/Admin/AdminProduct'
 
 
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
@@ -23,8 +24,9 @@ function App() {
                 <Route path="/products" component={MainContent}/>
                 <Route path="/product/:id" component={Details}/>
                 <Route path="/signin" component={FormLoginMain}/>
+                <Route path="/admin/products" component={AdminPro}/>
               </Switch>
-            {/* <Footer/> */}
+            <Footer/>
       </Router>
     </DataProvider>
   );
