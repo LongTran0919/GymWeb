@@ -8,8 +8,8 @@ import MainContent from './Frontend/component/product/mainContent';
 import Details from './Frontend/component/product/Details';
 import DataProvider from './Frontend/component/product/data/DataProvider';
 import Footer from './Frontend/component/Footer';
-import AdminPro from './Frontend/component/Admin/AdminProduct'
-
+import AdminPro from './Frontend/component/Admin/AdminProduct';
+import Profile from './Frontend/component/Profile/Profile';
 
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
 
@@ -25,6 +25,7 @@ function App() {
                 <Route path="/product/:id" component={Details}/>
                 <Route path="/signin" component={FormLoginMain}/>
                 <Route path="/admin/products" component={AdminPro}/>
+                <Route path="/profile" component={Profile}/>
               </Switch>
             <Footer/>
       </Router>

@@ -64,12 +64,12 @@ nav ul li{
   height: 90vh;
 }
 
-.btn-main-offer:hover{
+/* .btn-main-offer:hover{
   text-decoration: none;
   background-color:var(--primary-hover-red);
   color: var(--primary-white);
   transition: .2s ease-in-out;
-}
+} */
 
 
 .main-info{
@@ -103,7 +103,7 @@ nav ul li{
   font-size: 2rem;
   color: var(--primary-white);
 }
-
+/* 
 .btn-main-offer{
   border: 1px solid var(--primary-red);
   text-transform: uppercase;
@@ -111,7 +111,7 @@ nav ul li{
   padding: 12px 12px 12px 12px;
   color: var(--primary-white);
   margin: 2rem;
-}
+} */
 
 /***********************Paricles JS*************************/
 .tsparticles-canvas-el{

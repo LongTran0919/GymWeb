@@ -30,7 +30,7 @@ function Navbar(){
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                <a className="btn-sign-up nav-link" href="/signup">Sign Up</a>
+                <a className="btn-sign-up nav-link" href="/profile">Sign Up</a>
                 </li>
                 <li className="nav-item">
                     <a className="btn-sign-up nav-link" href="/signin">Sign In</a>
