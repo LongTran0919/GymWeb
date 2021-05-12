@@ -20,7 +20,8 @@ export default function Profile(){
                                 <div className="profile mr-3">
                                     <img src={img} alt="avatar" className="rounded mb-2 img-thumbnail avatar"/>
 
-                                    <button type="button" class="btn-outline-dark btn-sm btn-edit btn-block">Edit Profile</button>
+                                    <button type="button" className="btn-outline-dark btn-sm btn-edit btn-block">Edit Profile</button>
+                                    
                                 </div>
                                 <div className="media-body mb-5 text-white">
                                     {/* <!-- name of user  -->
