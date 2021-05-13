@@ -10,6 +10,8 @@ import DataProvider from './Frontend/component/product/data/DataProvider';
 import Footer from './Frontend/component/Footer';
 import AdminPro from './Frontend/component/Admin/AdminProduct';
 import Profile from './Frontend/component/Profile/Profile';
+import AdminAddLesson from './Frontend/component/Admin/AdminAddLesson';
+import About from './Frontend/component/About/About'
 
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
 
@@ -26,6 +28,8 @@ function App() {
                 <Route path="/signin" component={FormLoginMain}/>
                 <Route path="/admin/products" component={AdminPro}/>
                 <Route path="/profile" component={Profile}/>
+                <Route path="/admin/add" component={AdminAddLesson}/>
+                <Route path="/about" component={About}/>
               </Switch>
             <Footer/>
       </Router>

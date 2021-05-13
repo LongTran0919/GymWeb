@@ -277,3 +277,40 @@
   font-size:13px;
   margin-bottom:0;
 }
+
+.btn-primary-add{
+  width: 150px;
+  border-radius: 5px 5px 5px 5px;
+  background-color: white;
+  color: #0575E6;
+  border: white solid 1px;
+}
+.form-add{
+  margin: 10px 10px 10px 10px;
+  background-color: #0575E6;
+  padding: 10px;
+  border-radius: 10px;
+}
+.btn-content-right{
+  display:flex;
+  justify-content: flex-end;
+  margin: 10px;
+  border-radius: 15px;
+}
+.btn-content-left{
+  margin: 10px;
+  border-radius: 15px;
+}
+
+
+
+/* admin */
+.img-holder{
+  width: 100%;
+  height: 500px;
+}
+
+.added-img{
+  width: 100%;
+  height: 100%;
+}
