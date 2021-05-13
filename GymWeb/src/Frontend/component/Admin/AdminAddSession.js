@@ -1,21 +1,11 @@
 import React, { Component } from 'react'
 import  img from '../../IMG/authen.png'
 
-export class AdminAddLesson extends Component {
+export class AdminAddSession extends Component {
   state={
     lessonImage: 'https://cokhichinhxac29.cactusvnweb.com/wp-content/themes/cokhi29/assets/images/img-default.jpg'
   }
 
-
-  // funtion add an add session card when user clicked Button AddSession
-  clickAddHandler= (e)=>{
-    console.log("Clicked!!!");
-    return(
-      <div>
-        Clicked!!!
-      </div>
-    )
-  }
 
   imgHandler = (e)=>{
     const reader = new FileReader();
@@ -39,16 +29,16 @@ export class AdminAddLesson extends Component {
         {/* input title */}
         <div className="form-group">
         <label for="exampleInputEmail1">Title</label>
-        <input type="text" className="form-control"  placeholder="Enter Lesson Title"/>
+        <input type="text" className="form-control"  placeholder="Enter Session Title"/>
         </div>
         
         {/* input desc */}
         <div className="form-group">
         <label for="exampleInputEmail1">Description </label>
-        <textarea className="form-control" aria-label="With textarea" placeholder="Enter Lesson Description"></textarea>
+        <textarea className="form-control" aria-label="With textarea" placeholder="Enter Session Description"></textarea>
         </div>
         
-        {/* choose image from device */}
+
         <div>
           <div className="img-holder">
             <img src={lessonImage} id="img" className="img added-img"></img>
@@ -56,22 +46,6 @@ export class AdminAddLesson extends Component {
           </div>
           <input type="file" name="img-upload" id="input"  onChange={this.imgHandler}/>
         </div>
-
-        
-
-
-        {/* add new session for lesson  */}
-        {/* click to show new session form */}
-        <div className="btn-content-right">
-          <button type="button" class="btn-primary-add" onClick= {this.clickAddHandler}>Add Session</button>
-        </div>
-
-        {/* add new lession
-        click to confirm  */}
-        <div className="btn-content-left">
-          <button type="submit" class="btn-primary-add">Add Lesson</button>
-        </div>
-
       </form>
       </div>
     </div>
@@ -79,4 +53,4 @@ export class AdminAddLesson extends Component {
   }
 }
 
-export default AdminAddLesson
+export default AdminAddSession

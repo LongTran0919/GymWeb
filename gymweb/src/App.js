@@ -11,7 +11,8 @@ import Footer from './Frontend/component/Footer';
 import AdminPro from './Frontend/component/Admin/AdminProduct';
 import Profile from './Frontend/component/Profile/Profile';
 import AdminAddLesson from './Frontend/component/Admin/AdminAddLesson';
-import About from './Frontend/component/About/About'
+import About from './Frontend/component/Info/About';
+import ContactUs from './Frontend/component/Info/ContactUs';
 
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
 
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/profile" component={Profile}/>
                 <Route path="/admin/add" component={AdminAddLesson}/>
                 <Route path="/about" component={About}/>
+                <Route path="/contacts" component={ContactUs}/>
               </Switch>
             <Footer/>
       </Router>
