@@ -22,7 +22,7 @@ export class AdminAddSession extends Component {
     const   {lessonImage} = this.state
 
     return (
-      <div className="container">
+      <div className="container container-ses">
       <div className="row">
       <form className="col-md-12 form-add">
         

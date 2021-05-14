@@ -14,6 +14,7 @@ import AdminAddLesson from './Frontend/component/AdminAddLesson/AdminAddLesson';
 import About from './Frontend/component/Info/About';
 import ContactUs from './Frontend/component/Info/ContactUs';
 import BMI from './Frontend/component/BMIChart/BMIChart';
+import AdminUpdateLesson from './Frontend/component/AdminUpdateLesson/AdminUpdateLesson';
 
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
 
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/about" component={About}/>
                 <Route path="/contacts" component={ContactUs}/>
                 <Route path="/bmi" component={BMI}/>
+                <Route path="/admin/updateLesson" component={AdminUpdateLesson}/>
               </Switch>
             <Footer/>
       </Router>

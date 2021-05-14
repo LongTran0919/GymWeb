@@ -319,6 +319,12 @@
   height: 100%;
 }
 
+.con-img{
+  margin-bottom: 20px;
+}
+.container-ses{
+  border: white solid 1px;
+}
 
 /* about */
 .ava-border{
