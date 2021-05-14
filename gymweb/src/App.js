@@ -8,14 +8,12 @@ import MainContent from './Frontend/component/product/mainContent';
 import Details from './Frontend/component/product/Details';
 import DataProvider from './Frontend/component/product/data/DataProvider';
 import Footer from './Frontend/component/Footer';
-import AdminPro from './Frontend/component/Admin/AdminProduct';
+import AdminPro from './Frontend/component/AdminManagement/AdminManagement';
 import Profile from './Frontend/component/Profile/Profile';
-import AdminAddLesson from './Frontend/component/Admin/AdminAddLesson';
+import AdminAddLesson from './Frontend/component/AdminAddLesson/AdminAddLesson';
 import About from './Frontend/component/Info/About';
 import ContactUs from './Frontend/component/Info/ContactUs';
 import BMI from './Frontend/component/BMIChart/BMIChart';
-import Celander from './Frontend/component/Planing/Plan';
-
 
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
 
@@ -30,13 +28,12 @@ function App() {
                 <Route path="/products" component={MainContent}/>
                 <Route path="/product/:id" component={Details}/>
                 <Route path="/signin" component={FormLoginMain}/>
-                <Route path="/admin/products" component={AdminPro}/>
+                <Route path="/admin/management" component={AdminPro}/>
                 <Route path="/profile" component={Profile}/>
                 <Route path="/admin/add" component={AdminAddLesson}/>
                 <Route path="/about" component={About}/>
                 <Route path="/contacts" component={ContactUs}/>
                 <Route path="/bmi" component={BMI}/>
-                <Route path="/celander" component={Celander}/>
               </Switch>
             <Footer/>
       </Router>
