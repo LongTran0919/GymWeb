@@ -13,6 +13,9 @@ import Profile from './Frontend/component/Profile/Profile';
 import AdminAddLesson from './Frontend/component/Admin/AdminAddLesson';
 import About from './Frontend/component/Info/About';
 import ContactUs from './Frontend/component/Info/ContactUs';
+import BMI from './Frontend/component/BMIChart/BMIChart';
+import Celander from './Frontend/component/Planing/Plan';
+
 
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
 
@@ -32,6 +35,8 @@ function App() {
                 <Route path="/admin/add" component={AdminAddLesson}/>
                 <Route path="/about" component={About}/>
                 <Route path="/contacts" component={ContactUs}/>
+                <Route path="/bmi" component={BMI}/>
+                <Route path="/celander" component={Celander}/>
               </Switch>
             <Footer/>
       </Router>
