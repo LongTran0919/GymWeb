@@ -7,15 +7,19 @@ const cookieParser = require('cookie-parser')
 app.use(cookieParser());
 app.use(express.json());
 app.use(function(req, res, next) {
-   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-   req.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Origin", "http://localhost:3000");// update to match the domain you will make the request from
+   
+   res.header('Access-Control-Allow-Credentials', true);
    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
    res.header("Access-Control-Allow-Methods", "GET, POST, PUT");
-   
   next();
 });
 dotenv.config();
-app.use(cors())
+app.use(cors({ credentials: true ,origin: [
+  "http://localhost:3000",
+  "http://127.0.0.1",
+  "http://104.142.122.231",
+],}))
 const uri=process.env.URI;
 
 const  connection =async()=>{

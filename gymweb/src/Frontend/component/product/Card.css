@@ -98,6 +98,7 @@
     flex-direction: column;
     height: 450px ;
     transition:all .3s ease-in-out;
+    background-color: #fff;
   }
   .card_container:hover{
       transform:scale(0.9);

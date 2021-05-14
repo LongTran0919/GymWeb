@@ -16,7 +16,7 @@ const FormLogin = ({ submitFormLogin }) => {
     <div className='form-content-right'>
       <form onSubmit={handleSubmit} className='form' noValidate>
         <h3 className="text-white">
-            Log in
+            Sign in
         </h3>
         <div className='form-inputs'>
           <label className='form-label'>Username</label>

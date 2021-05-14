@@ -1,5 +1,6 @@
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState, useEffect ,useContext} from 'react';
 import Navbar from './Frontend/component/Navbar';
 import Header from './Frontend/component/Header';
 import Form from './Frontend/component/FormRegister/Form';
@@ -15,10 +16,10 @@ import About from './Frontend/component/Info/About';
 import ContactUs from './Frontend/component/Info/ContactUs';
 import BMI from './Frontend/component/BMIChart/BMIChart';
 import AdminUpdateLesson from './Frontend/component/AdminUpdateLesson/AdminUpdateLesson';
-
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
-
+import {AuthContext} from './Backend/Context/AuthContext';
 function App() {
+  const authContext   = useContext(AuthContext);
   return (
     <DataProvider>
       <Router>

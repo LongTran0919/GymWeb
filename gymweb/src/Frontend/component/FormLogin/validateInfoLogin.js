@@ -1,6 +1,7 @@
 
 export default function validateInfo(values) {
     let error = {} ;
+    return error;
     if (!values.username) {
       error.username = 'Username required';
     }else if(values.username.length > 16)

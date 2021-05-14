@@ -21,7 +21,7 @@ export default function MainContent(){
     return(
         <div className="Container">  
             <div className="box_search">
-                <input type="text" className="input_search" placeholder="Enter the exercise name or part of the body" onChange={event=>{setSearchTerm(event.target.value)}}/>
+                <input type="text" className="input_search" placeholder="  Enter the exercise name or part of the body" onChange={event=>{setSearchTerm(event.target.value)}}/>
             </div>
             {/* <div className="main_cbcontent">
                 <select className="custom-select cbselect" value={nhomCo} onChange={(e)=>{
