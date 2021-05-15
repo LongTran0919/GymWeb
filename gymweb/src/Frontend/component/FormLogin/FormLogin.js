@@ -1,18 +1,19 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import validate from './validateInfoLogin';
 import '../Form.css';
 import useForm from './useForm';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { AuthContext } from '../../../Backend/Context/AuthContext';
 const FormLogin = ({ submitFormLogin }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
     submitFormLogin,
     validate
   );
-
+  const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
+    console.log("login "+isAuthenticated)
   return (
-    
+    !isAuthenticated?
     <div className='form-content-right'>
       <form onSubmit={handleSubmit} className='form' noValidate>
         <h3 className="text-white">
@@ -47,6 +48,7 @@ const FormLogin = ({ submitFormLogin }) => {
         </button>
       </form>
     </div>
+    : window.location="/profile"
   );
 };
 

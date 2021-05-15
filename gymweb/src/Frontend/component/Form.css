@@ -178,15 +178,16 @@
     font-weight: 600;
   }
   .btn-sign-up{
-     
+  
     margin:auto;
-    border:2px solid !important;
+    border:2px solid  !important;
     border-radius: 5px;
+   
     padding:10px 10px;
     background: linear-gradient(to right,   rgb(0, 232, 236) 0%, rgb(39, 176, 255) 100%);
     background-repeat: no-repeat;
     background-size: 0 100%;
-    transition: background-size 1s 0s;
+    transition: background-size 0.5s 0s;
   }
   .btn-sign-up:hover{
     /* background: linear-gradient(
@@ -194,6 +195,7 @@
       rgb(0, 232, 236) 0%,
       rgb(39, 176, 255) 100%
     ); */
+    border: 2px solid rgb(50, 115, 220) !important ;
     background-size: 100% 100%;
     color: #000;
   }

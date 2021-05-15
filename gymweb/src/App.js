@@ -17,9 +17,8 @@ import ContactUs from './Frontend/component/Info/ContactUs';
 import BMI from './Frontend/component/BMIChart/BMIChart';
 import AdminUpdateLesson from './Frontend/component/AdminUpdateLesson/AdminUpdateLesson';
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
-import {AuthContext} from './Backend/Context/AuthContext';
+import NotFound from './Frontend/component/404page/404';
 function App() {
-  const authContext   = useContext(AuthContext);
   return (
     <DataProvider>
       <Router>
@@ -37,6 +36,7 @@ function App() {
                 <Route path="/contacts" component={ContactUs}/>
                 <Route path="/bmi" component={BMI}/>
                 <Route path="/admin/updateLesson" component={AdminUpdateLesson}/>
+                <Route component={NotFound} />
               </Switch>
             <Footer/>
       </Router>

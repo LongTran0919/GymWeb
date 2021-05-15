@@ -26,11 +26,7 @@ const useForm = (callback, validate) => {
 
     console.log(values)
   };
-  const onChange = e=>{
-    e.preventDefault();
-    setValues({...values,[e.target.name]:e.target.value});
-    console.log(values)
-  }
+  
   // const handleSubmit = e => {
   //   e.preventDefault();
   //   setErrors(validate(values));
@@ -50,7 +46,7 @@ const useForm = (callback, validate) => {
           authContext.setUser(user);
           authContext.setisAuthenticated(isAuthenticated);
           
-        
+          window.location='/';
         }else{   
           setIsSubmitting(false);
           console.log("fail")
@@ -61,41 +57,7 @@ const useForm = (callback, validate) => {
 
     )
   }
-  useEffect(
-    () => {
-       if (Object.keys(errors).length === 0 && isSubmitting) {
-         console.log(values)
-         const {username,password}=values;
-         console.log(username);
-        axios
-        .post('http://localhost:5000/user/login', {
-          "username":username,
-          "password":password
-        },{Headers: {
-          'Content-Type': 'application/json'
-        }})
-        .then(res => {
-          console.log(res)
-        console.log(res.cookies)
-          if(res.status==200){
-           // setCookie('name', newName, { path: '/' });
-           // toast.configure();
-           // toast.success('Đăng nhập thành công' ,{position:toast.POSITION.BOTTOM_LEFT});
-           window.location='/';
-  
-          }
-        })
-        .catch(error => {
-          console.error(error);
-          setIsSubmitting(false);
-           toast.configure();
-          toast.error('Đăng nhập thất bại' ,{position:toast.POSITION.BOTTOM_LEFT});
-       })
-     }
-        
-    },
-    [errors,values]
-  );
+ 
 
   return { handleChange, handleSubmit, values, errors };
 };

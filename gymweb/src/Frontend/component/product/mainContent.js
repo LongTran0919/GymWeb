@@ -1,8 +1,8 @@
-import React, {useState,useContext} from 'react';
+import React, {useState,useContext,useEffect} from 'react';
 import './Card.css';
 import {Link} from 'react-router-dom';
 import {DataContext} from './data/DataProvider';
-
+import {AuthContext} from '../../../Backend/Context/AuthContext'
 
 export default function MainContent(){
 
@@ -12,11 +12,12 @@ export default function MainContent(){
     const [lv,setLV]=useState("");
     const [data,setdata]=useState("")
     const [seachTerm,setSearchTerm]=useState("");
-    
+    const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
+ 
     products[0].then(function(data){ return setdata (data)})
        
-   
-        console.log(data)
+   console.log(isAuthenticated)
+        // console.log(data)
   
     return(
         <div className="Container">  

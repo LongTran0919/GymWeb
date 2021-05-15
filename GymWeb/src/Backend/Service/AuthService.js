@@ -24,7 +24,7 @@ export default {
         return   axios
         .get('http://localhost:5000/user/logout',{ withCredentials: true },{Headers: {
                   'Content-Type': 'application/json',
-                }}).then(res=>res.json()).then(data=>data)
+                }}).then(res=> { return {isAuthenticated :false,user:{username:'',role:''}}})
     },
     isAuthenticated:()  =>{
         return  axios
