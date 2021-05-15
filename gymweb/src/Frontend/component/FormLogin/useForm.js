@@ -52,7 +52,7 @@ const useForm = (callback, validate) => {
           
         
         }else{   
-           setIsSubmitting(false);
+          setIsSubmitting(false);
           console.log("fail")
           console.log(data)
         }
@@ -63,36 +63,35 @@ const useForm = (callback, validate) => {
   }
   useEffect(
     () => {
-    //   if (Object.keys(errors).length === 0 && isSubmitting) {
-    //     console.log(values)
-    //     const {username,password}=values;
-    //     console.log(username);
-    //    axios
-    //    .post('http://localhost:5000/user/login', {
-    //      "username":username,
-    //      "password":password
-    //    },{Headers: {
-    //      'Content-Type': 'application/json'
-    //    }})
-    //    .then(res => {
+       if (Object.keys(errors).length === 0 && isSubmitting) {
+         console.log(values)
+         const {username,password}=values;
+         console.log(username);
+        axios
+        .post('http://localhost:5000/user/login', {
+          "username":username,
+          "password":password
+        },{Headers: {
+          'Content-Type': 'application/json'
+        }})
+        .then(res => {
+          console.log(res)
+        console.log(res.cookies)
+          if(res.status==200){
+           // setCookie('name', newName, { path: '/' });
+           // toast.configure();
+           // toast.success('Đăng nhập thành công' ,{position:toast.POSITION.BOTTOM_LEFT});
+           window.location='/';
   
-    //      console.log(res)
-    //      console.log(res.cookies)
-    //      if(res.status==200){
-    //       // setCookie('name', newName, { path: '/' });
-    //       // toast.configure();
-    //       // toast.success('Đăng nhập thành công' ,{position:toast.POSITION.BOTTOM_LEFT});
-    //       window.location='/';
-  
-    //      }
-    //    })
-    //    .catch(error => {
-    //      console.error(error);
-    //      setIsSubmitting(false);
-    //     //  toast.configure();
-    //     // toast.error('Đăng nhập thất bại' ,{position:toast.POSITION.BOTTOM_LEFT});
-    //   })
-    // }
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          setIsSubmitting(false);
+           toast.configure();
+          toast.error('Đăng nhập thất bại' ,{position:toast.POSITION.BOTTOM_LEFT});
+       })
+     }
         
     },
     [errors,values]

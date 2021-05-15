@@ -32,7 +32,7 @@ function Navbar(){
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-            <a className="btn-sign-up nav-link " href="/signup"> Sign up  </a>
+            <a className="btn-sign-up nav-link " href="/signup"> Sign up </a>
             </li>
             <li className="nav-item">
              <a className="btn-sign-up nav-link" href="/signin"> Sign in</a>
@@ -67,10 +67,10 @@ function Navbar(){
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-           <a className=" nav-link" href="/"> <FaUserAlt/> {user.username}</a>
+           <a className=" nav-link" href="/profile"> <FaUserAlt/> {user.username}</a>
             </li>
             <li className="nav-item">
-                <a className="btn-sign-up nav-link"  href="/"> Logout <FaSignOutAlt/></a>
+                <a className="btn-sign-up nav-link"  href="/" onClick={() => setisAuthenticated(false)}> Logout <FaSignOutAlt/></a>
             </li>
             </ul>
         </div>

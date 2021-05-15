@@ -1,6 +1,6 @@
 export default function validateInfo(values) {
     let errors = {} ;
-    if (!/^[a-zA-Z0-9]*$/.test(values.username)) {
+    if ((!/^[a-zA-Z0-9]*$/.test(values.username))||!values.username) {
       errors.username = 'Username required';
     }else if(values.username.length > 16)
     {

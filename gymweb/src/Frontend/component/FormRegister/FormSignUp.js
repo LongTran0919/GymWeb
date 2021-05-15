@@ -20,7 +20,10 @@ const FormSignup = ({ submitForm }) => {
           Register
         </h3>
         <div className='form-inputs'>
-          <label className='form-label'>Username</label>
+          <div className='error_text'>
+            <label className='form-label'>Username</label>
+            {errors.username && <p>{errors.username}</p>}
+          </div>
           <input
             className='form-input'
             type='text'
@@ -29,10 +32,14 @@ const FormSignup = ({ submitForm }) => {
             value={values.username}
             onChange={handleChange}
           />
-          {errors.username && <p>{errors.username}</p>}
+
         </div>
         <div className='form-inputs'>
-          <label className='form-label'>Password</label>
+          <div className='error_text'>
+            <label className='form-label'>Password</label>
+            {errors.password && <p>{errors.password}</p>}
+          </div>
+          
           <input
             className='form-input'
             type='password'
@@ -41,10 +48,13 @@ const FormSignup = ({ submitForm }) => {
             value={values.password}
             onChange={handleChange}
           />
-          {errors.password && <p>{errors.password}</p>}
+          
         </div>
         <div className='form-inputs'>
-          <label className='form-label'>Confirm Password</label>
+          <div className='error_text'>
+            <label className='form-label'>Confirm Password</label>
+            {errors.password2 && <p>{errors.password2}</p>}
+          </div>
           <input
             className='form-input'
             type='password'
@@ -53,10 +63,12 @@ const FormSignup = ({ submitForm }) => {
             value={values.password2}
             onChange={handleChange}
           />
-          {errors.password2 && <p>{errors.password2}</p>}
         </div>
         <div className='form-inputs'>
-          <label className='form-label'>Email</label>
+          <div className='error_text'>
+            <label className='form-label'>Email</label>
+            {errors.email && <p>{errors.email}</p>}
+          </div>
           <input
             className='form-input'
             type='email'
@@ -65,7 +77,7 @@ const FormSignup = ({ submitForm }) => {
             value={values.email}
             onChange={handleChange}
           />
-          {errors.email && <p>{errors.email}</p>}
+          
         </div>
         <button className='form-input-btn' type='submit'>
           Sign up

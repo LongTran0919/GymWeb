@@ -2,10 +2,12 @@ import React,{useContext,useState} from 'react';
 import { useParams } from 'react-router-dom';
 import img from '../../IMG/spatan.jpg'
 import './Profile.css'
+import { AuthContext } from '../../../Backend/Context/AuthContext';
 
 
 
 export default function Profile(){
+    const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
     return(
     <div className="container">
         <div className="row py-5">
@@ -26,7 +28,7 @@ export default function Profile(){
                                 <div className="media-body mb-5 text-white">
                                     {/* <!-- name of user  -->
                                     <!-- -> change here --> */}
-                                    <h4 className="mt-0 mb-0">Mark Williams</h4>
+                                    <h4 className="mt-0 mb-0">{user.username}</h4>
                                     {/* <!-- Address --> */}
                                     <p className="small mb-4"> <i className="fas fa-map-marker-alt mr-2 "></i>New York</p>
                                 </div>
@@ -62,7 +64,7 @@ export default function Profile(){
                         <div className="px-4 py-3">
                             <h5 className="mb-0">About</h5>
                             <div className="p-4 rounded shadow-sm bg-light">
-                                <p className="font-italic mb-0">user@gmail.com</p>
+                                <p className="font-italic mb-0">{user.gmail}</p>
                                 <p className="font-italic mb-0">date of birth</p>
                             </div>
                         </div>

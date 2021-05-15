@@ -74,7 +74,7 @@
     height: 2;
     border-radius: 15px;
     position: relative;
-    max-height: 500px;
+    max-height: 600px;
     background: linear-gradient(90deg, rgb(10, 165, 221) 0%, rgb(96, 197, 243) 100%);
   }
   
@@ -200,7 +200,10 @@
   .btn-sign-up:hover a {
     color: #000;
   }
-  
+  .error_text{
+    display: flex;
+    justify-content: space-between;
+  }
   /***********************Footer*************************/
 .footer-dark {
   padding:50px 0;
