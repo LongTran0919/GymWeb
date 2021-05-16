@@ -17,7 +17,7 @@ function Navbar(){
               const {isAuthenticated,user}=data;
                 console.log("logout "+isAuthenticated)
                 setUser(user);
-                 setisAuthenticated(isAuthenticated);
+                setisAuthenticated(isAuthenticated);
             }
       
           )
@@ -86,7 +86,7 @@ function Navbar(){
            <a className=" nav-link" href="/profile"> <FaUserAlt/> {user.username}</a>
             </li>
             <li className="nav-item">
-                <a className="btn-sign-up nav-link" onClick={logout} href="/"> Logout <FaSignOutAlt/></a>
+                <a className="btn-sign-up nav-link" onClick={logout} href="/login"> Logout <FaSignOutAlt/></a>
             </li>
             </ul>
         </div>
