@@ -13,15 +13,15 @@
 }
 .form-container {
     margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 90%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 100%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
     position: relative;
     height: 880px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background: url('../IMG/signin-bg.jpg') no-repeat;
+    background: url('../IMG/Gym.jpg') no-repeat;
     background-size: cover;
     
   }
@@ -205,6 +205,26 @@
   .error_text{
     display: flex;
     justify-content: space-between;
+  }
+   /***********************Header*************************/
+   .title{
+     height:520px;
+     text-align: center;
+     display: flex;
+     justify-content:center;
+     margin:auto;
+     align-items: center;
+     color:#0575E6;
+     font-size:50px;
+     font-weight: bold;
+     
+   }
+   .tsparticlesa{
+    position: absolute;
+    height: 500px;
+    width: 100wh;
+    z-index: 999;
+
   }
   /***********************Footer*************************/
 .footer-dark {
