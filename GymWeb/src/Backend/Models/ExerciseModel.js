@@ -16,10 +16,10 @@ const ExerciseSchema = new mongose.Schema(
              type:String
          },
          content:{
-             type:String
+             type:Array
          },
          date_created:{
-             type:Date
+             type:String
          },
          comment:{
              type:Array
@@ -33,7 +33,8 @@ const ExerciseSchema = new mongose.Schema(
          },
          calories:{
              type:String
-         }
+         },
+          
 
     }
 )

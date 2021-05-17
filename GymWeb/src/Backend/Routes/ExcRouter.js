@@ -7,10 +7,11 @@ const Exc= require('../Models/ExerciseModel');
 const cors = require('cors');
  
  ExcRouter.post('/add', (req,res)=>{
-const {excName ,title,typeExc,level,content,dare_created,comment,compound,author,caloies}=req.body;
-console.log(excName ,title,typeExc,level,content,dare_created,comment,compound,author,caloies)
-        try{ const newExc = new Exc({  excName ,title,typeExc,level,content,dare_created,comment,compound,author,caloies  })
-                 newExc.save(err=>{
+const {excName ,title,typeExc,level,content,date_created,comment,compound,author,caloies}=req.body;
+ 
+        try{ const newExc = new Exc({  excName ,title,typeExc,level,content,date_created,comment,compound,author,caloies  })
+                console.log(newExc)
+        newExc.save(err=>{
                     if(err)res.status(500).json({
                         message:{msgBody:"Error has occured 2"},
                         msgError:true })
