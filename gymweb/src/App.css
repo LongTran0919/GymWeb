@@ -66,10 +66,11 @@ nav ul li{
 
 .header-wraper{
   position: relative;
-  background: url(./Frontend/IMG/background.png) no-repeat;
+  background: url(./Frontend/IMG/room1.jpg) no-repeat;
   background-size: cover;
   background-position: center;
   height: 90vh;
+
 }
 
 /* .btn-main-offer:hover{
