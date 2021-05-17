@@ -13,7 +13,7 @@ const AdminAddSession = (props) => {
   return (
     props.taskList.map((val, idx) => {
       
-      let projectName = `projectName-${idx}`, task = `task-${idx}`, taskNotes = `taskNotes-${idx}`, taskStatus = `taskStatus-${idx}`
+      let TitleSession = `TitleSession-${idx}`, DesSession = `DesSession-${idx}`
       return (
         <tr key={val.index}>
           <div className="container container-ses">
@@ -23,13 +23,13 @@ const AdminAddSession = (props) => {
         {/* input title */}
                 <div className="form-group">
                     <label for="exampleInputEmail1">Title</label>
-                    <input type="text" className="form-control"  placeholder="Enter Session Title"/>
+                    <input type="text" className="form-control" required name="TitleSession" data-id={idx} placeholder="Enter Session Title"/>
                 </div>
         
         {/* input desc */}
                 <div className="form-group">
                     <label for="exampleInputEmail1">Description </label>
-                    <textarea className="form-control" aria-label="With textarea" placeholder="Enter Session Description"></textarea>
+                    <textarea className="form-control" required name="DesSession" data-id={idx}  aria-label="With textarea" placeholder="Enter Session Description"></textarea>
                 </div>
         
 

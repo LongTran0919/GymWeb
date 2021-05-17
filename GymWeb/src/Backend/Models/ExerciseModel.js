@@ -9,13 +9,16 @@ const ExerciseSchema = new mongose.Schema(
         title:{
             type:String
         },
+        decription:{
+            type:String
+         },
          typeExc:{
             type:String
          },
          level:{
              type:String
          },
-         content:{
+         taskList:{
              type:Array
          },
          date_created:{

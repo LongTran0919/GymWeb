@@ -17,7 +17,7 @@
       margin:50px auto;
       padding:50px 0 0;
       box-sizing: border-box;
-      justify-content: space-between;
+      justify-content: start;
       flex-wrap:wrap;
   }
   .main_cbcontent{
@@ -68,7 +68,7 @@
     border-radius: 5px;
     flex-direction: column;
     position: relative;
-    transform:scale(.8);
+    transform:scale(1);
     transition:all .3s ease-in-out;
     
   }
@@ -88,19 +88,20 @@
   .card_container{
     width:33%;
     margin-bottom: 50px;
-    margin :50px 15px;
+    margin :50px 36px;
     width:300px;
     overflow:hidden;
     box-shadow: 0px 0px 15px -5px;
     transition:0.5s;
     animation:ease-in-out;
-    max-height: 450px !important;
-    flex-direction: column;
     height: 450px ;
-    transition:all .3s ease-in-out;
-    background-color: #fff;
+    background-color:#ffff;
+    transition:all .5s ease-in-out;
   }
-  
+  .card_container:hover{
+    transform:scale(1.1);
+    box-shadow: 0px 0px 15px 0px;
+}
   .img-container img{
     overflow: hidden;
     height:200px;
@@ -108,13 +109,16 @@
   .card-content{
       margin:1rem;
       margin-top:0.5rem;
+      height: 150px;
   }
   h3,p{
       margin:0;
       padding:0;
+      color:#0575E6;
   }
   .card-titlee{
     margin-bottom: 0.5rem;
+    color:#000;
   }
   .btnInfo{
       display:flex;
