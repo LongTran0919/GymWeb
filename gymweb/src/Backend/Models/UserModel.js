@@ -15,6 +15,18 @@ const UserSchema = new mongose.Schema(
             type:String,
             require:true,
         },
+        Name:{type:String
+        },
+        Dob:{type:String
+        },
+        Sex:{type:String
+        },
+        Weight:{type:String
+        },
+        Height:{type:String
+        },
+        Avatar:{type:String
+        },
         role:{
             type:String,
             enum:['user','admin','teacher']

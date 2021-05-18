@@ -12,10 +12,7 @@ const DataProvider=(props)=>{
       let res = await axios.get('http://localhost:5000/exercise/all');
     return res.data;
     }
-    
 
-
-    
       const [products,setProducts]=useState([
         makeGetRequest()
        ])

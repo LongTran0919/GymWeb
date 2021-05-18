@@ -8,12 +8,6 @@ import notfound from '../404page/404'
 export default function Profile(){
     const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext); 
 
-
-       useEffect(()=>{      
-         
-        
-        console.log("ada " +isAuthenticated)
-     },[]) 
     
      const isauth=()=>{
          return(<div className="container">

@@ -2,24 +2,28 @@ import React from "react"
 import TaskList from "./AdminAddSession"
 import axios from 'axios';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
+import ExerciseService from '../../../Backend/Service/ExerciseService'
 class AdminAddLesson extends React.Component {
     state = {
-        taskList: [{ index: Math.random(), projectName: "", task: "", taskNotes: "", taskStatus: "" }],
-        date: "",
-        description: "",
+      
+        taskList: [{ TitleSession: "", DesSession: ""}],
+        title: "",
+        decription: "",
+        imgUrl:""
     }
   
     handleChange = (e) => {
-        if (["projectName", "task", "taskNotes", "taskStatus"].includes(e.target.name)) {
+        if (["TitleSession", "DesSession"].includes(e.target.name)) {
             let taskList = [...this.state.taskList]
             taskList[e.target.dataset.id][e.target.name] = e.target.value;
         } else {
             this.setState({ [e.target.name]: e.target.value })
         }
+     
     }
     addNewRow = () => {
         this.setState((prevState) => ({
-            taskList: [...prevState.taskList, { index: Math.random(), projectName: "", task: "", taskNotes: "", taskStatus: "" }],
+            taskList: [...prevState.taskList, {   TitleSession: "", DesSession: ""}],
         }));
     }
 
@@ -33,7 +37,15 @@ class AdminAddLesson extends React.Component {
         // this.setState({ taskList: taskList1 });
     }
     handleSubmit = (e) => {
-        alert('Submit');
+            e.preventDefault();
+            let data = {formdata:this.state};
+            console.log(data.formdata)
+            ExerciseService.AddExercise(data.formdata).then(
+                data=>{
+                    console.log(data)
+                }
+          
+              )
     }
     imgHandler = (e)=>{
       const reader = new FileReader();
@@ -50,7 +62,7 @@ class AdminAddLesson extends React.Component {
         });
     }
     render() {
-      const   {lessonImage} = this.state
+      const   {lessonImage,LessionDes,LessionTitle} = this.state
         let { taskList } = this.state//let { notes, date, description, taskList } = this.state
         return (
             <div className="content">
@@ -67,13 +79,13 @@ class AdminAddLesson extends React.Component {
                                         {/* input title */}
                                         <div className="form-group">
                                         <label for="exampleInputEmail1">Title</label>
-                                        <input type="text" className="form-control"  placeholder="Enter Lesson Title"/>
+                                        <input type="text" className="form-control" required name="title" id="title" placeholder="Enter Lesson Title"/>
                                         </div>
                                         
                                         {/* input desc */}
                                         <div className="form-group">
                                         <label for="exampleInputEmail1">Description </label>
-                                        <textarea className="form-control" aria-label="With textarea" placeholder="Enter Lesson Description"></textarea>
+                                        <textarea className="form-control" aria-label="With textarea" required name="decription" id="decription" placeholder="Enter Lesson Description"></textarea>
                                         </div>
                                         
                                         {/* choose image from device */}
@@ -82,7 +94,7 @@ class AdminAddLesson extends React.Component {
                                             <img src={lessonImage} id="img" className="img added-img"></img>
                                             {/* <input class="form-control form-control-lg" id="formFileLg" type="file" />     */}
                                           </div>
-                                          <input type="file" name="img-upload" id="input"  onChange={this.imgHandler}/>
+                                          <input type="file" name="img-upload" id="imgUrl"  onChange={this.imgHandler}/>
                                         </div>
                                         </form>
                                     </div>

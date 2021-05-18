@@ -8,6 +8,7 @@ import {GrLogin,GrContactInfo} from "react-icons/gr";
 import {ImHome} from "react-icons/im";
 import {GiWeightLiftingUp}   from "react-icons/gi";
 import {FcAbout} from "react-icons/fc"
+import {IoIosLogIn} from "react-icons/io"
 function Navbar(){
     const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
     const logout= e=>{
@@ -20,7 +21,7 @@ function Navbar(){
                 setisAuthenticated(isAuthenticated);
             }
       
-          )
+          ) 
     }
     
     const unAuthenticatednav=()=>{
@@ -51,7 +52,7 @@ function Navbar(){
             <a className="btn-sign-up nav-link " href="/signup"> <FaExpeditedssl/> Sign up  </a>
             </li>
             <li className="nav-item">
-             <a className="btn-sign-up nav-link" href="/signin">Sign in <GrLogin/> </a>
+             <a className="btn-sign-up nav-link" href="/signin">Sign in <IoIosLogIn/> </a>
             </li>
             </ul>
         </div>

@@ -3,7 +3,7 @@ import {toast} from 'react-toastify';
 import {AuthContext} from '../../../Backend/Context/AuthContext';
 import Authservice from '../../../Backend/Service/AuthService';
 
-const axios = require('axios');
+
 
 
 const useForm = (callback, validate) => {

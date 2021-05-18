@@ -9,17 +9,20 @@ const ExerciseSchema = new mongose.Schema(
         title:{
             type:String
         },
+        decription:{
+            type:String
+         },
          typeExc:{
             type:String
          },
          level:{
              type:String
          },
-         content:{
-             type:String
+         taskList:{
+             type:Array
          },
          date_created:{
-             type:Date
+             type:String
          },
          comment:{
              type:Array
@@ -33,7 +36,8 @@ const ExerciseSchema = new mongose.Schema(
          },
          calories:{
              type:String
-         }
+         },
+          
 
     }
 )
