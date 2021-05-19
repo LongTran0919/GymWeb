@@ -1,19 +1,23 @@
 import React from "react";
-import './Lession.css'
+import './AdminAddLesson.css'
 const AdminAddSession = (props) => {
-  // imgHandler = (e)=>{
-  //   const reader = new FileReader();
-  //   reader.onload =() =>{
-  //     if(reader.readyState === 2){
-  //       this.setState({lessonImage: reader.result})
-  //     }
-  //   }
-  //   reader.readAsDataURL(e.target.files[0])
-  // }
+   
+
+ 
   return (
+  
     props.taskList.map((val, idx) => {
       
-      let TitleSession = `TitleSession-${idx}`, DesSession = `DesSession-${idx}`
+      var TitleSession = `TitleSession-${idx}`, DesSession = `DesSession-${idx}` ,imageSession = `imageSession-${idx}` 
+      const imgHandler = (e)=>{
+        const reader = new FileReader();
+        reader.onload =() =>{
+          if(reader.readyState === 2){
+            imageSession= reader.result
+          }
+        }
+        reader.readAsDataURL(e.target.files[0])
+      }
       return (
         <tr key={val.index}>
           <div className="container container-ses">
@@ -33,13 +37,13 @@ const AdminAddSession = (props) => {
                 </div>
         
 
-                {/* <div>
+                <div  className="form-group">
                     <div className="img-holder">
-                        <img  id="img" className="img added-img"></img>
+                        <img  src={imageSession} id="img" className="img added-img" atl="imageSession"></img>
            
                     </div>
-                    <input type="file" name="img-upload" id="input"  onChange={this.imgHandler}/>
-                </div> */}
+                    <input type="file" name="imageSession" id="imageSession"  onChange={imgHandler}/>
+                </div>
             </form>
           </div>
         </div>

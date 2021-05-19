@@ -1,0 +1,12 @@
+.btn_delete{
+    border-radius: 5px;
+    background-color: rgb(172, 237, 248);
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+#imgUrl{
+    display: none;
+}

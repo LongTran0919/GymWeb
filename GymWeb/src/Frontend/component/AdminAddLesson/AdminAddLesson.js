@@ -1,12 +1,15 @@
+/* eslint-disable no-unreachable */
 import React from "react"
 import TaskList from "./AdminAddSession"
 import axios from 'axios';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import ExerciseService from '../../../Backend/Service/ExerciseService'
+import {FcAddImage} from "react-icons/fc";
+import {IoIosAddCircle} from "react-icons/io";
 class AdminAddLesson extends React.Component {
     state = {
       
-        taskList: [{ TitleSession: "", DesSession: ""}],
+        taskList: [{ TitleSession: "", DesSession: "",imageSession:""}],
         excName: "",
         title:"",
         compound: "",
@@ -15,7 +18,7 @@ class AdminAddLesson extends React.Component {
     }
   
     handleChange = (e) => {
-        if (["TitleSession", "DesSession"].includes(e.target.name)) {
+        if (["TitleSession", "DesSession","imageSession"].includes(e.target.name)) {
             let taskList = [...this.state.taskList]
             taskList[e.target.dataset.id][e.target.name] = e.target.value;
         } else {
@@ -25,7 +28,7 @@ class AdminAddLesson extends React.Component {
     }
     addNewRow = () => {
         this.setState((prevState) => ({
-            taskList: [...prevState.taskList, {   TitleSession: "", DesSession: ""}],
+            taskList: [...prevState.taskList, {   TitleSession: "", DesSession: "",imageSession:""}],
         }));
     }
 
@@ -42,6 +45,11 @@ class AdminAddLesson extends React.Component {
             e.preventDefault();
             let data = {formdata:this.state};
             console.log(data.formdata)
+
+
+            return;
+
+
             ExerciseService.AddExercise(data.formdata).then(
                 data=>{
                     console.log(data)
@@ -77,37 +85,42 @@ class AdminAddLesson extends React.Component {
                                 <div className="card-header text-center">Add Your Daily Task</div>
                                 <div className="card-body">
                                     <div className="row">
-                                    <form className="col-md-12 form-add">
+                                    <form className="col-md-12 form-add form-group ">
                                         {/* input title */}
-                                        <div className="form-group">
+                                        <div className="form-group  form-check">
                                         <label for="exampleInputEmail1">Ex Name</label>
-                                        <input type="text" className="form-control" required name="excName" id="excName" placeholder="Enter Lesson Title"/>
+                                        <input type="text" className="form-control styled-select" required name="excName" id="excName" placeholder="Enter Lesson Title"/>
                                         </div>
-                                        <div className="form-group">
+                                        <div className="form-group form-check">
                                         <label for="exampleInputEmail1">Title</label>
-                                        <input type="text" className="form-control" required name="title" id="title" placeholder="Enter Lesson Title"/>
+                                        <input type="text" className="form-control styled-select " required name="title" id="title" placeholder="Enter Lesson Title"/>
                                         </div>
                                         {/* input desc */}
-                                        <div className="form-group">
+                                        <div className="form-group  form-check">
                                         <label for="exampleInputEmail1">Compound </label>
                                         <textarea className="form-control" aria-label="With textarea" required name="compound" id="compound" placeholder="Enter Lesson Description"></textarea>
                                         </div>
-                                        <div className="form-group">
+                                        <div className="form-group  form-check">
                                         <label for="exampleInputEmail1">Level </label>
                                         <input className="form-control" type="number" required name="level" id="level" placeholder="Enter Lesson Level" min="1" max="3"></input>
                                         </div>
-                                        <div className="form-group">
+                                        <div className="form-group  form-check">
                                         <label for="exampleInputEmail1">Calories </label>
-                                        <input className="form-control" type="number" required name="calories" id="calories" placeholder="Enter Lesson Calories" ></input>
+                                        <input className="form-control " type="number" required name="calories" id="calories" placeholder="Enter Lesson Calories" ></input>
                                         </div>
                                         
                                         {/* choose image from device */}
-                                        <div className="con-img">
+                                        <div className="con-img mt-2 form-group  form-check ">
                                           <div className="img-holder">
-                                            <img src={lessonImage} id="img" className="img added-img"></img>
+                                          <label for="exampleInputEmail1">Lesson Image</label>
+                                            <img src={lessonImage} id="img" className="img added-img "></img>
                                             {/* <input class="form-control form-control-lg" id="formFileLg" type="file" />     */}
                                           </div>
-                                          <input type="file" name="img-upload" id="imgUrl"  onChange={this.imgHandler}/>
+                                          <input type="file" name="imgUrl" class="form-control-file" id="imgUrl"  onChange={this.imgHandler}/>
+                                         <label for='imgUrl' class="mb-2">
+                                         <FcAddImage size={36}/>
+                                         </label>
+                                       
                                         </div>
                                         </form>
                                     </div>
@@ -123,12 +136,13 @@ class AdminAddLesson extends React.Component {
                                         </tbody>
                                         <tfoot>
                                             <tr><td colSpan="4">
-                                                <button onClick={this.addNewRow} type="button" className="btn btn-primary text-center"><i className="fa fa-plus-circle" aria-hidden="true">Add</i></button>
+                                                <button onClick={this.addNewRow} type="button" className="btn btn-primary text-center text-dark"> Add  <IoIosAddCircle size={20}/></button>
                                             </td></tr>
                                         </tfoot>
                                     </table>
                                 </div>
-                                <div className="card-footer text-center"> <button type="submit" className="btn btn-primary text-center">Submit</button></div>
+                                <div className="card-footer text-center"> 
+                                <button type="submit" className="btn btn-primary text-center text-dark">Submit</button></div>
                             </div>
                         </div>
                         <div className="col-sm-1"></div>
