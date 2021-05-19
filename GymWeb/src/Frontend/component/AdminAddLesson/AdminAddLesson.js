@@ -20,6 +20,7 @@ class AdminAddLesson extends React.Component {
     handleChange = (e) => {
         if (["TitleSession", "DesSession","imageSession"].includes(e.target.name)) {
             let taskList = [...this.state.taskList]
+         
             taskList[e.target.dataset.id][e.target.name] = e.target.value;
         } else {
             this.setState({ [e.target.name]: e.target.value })
@@ -125,7 +126,7 @@ class AdminAddLesson extends React.Component {
                                         </div>
                                         </form>
                                     </div>
-                                    <table className="table">
+                                    <table className="table  ">
                                         <thead>
                                             <tr>
                                                 <th className="required" >Session</th>
@@ -137,7 +138,7 @@ class AdminAddLesson extends React.Component {
                                         </tbody>
                                         <tfoot>
                                             <tr><td colSpan="4">
-                                                <button onClick={this.addNewRow} type="button" className="btn btn-primary text-center text-dark"> Add  <IoIosAddCircle size={20}/></button>
+                                                <button onClick={this.addNewRow} type="button" className="btn btn-primary text-center text-dark"> Add Session <IoIosAddCircle size={20}/></button>
                                             </td></tr>
                                         </tfoot>
                                     </table>

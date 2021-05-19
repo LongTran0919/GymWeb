@@ -3,19 +3,25 @@ import './Card.css';
 import {Link} from 'react-router-dom';
 import {DataContext} from './data/DataProvider';
 import {AuthContext} from '../../../Backend/Context/AuthContext'
-
+const axios = require('axios');
 export default function MainContent(){
 
 
-    const [products,setProducts]=useContext(DataContext);
+ 
     const [data,setdata]=useState("")
     const [seachTerm,setSearchTerm]=useState('');
+    const [flag,setflag]=useState('');
     const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
- 
-    products[0].then(function(data){ return setdata (data)})
+  
+    useEffect(() => {
        
-   console.log(isAuthenticated)
-         console.log(data)
+
+      if(!flag) axios.get('http://localhost:5000/exercise/all')
+        .then(function(data){
+            setflag(true)
+              return setdata (data)})
+      });
+ 
   
     return(
         <div className="Container">  
