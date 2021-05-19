@@ -84,10 +84,10 @@ class AdminAddLesson extends React.Component {
                             <div className="card">
                                 <div className="card-header text-center">Add Your Daily Task</div>
                                 <div className="card-body">
-                                    <div className="row">
-                                    <form className="col-md-12 form-add form-group ">
+                                    <div className="row justify-content-center">
+                                    <form className="col-md-12 form-add form-group  ">
                                         {/* input title */}
-                                        <div className="form-group  form-check">
+                                        <div className="form-group  form-check ">
                                         <label for="exampleInputEmail1">Ex Name</label>
                                         <input type="text" className="form-control styled-select" required name="excName" id="excName" placeholder="Enter Lesson Title"/>
                                         </div>
@@ -111,9 +111,10 @@ class AdminAddLesson extends React.Component {
                                         
                                         {/* choose image from device */}
                                         <div className="con-img mt-2 form-group  form-check ">
-                                          <div className="img-holder">
-                                          <label for="exampleInputEmail1">Lesson Image</label>
-                                            <img src={lessonImage} id="img" className="img added-img "></img>
+                                        <label  >Lesson Image</label>
+                                          <div className="img-holder ">
+                                    
+                                            <img src={lessonImage} id="img" className="img added-img  "></img>
                                             {/* <input class="form-control form-control-lg" id="formFileLg" type="file" />     */}
                                           </div>
                                           <input type="file" name="imgUrl" class="form-control-file" id="imgUrl"  onChange={this.imgHandler}/>

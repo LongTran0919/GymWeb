@@ -7,17 +7,9 @@ const AdminAddSession = (props) => {
   return (
   
     props.taskList.map((val, idx) => {
-      
+      console.log(val)
       var TitleSession = `TitleSession-${idx}`, DesSession = `DesSession-${idx}` ,imageSession = `imageSession-${idx}` 
-      const imgHandler = (e)=>{
-        const reader = new FileReader();
-        reader.onload =() =>{
-          if(reader.readyState === 2){
-            imageSession= reader.result
-          }
-        }
-        reader.readAsDataURL(e.target.files[0])
-      }
+     
       return (
         <tr key={val.index}>
           <div className="container container-ses">
@@ -42,7 +34,7 @@ const AdminAddSession = (props) => {
                         <img  src={imageSession} id="img" className="img added-img" atl="imageSession"></img>
            
                     </div>
-                    <input type="file" name="imageSession" id="imageSession"  onChange={imgHandler}/>
+                    {/* <input type="file" name="imageSession" id="imageSession"  onChange={this.imgHandler}/> */}
                 </div>
             </form>
           </div>
