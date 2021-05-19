@@ -7,8 +7,10 @@ class AdminAddLesson extends React.Component {
     state = {
       
         taskList: [{ TitleSession: "", DesSession: ""}],
-        title: "",
-        decription: "",
+        excName: "",
+        title:"",
+        compound: "",
+        calories:"",
         imgUrl:""
     }
   
@@ -78,14 +80,25 @@ class AdminAddLesson extends React.Component {
                                     <form className="col-md-12 form-add">
                                         {/* input title */}
                                         <div className="form-group">
+                                        <label for="exampleInputEmail1">Ex Name</label>
+                                        <input type="text" className="form-control" required name="excName" id="excName" placeholder="Enter Lesson Title"/>
+                                        </div>
+                                        <div className="form-group">
                                         <label for="exampleInputEmail1">Title</label>
                                         <input type="text" className="form-control" required name="title" id="title" placeholder="Enter Lesson Title"/>
                                         </div>
-                                        
                                         {/* input desc */}
                                         <div className="form-group">
-                                        <label for="exampleInputEmail1">Description </label>
-                                        <textarea className="form-control" aria-label="With textarea" required name="decription" id="decription" placeholder="Enter Lesson Description"></textarea>
+                                        <label for="exampleInputEmail1">Compound </label>
+                                        <textarea className="form-control" aria-label="With textarea" required name="compound" id="compound" placeholder="Enter Lesson Description"></textarea>
+                                        </div>
+                                        <div className="form-group">
+                                        <label for="exampleInputEmail1">Level </label>
+                                        <input className="form-control" type="number" required name="level" id="level" placeholder="Enter Lesson Level" min="1" max="3"></input>
+                                        </div>
+                                        <div className="form-group">
+                                        <label for="exampleInputEmail1">Calories </label>
+                                        <input className="form-control" type="number" required name="calories" id="calories" placeholder="Enter Lesson Calories" ></input>
                                         </div>
                                         
                                         {/* choose image from device */}

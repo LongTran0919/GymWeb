@@ -7,8 +7,8 @@ const Exc= require('../Models/ExerciseModel');
 const cors = require('cors');
  
  ExcRouter.post('/add', (req,res)=>{
-const {excName ,title,typeExc,level,taskList,date_created,comment,compound,author,caloies,decription}=req.body;
-        try{ const newExc = new Exc({ decription, excName ,title,typeExc,level,taskList,date_created,comment,compound,author,caloies  })
+const {excName ,title,typeExc,level,taskList,date_created,comment,compound,author,calories,decription}=req.body;
+        try{ const newExc = new Exc({ decription, excName ,title,typeExc,level,taskList,date_created,comment,compound,author,calories  })
                 console.log(newExc)
         newExc.save(err=>{
                     if(err)res.status(500).json({

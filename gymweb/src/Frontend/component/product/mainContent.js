@@ -9,13 +9,13 @@ export default function MainContent(){
 
     const [products,setProducts]=useContext(DataContext);
     const [data,setdata]=useState("")
-    const [seachTerm,setSearchTerm]=useState(" ");
+    const [seachTerm,setSearchTerm]=useState('');
     const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
  
     products[0].then(function(data){ return setdata (data)})
        
    console.log(isAuthenticated)
-        // console.log(data)
+         console.log(data)
   
     return(
         <div className="Container">  
@@ -27,7 +27,7 @@ export default function MainContent(){
                Object.values(data).filter((a)=>{
                 if(seachTerm ==""){
                     return a
-                }else if(a.excName.toLowerCase().includes(seachTerm.toLowerCase())){
+                }else if(a.excName.toLowerCase().includes(seachTerm.toLowerCase())||a.compound.toLowerCase().includes(seachTerm.toLowerCase())||a.level.toLowerCase().includes(seachTerm.toLowerCase())){
                      return a
                 }
                 }).map(a =>(
@@ -41,7 +41,7 @@ export default function MainContent(){
                                         <h3>{a.excName}</h3>
                                     </div>
                                     <div className="card_bodyy">
-                                        <p>Mô tả: {a.content}</p>
+                                        <p>Mô tả: {a.title}</p> 
                                         <p>Vị trí: {a.compound}</p>
                                         <p>Level: {a.level}</p>
                                     </div>
