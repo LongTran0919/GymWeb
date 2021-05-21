@@ -1,8 +1,10 @@
 import React from "react"
 import './BMIChart'
 class BMIForm extends React.Component {
+    
     state = {
-        BMI: [{ hight: "", weight: "",Bmi:""}],
+       
+        BMI: [{ hight: "", weight: "",Bmi:"",curTime :""}],
        //  hight: "",
        //  weight:"",
        //  Bmi:""
@@ -22,7 +24,7 @@ class BMIForm extends React.Component {
    handleSubmit = (e) => {
            e.preventDefault();
            this.setState({Bmi : parseInt(this.state.weight)/((parseInt(this.state.hight))*2)})
-           e.preventDefault();
+           this.setState({curTime: new Date().toLocaleDateString()})
            let data = {formdata:this.state};
            console.log(data.formdata)
    
