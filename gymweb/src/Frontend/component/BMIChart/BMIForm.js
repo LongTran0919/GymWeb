@@ -1,42 +1,29 @@
-import React from "react"
+import React, { useState ,useContext} from "react"
 import './BMIChart'
 import UserService from '../../../Backend/Service/UserService'
 import notfound from '../404page/404'
-import  {useState} from "react"
-class BMIForm extends React.Component {
-    constructor(props) {
-        super(props);
-        // Don't call this.setState() here!
-        this.state =    {
-
-             height: "0",
-             weight:"0",
-             Bmi:"0"
-           
-       }
-    
-
-      }
+import {AuthContext} from '../../../Backend/Context/AuthContext'
+export default function   BMIForm () {
+  
+    const {isAuthenticated,user,setisAuthenticated,setUser,info,setinfo} = useContext(AuthContext); 
+    const [height,setheight]= useState()
+    const [weight,setweight]= useState()
 
  
-      handlerHight=(e)=>{
-        this.setState({
-            height: e.target.value
-        })
-     
+
+ 
+    const  handlerHight=(e)=>{
+        setheight(  e.target.value)
     }
-    handlerWeight=(e)=>{
-        this.setState({
-            weight: e.target.value
-        })
-    
+
+    const handlerWeight=(e)=>{
+       setweight( e.target.value)
     }
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
             e.preventDefault();
-            console.log(parseInt(this.state.weight))
-            console.log(((parseFloat(this.state.height)*2)))
+       
          
-            var    Bmi = (parseInt(this.state.weight)/((parseFloat(this.state.height)*2))).toFixed(2)
+               var    Bmi = (parseInt(weight)/((parseFloat(height)*2))).toFixed(2)
 
             var curTimenew = new Date().toLocaleDateString()
             
@@ -44,26 +31,30 @@ class BMIForm extends React.Component {
              let data = {
                 Bmi:Bmi,
                 curTime:curTimenew,
-                weight: this.state.weight,
-                height:  this.state.height,
+                weight:  weight,
+                height:  height,
              };
-           
+  
             console.log(data)
+            
             UserService.Bmi(data).then(
              data=>{
                  console.log(data)
+                 UserService.info().then(data=>{
+                     setinfo(data.Userinfo)
+                })
              }
        
            )
     }
  
   
-    render() {
-        const { height, weight} = this.state
+
+
         return (
             <div className="content">
                 
-                <form onSubmit={this.handleSubmit} >
+                <form onSubmit={handleSubmit} >
                     <div className="row" style={{ marginTop: 10 }}>
                         <div className="col-sm-1"></div>
                         <div className="col-sm-10">
@@ -75,11 +66,11 @@ class BMIForm extends React.Component {
                                         {/* input title */}
                                         <div className="form-group  form-check ">
                                         <label for="exampleInputEmail1">Height</label>
-                                        <input min="0" type="number" className="form-control styled-select" required name="hight" id="hight" placeholder="Enter your height(m)" onChange={this.handlerHight}/>
+                                        <input min="0" type="number" className="form-control styled-select" required name="hight" id="hight" placeholder="Enter your height(m)" onChange={handlerHight}/>
                                         </div>
                                         <div className="form-group form-check">
                                         <label for="exampleInputEmail1">Weight</label>
-                                        <input min="0" type="number" className="form-control styled-select " required name="weight" id="weight" placeholder="Enter your weight(kg)" onChange={this.handlerWeight}/>
+                                        <input min="0" type="number" className="form-control styled-select " required name="weight" id="weight" placeholder="Enter your weight(kg)" onChange={handlerWeight}/>
                                         </div>
                                        
                                         </form>
@@ -98,6 +89,6 @@ class BMIForm extends React.Component {
             </div>
             
         )
-    }
+        
 }
-export default BMIForm
+ 

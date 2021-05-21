@@ -9,7 +9,7 @@ import {IoIosAddCircle} from "react-icons/io";
 import './AdminAddLesson.css'
 class AdminAddLesson extends React.Component {
     state = {
-        taskList: [{ TitleSession: "", DesSession: "",imageSession:""}],
+        taskList: [{ TitleSession: "", DesSession: ""}],
         excName: "",
         title:"",
         compound: "",
@@ -18,7 +18,7 @@ class AdminAddLesson extends React.Component {
     }
   
     handleChange = (e) => {
-        if (["TitleSession", "DesSession","imageSession"].includes(e.target.name)) {
+        if (["TitleSession", "DesSession"].includes(e.target.name)) {
             let taskList = [...this.state.taskList]
          
             taskList[e.target.dataset.id][e.target.name] = e.target.value;
@@ -29,7 +29,7 @@ class AdminAddLesson extends React.Component {
     }
     addNewRow = () => {
         this.setState((prevState) => ({
-            taskList: [...prevState.taskList, {   TitleSession: "", DesSession: "",imageSession:""}],
+            taskList: [...prevState.taskList, {   TitleSession: "", DesSession: ""}],
         }));
     }
 

@@ -12,7 +12,7 @@ import notfound from '../404page/404'
 function BMIChart() {
 
     
-    const {isAuthenticated,user,setisAuthenticated,setUser,info} = useContext(AuthContext); 
+      const {isAuthenticated,user,setisAuthenticated,setUser,info} = useContext(AuthContext); 
     
     // const logout= e=>{
     //     e.preventDefault();
@@ -21,8 +21,6 @@ function BMIChart() {
     //             console.log("logout "+isAuthenticated)
     //             setUser(user);
     //             setisAuthenticated(isAuthenticated);
-                
-                
                 
     //         }
     //       )
@@ -33,12 +31,7 @@ function BMIChart() {
     //let chbmi = Object.values(info.Bmi).map(res => res.Bmi);
     let chbmi = Object.assign([], info.Bmi).map(({Bmi}) => Bmi);
     let chdate = Object.assign([], info.Bmi).map(({curTime}) => curTime);
-    console.log(chbmi,chdate)
-    
-    
-    const unAuthenticatednav=()=>{
-        return(<></>)
-    }
+ 
     const data={
         labels:chdate,
         datasets:[
@@ -47,6 +40,7 @@ function BMIChart() {
                 data:chbmi
             }
         ]
+       
 
     }
     const Authenticatednav=()=>{
@@ -54,7 +48,7 @@ function BMIChart() {
             <>
             <BMiForm/>
             <div className="chart">
-                <Line data={data}/>
+                <Line data={data} />
             </div>
             </>
         )

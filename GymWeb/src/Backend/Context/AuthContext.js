@@ -22,8 +22,8 @@ export default ({children})=>{
             setUser(data.user);
             setisAuthenticated(data.isAuthenticated);
             UserService.info().then(data=>{
-                setinfo(data.Userinfo)
-            })
+                if(data.status!=401)setinfo(data.Userinfo)
+            }).catch(err=> console.log(err))
         })
         const timer = setTimeout(() => {
             setIsloaded(false);
@@ -35,7 +35,7 @@ export default ({children})=>{
         <div>
         {isLoaded?  <div class="loadingscreen">
         <div class="progress-9"></div></div>:
-        <AuthContext.Provider value={{user,setUser,isAuthenticated,setisAuthenticated,info}}>
+        <AuthContext.Provider value={{user,setUser,isAuthenticated,setisAuthenticated,info,setinfo}}>
             {children}
         </AuthContext.Provider>
         }

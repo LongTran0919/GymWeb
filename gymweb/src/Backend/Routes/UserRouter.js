@@ -59,6 +59,9 @@ userRouter.post('/login',passport.authenticate('local',{session:false}),(req,res
 
 userRouter.get('/info',passport.authenticate('jwt',{session:false}),(req,res)=>{
     const {username} = req.user;
+    if(!username) res.status(500).json({
+        message:{msgBody:"Error has occured 1"},
+        msgError:true })
      User.findOne({username},(err,user)=>{
         
             if(err) res.status(500).json({
@@ -82,13 +85,24 @@ userRouter.get('/info',passport.authenticate('jwt',{session:false}),(req,res)=>{
 userRouter.post('/bmi',passport.authenticate('jwt',{session : false}),(req,res)=>{
     const {Bmi} =req.body
     const {username} = req.user;
-    console.log(username);
-        User.updateOne({username:username},{$addToSet:{Bmi:Bmi}}, function (err) {
+   
+    User.findOneAndUpdate({username:username,Bmi:{ $elemMatch:{curTime: Bmi.curTime}}}, { $set: {"Bmi.$":Bmi} } ,(err,user)=>{
+        if(err) res.status(500).json({
+            message:{msgBody:"Error has occured 1"},
+            msgError:true })
+       
+   
+       if(!user)   User.updateOne({username:username},{$addToSet:{Bmi:Bmi}}, function (err) {
             if(err) res.status(401).json({
                 message:{msgBody:"Error has occured 1"},
                 msgError:true })
             res.status(200).json({ message: `update success  `});
         })
+
+        if(user) res.status(200).json({ message: `update successfully  `})
+    }) 
+
+        
     
     })
 
