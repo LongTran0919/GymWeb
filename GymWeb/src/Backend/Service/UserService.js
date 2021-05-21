@@ -13,7 +13,7 @@ export default {
         },
         info:(Bmi)=>{
             return   axios
-            .post('http://localhost:5000/user/bmi',{Bmi:Bmi},{ withCredentials: true },{Headers: {
+            .post('http://localhost:5000/user/info',{ withCredentials: true },{Headers: {
                       'Content-Type': 'application/json',
                     }}).then(res=>{
               if(res.status!==401)return res.data;
