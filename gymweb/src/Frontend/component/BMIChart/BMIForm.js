@@ -9,7 +9,7 @@ class BMIForm extends React.Component {
         // Don't call this.setState() here!
         this.state =    {
 
-              hight: "0",
+             height: "0",
              weight:"0",
              Bmi:"0"
            
@@ -21,7 +21,7 @@ class BMIForm extends React.Component {
  
       handlerHight=(e)=>{
         this.setState({
-            hight: e.target.value
+            height: e.target.value
         })
      
     }
@@ -34,9 +34,9 @@ class BMIForm extends React.Component {
     handleSubmit = (e) => {
             e.preventDefault();
             console.log(parseInt(this.state.weight))
-            console.log(((parseFloat(this.state.hight)*2)))
+            console.log(((parseFloat(this.state.height)*2)))
          
-            var    Bmi = (parseInt(this.state.weight)/((parseFloat(this.state.hight)*2))).toFixed(2)
+            var    Bmi = (parseInt(this.state.weight)/((parseFloat(this.state.height)*2))).toFixed(2)
 
             var curTimenew = new Date().toLocaleDateString()
             
@@ -45,7 +45,7 @@ class BMIForm extends React.Component {
                 Bmi:Bmi,
                 curTime:curTimenew,
                 weight: this.state.weight,
-                hight:  this.state.hight,
+                height:  this.state.height,
              };
            
           
@@ -61,7 +61,7 @@ class BMIForm extends React.Component {
  
   
     render() {
-        const { wight, weight} = this.state
+        const { height, weight} = this.state
         return (
             <div className="content">
                 
@@ -76,7 +76,7 @@ class BMIForm extends React.Component {
                                     <form className="col-md-12 form-add form-group  ">
                                         {/* input title */}
                                         <div className="form-group  form-check ">
-                                        <label for="exampleInputEmail1">Hight</label>
+                                        <label for="exampleInputEmail1">Height</label>
                                         <input min="0" type="number" className="form-control styled-select" required name="hight" id="hight" placeholder="Enter your hight(m)" onChange={this.handlerHight}/>
                                         </div>
                                         <div className="form-group form-check">

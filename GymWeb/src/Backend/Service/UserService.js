@@ -11,9 +11,9 @@ export default {
                 else return {"fail":"true"}
             })
         },
-        info:(Bmi)=>{
+        info:()=>{
             return   axios
-            .post('http://localhost:5000/user/info',{ withCredentials: true },{Headers: {
+            .get('http://localhost:5000/user/info',{ withCredentials: true },{Headers: {
                       'Content-Type': 'application/json',
                     }}).then(res=>{
               if(res.status!==401)return res.data;

@@ -58,8 +58,6 @@ userRouter.post('/login',passport.authenticate('local',{session:false}),(req,res
 
 
 userRouter.get('/info',passport.authenticate('jwt',{session:false}),(req,res)=>{
-   
-
     const {username} = req.user;
      User.findOne({username},(err,user)=>{
         
@@ -69,18 +67,13 @@ userRouter.get('/info',passport.authenticate('jwt',{session:false}),(req,res)=>{
             if(!user){
                 res.status(404).json({
                     message:{msgBody:"username not found "}
-                
             })}
-            if(user) 
-                {
+            if(user){
+                    let Userinfo = { ...JSON.parse(JSON.stringify(user)), password:"hidden" };
                     res.status(200).json({
-                        message:{msgBody:" succesfully  ",
-                        user:user
-                    }
+                      Userinfo:Userinfo
                     })
 
-            
-                    
                 }
         });
 })

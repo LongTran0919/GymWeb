@@ -6,10 +6,13 @@ import { AuthContext } from '../../../Backend/Context/AuthContext';
 import Authservice from '../../../Backend/Service/AuthService'
 import notfound from '../404page/404'
 export default function Profile(){
-    const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext); 
-
-    
+    const {isAuthenticated,user,setisAuthenticated,setUser,info} = useContext(AuthContext); 
+  
+ 
+   
      const isauth=()=>{
+        var Bmi=info.Bmi[info.Bmi.length - 1] 
+       
          return(<div className="container">
          <div className="row py-5">
                  <div className="col-md-12 mx-auto">
@@ -42,16 +45,16 @@ export default function Profile(){
                      <div className="bg-light p-4 d-flex justify-content-end text-center">
                          <ul className="list-inline mb-0">
                              <li className="list-inline-item">
-                                 <h5 className="font-weight-bold mb-0 d-block">215</h5><small className="text-muted"> 
+                                 <h5 className="font-weight-bold mb-0 d-block">{Bmi.height}k</h5><small className="text-muted"> 
                                          <img className="fas fa-image mr-1"></img>Height</small>
                              </li>
                          <li className="list-inline-item">
-                                         <h5 className="font-weight-bold mb-0 d-block">745</h5><small className="text-muted"> 
+                                         <h5 className="font-weight-bold mb-0 d-block">{Bmi.weight}kg</h5><small className="text-muted"> 
                                          <img className="fas fa-user mr-1"></img>Weight</small>
                              </li>
  
                              <li className="list-inline-item">
-                                         <h5 className="font-weight-bold mb-0 d-block">340</h5><small className="text-muted"> 
+                                         <h5 className="font-weight-bold mb-0 d-block">{Bmi.Bmi}</h5><small className="text-muted"> 
                                          <img className="fas fa-user mr-1"></img>BMI</small>
                              </li>
                          </ul>
