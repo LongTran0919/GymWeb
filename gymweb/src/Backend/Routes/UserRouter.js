@@ -57,6 +57,35 @@ userRouter.post('/login',passport.authenticate('local',{session:false}),(req,res
 })
 
 
+userRouter.get('/info',passport.authenticate('jwt',{session:false}),(req,res)=>{
+   
+
+    const {username} = req.user;
+     User.findOne({username},(err,user)=>{
+        
+            if(err) res.status(500).json({
+                message:{msgBody:"Error has occured 1"},
+                msgError:true })
+            if(!user){
+                res.status(404).json({
+                    message:{msgBody:"username not found "}
+                
+            })}
+            if(user) 
+                {
+                    res.status(200).json({
+                        message:{msgBody:" succesfully  ",
+                        user:user
+                    }
+                    })
+
+            
+                    
+                }
+        });
+})
+
+
 userRouter.post('/bmi',passport.authenticate('jwt',{session : false}),(req,res)=>{
     const {Bmi} =req.body
     const {username} = req.user;
@@ -109,6 +138,7 @@ userRouter.get('/resetpasswd',(req,res)=>{
                 }
         });
 })
+
 
 userRouter.get('/admin',passport.authenticate('jwt',{session : false}),(req,res)=>{
     if(req.user.role === 'admin'){
