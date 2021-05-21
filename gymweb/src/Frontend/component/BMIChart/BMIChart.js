@@ -10,32 +10,44 @@ import Authservice from '../../../Backend/Service/AuthService'
 import './BMIChart.css'
 import notfound from '../404page/404'
 function BMIChart() {
+
+    
+    const {isAuthenticated,user,setisAuthenticated,setUser,info} = useContext(AuthContext); 
+    
+    // const logout= e=>{
+    //     e.preventDefault();
+    //     Authservice.logout().then(data=>{
+    //             const {isAuthenticated,user}=data;
+    //             console.log("logout "+isAuthenticated)
+    //             setUser(user);
+    //             setisAuthenticated(isAuthenticated);
+                
+                
+                
+    //         }
+    //       )
+    // }
+    // const chbmi = Object.values(info.Bmi).map(function(item) {
+    //     return item.Bmi;
+    //   })
+    //let chbmi = Object.values(info.Bmi).map(res => res.Bmi);
+    let chbmi = Object.assign([], info.Bmi).map(({Bmi}) => Bmi);
+    let chdate = Object.assign([], info.Bmi).map(({curTime}) => curTime);
+    console.log(chbmi,chdate)
+    
+    
+    const unAuthenticatednav=()=>{
+        return(<></>)
+    }
     const data={
-        labels:['Weel 1','Weel 2','Week 3','Week 4','Week 5','Week 6'],
+        labels:chdate,
         datasets:[
             {
                 label:'BMI',
-                data:[3,5,8,4,5,9]
+                data:chbmi
             }
         ]
 
-    }
-    const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
-    const logout= e=>{
-        e.preventDefault();
-        Authservice.logout().then(
-            data=>{
-              const {isAuthenticated,user}=data;
-                console.log("logout "+isAuthenticated)
-                setUser(user);
-                setisAuthenticated(isAuthenticated);
-            }
-      
-          ) 
-    }
-    console.log(user)
-    const unAuthenticatednav=()=>{
-        return(<></>)
     }
     const Authenticatednav=()=>{
         return(
@@ -47,6 +59,7 @@ function BMIChart() {
             </>
         )
     }
+
     return (
         !isAuthenticated ?notfound():Authenticatednav()
        

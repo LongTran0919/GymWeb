@@ -48,9 +48,7 @@ class BMIForm extends React.Component {
                 height:  this.state.height,
              };
            
-          
-                console.log(data)
-            return
+            console.log(data)
             UserService.Bmi(data).then(
              data=>{
                  console.log(data)
@@ -77,7 +75,7 @@ class BMIForm extends React.Component {
                                         {/* input title */}
                                         <div className="form-group  form-check ">
                                         <label for="exampleInputEmail1">Height</label>
-                                        <input min="0" type="number" className="form-control styled-select" required name="hight" id="hight" placeholder="Enter your hight(m)" onChange={this.handlerHight}/>
+                                        <input min="0" type="number" className="form-control styled-select" required name="hight" id="hight" placeholder="Enter your height(m)" onChange={this.handlerHight}/>
                                         </div>
                                         <div className="form-group form-check">
                                         <label for="exampleInputEmail1">Weight</label>
