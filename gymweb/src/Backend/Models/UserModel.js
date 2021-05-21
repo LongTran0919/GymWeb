@@ -17,13 +17,14 @@ const UserSchema = new mongose.Schema(
         },
         Name:{type:String
         },
-        Dob:{type:String
+        Dob:{
+            type:String
         },
-        Sex:{type:String
+        Sex:{
+            type:String
         },
-        Weight:{type:String
-        },
-        Height:{type:String
+        Bmi:{
+            type:Array
         },
         Avatar:{type:String
         },

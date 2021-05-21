@@ -1,5 +1,12 @@
-import React from 'react'
+/* eslint-disable no-unreachable */
+import React,{useContext}from "react"
 import {Line} from 'react-chartjs-2'
+import axios from 'axios';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import ExerciseService from '../../../Backend/Service/ExerciseService'
+import BMiForm from'./BMIForm'
+import { AuthContext } from '../../../Backend/Context/AuthContext';
+import Authservice from '../../../Backend/Service/AuthService'
 import './BMIChart.css'
 
 function BMIChart() {
@@ -13,22 +20,37 @@ function BMIChart() {
         ]
 
     }
-    return (
-        <div className="chartContainer">
-            <div className="Input">
-                <div className="Textinput">Hight :</div>
-                <input type="number" className="inputChart" min="0" max="300" />
-                <div className="Textinput pr-15">(cm)</div>
-                <div className="Textinput">Weight :</div>
-                <input type="number" className="inputChart" min="0" max="500" />
-                <div className="Textinput">(kg)</div>
-                <button className="submitBMI">Submit</button>
-            </div>
+    const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
+    const logout= e=>{
+        e.preventDefault();
+        Authservice.logout().then(
+            data=>{
+              const {isAuthenticated,user}=data;
+                console.log("logout "+isAuthenticated)
+                setUser(user);
+                setisAuthenticated(isAuthenticated);
+            }
+      
+          ) 
+    }
+    console.log(user)
+    const unAuthenticatednav=()=>{
+        return(<></>)
+    }
+    const Authenticatednav=()=>{
+        return(
+            <>
+            <BMiForm/>
             <div className="chart">
                 <Line data={data}/>
             </div>
-        </div>
-    )
+            </>
+        )
+    }
+    return (
+        !isAuthenticated ?unAuthenticatednav():Authenticatednav()
+       
+    );
 }
 
 export default BMIChart

@@ -8,6 +8,7 @@ import {GrLogin,GrContactInfo} from "react-icons/gr";
 import {ImHome} from "react-icons/im";
 import {GiWeightLiftingUp}   from "react-icons/gi";
 import {FcAbout} from "react-icons/fc"
+import { FcBullish } from "react-icons/fc";
 import {IoIosLogIn} from "react-icons/io"
 function Navbar(){
     const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
@@ -23,7 +24,7 @@ function Navbar(){
       
           ) 
     }
-    
+    console.log(user)
     const unAuthenticatednav=()=>{
         return(  <nav className="navbar navbar-expand-lg navbar-light bg-blue">
         <div className="container-fluid">
@@ -84,7 +85,10 @@ function Navbar(){
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-           <a className=" nav-link" href="/profile"> <FaUserAlt/> {user.username}</a>
+                <a className=" nav-link" href="/bmi"> <FcBullish/> BMI</a>
+            </li>
+            <li className="nav-item">
+                <a className=" nav-link" href="/profile"> <FaUserAlt/> {user.username}</a>
             </li>
             <li className="nav-item">
                 <a className="btn-sign-up nav-link" onClick={logout} href="/login"> Logout <FaSignOutAlt/></a>

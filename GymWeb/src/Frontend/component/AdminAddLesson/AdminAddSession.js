@@ -51,7 +51,7 @@ const AdminAddSession = (props) => {
                     <input  type="file" name="imageSession" id="imageSession" data-id={idx}  onChange={imgHandler}/>
                     <label for="imageSession" class="mb-2">
                                          <FcAddImage size={36}/>
-                                </label>
+                    </label>
                 </div>
             </form>
           </div>

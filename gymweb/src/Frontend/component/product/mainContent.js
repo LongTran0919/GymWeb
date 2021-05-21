@@ -19,9 +19,9 @@ export default function MainContent(){
       if(!flag) axios.get('http://localhost:5000/exercise/all')
         .then(function(data){
             setflag(true)
-              return setdata (data)})
+              return setdata (data.data)})
       });
- 
+      
   
     return(
         <div className="Container">  

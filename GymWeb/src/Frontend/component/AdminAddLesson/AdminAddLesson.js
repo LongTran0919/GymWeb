@@ -6,9 +6,9 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 import ExerciseService from '../../../Backend/Service/ExerciseService'
 import {FcAddImage} from "react-icons/fc";
 import {IoIosAddCircle} from "react-icons/io";
+import './AdminAddLesson.css'
 class AdminAddLesson extends React.Component {
     state = {
-      
         taskList: [{ TitleSession: "", DesSession: "",imageSession:""}],
         excName: "",
         title:"",
@@ -83,13 +83,13 @@ class AdminAddLesson extends React.Component {
                         <div className="col-sm-1"></div>
                         <div className="col-sm-10">
                             <div className="card">
-                                <div className="card-header text-center">Add Your Daily Task</div>
+                                <div className="card-header text-center">Add Your Exercise</div>
                                 <div className="card-body">
                                     <div className="row justify-content-center">
                                     <form className="col-md-12 form-add form-group  ">
                                         {/* input title */}
                                         <div className="form-group  form-check ">
-                                        <label for="exampleInputEmail1">Ex Name</label>
+                                        <label for="exampleInputEmail1">Exercise Name</label>
                                         <input type="text" className="form-control styled-select" required name="excName" id="excName" placeholder="Enter Lesson Title"/>
                                         </div>
                                         <div className="form-group form-check">
@@ -126,7 +126,7 @@ class AdminAddLesson extends React.Component {
                                         </div>
                                         </form>
                                     </div>
-                                    <table className="table  ">
+                                    <table className="">
                                         <thead>
                                             <tr>
                                                 <th className="required" >Session</th>
@@ -144,7 +144,8 @@ class AdminAddLesson extends React.Component {
                                     </table>
                                 </div>
                                 <div className="card-footer text-center"> 
-                                <button type="submit" className="btn btn-primary text-center text-dark">Submit</button></div>
+                                    <button type="submit" className="btn btn-primary text-center text-dark">Submit</button>
+                                </div>
                             </div>
                         </div>
                         <div className="col-sm-1"></div>

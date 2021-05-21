@@ -15,7 +15,7 @@ const signToken=userID=>{
 }
 
 userRouter.post('/register',(req,res)=>{
-const {username,password,email,role} =req.body
+const {username,password,email,role,Bmi} =req.body
     User.findOne({username},(err,user)=>{
             if(err) res.status(500).json({
                 message:{msgBody:"Error has occured 1"},
@@ -26,7 +26,7 @@ const {username,password,email,role} =req.body
                 msgError:true })
                 else{
                     const newUser = new User({
-                        username,password,email,role
+                        username,password,email,role,Bmi
                     })
                     newUser.save(err=>{
                         if(err)res.status(500).json({
