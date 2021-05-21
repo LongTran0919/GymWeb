@@ -39,8 +39,7 @@ const {username,password,email,role,Bmi} =req.body
                 }
     })
 })
-userRouter.post('/login',passport.authenticate('local',
-{session:false}),(req,res)=>{
+userRouter.post('/login',passport.authenticate('local',{session:false}),(req,res)=>{
     if(req.isAuthenticated()){
         const{_id,username,role}=req.user;
         const token=signToken(_id);
@@ -56,6 +55,21 @@ userRouter.post('/login',passport.authenticate('local',
         })
     }
 })
+
+
+userRouter.post('/bmi',passport.authenticate('jwt',{session : false}),(req,res)=>{
+    const {Bmi} =req.body
+    const {username} = req.user;
+    console.log(username);
+        User.updateOne({username:username},{$addToSet:{Bmi:Bmi}}, function (err) {
+            if(err) res.status(401).json({
+                message:{msgBody:"Error has occured 1"},
+                msgError:true })
+            res.status(200).json({ message: `update success  `});
+        })
+    
+    })
+
 userRouter.get('/logout',passport.authenticate('jwt',{session : false}),(req,res)=>{
     res.clearCookie('access_token');
     const{_id,username,role}=req.user;

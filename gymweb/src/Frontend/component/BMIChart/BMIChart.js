@@ -8,7 +8,7 @@ import BMiForm from'./BMIForm'
 import { AuthContext } from '../../../Backend/Context/AuthContext';
 import Authservice from '../../../Backend/Service/AuthService'
 import './BMIChart.css'
-
+import notfound from '../404page/404'
 function BMIChart() {
     const data={
         labels:['Weel 1','Weel 2','Week 3','Week 4','Week 5','Week 6'],
@@ -48,7 +48,7 @@ function BMIChart() {
         )
     }
     return (
-        !isAuthenticated ?unAuthenticatednav():Authenticatednav()
+        !isAuthenticated ?notfound():Authenticatednav()
        
     );
 }
