@@ -33,12 +33,13 @@ export default function Details(){
                 setsame(Object.values(data)[Math.floor(Math.random()*Object.values(data).length)] )
                 setexercise(details[0])
                 settaskList(details[0].taskList.map((task)=>{
-                    return (<div>
-                    <span>{task.TitleSession} : {task.DesSession}</span>  <br></br>
-                    
+                    return (
+                    <div>
+                        <span>{task.TitleSession} : {task.DesSession}</span>  <br></br>
                     </div>)
                 }))
-                console.log(details[0].taskList)        
+                console.log(details[0].taskList)   
+                console.log(details[0])            
         });
         
    
@@ -65,17 +66,12 @@ export default function Details(){
                 <div>
                 {
                         <div className="card-fluid">
-                        
                             <div className="card_body">
                                 <h2 className="text-dark">TaskList</h2>
                                     {
                                         taskList
-                                    
                                     }
-                              
                             </div>
-                         
-                            
                         </div>
                 }
                 </div>
@@ -93,7 +89,7 @@ export default function Details(){
                                     <p className="card-title text-dark text-truncate"> {same.excName}</p>
                                     <p className="card-text text-muted mx-auto text-truncate"> {same.title}</p>
                                    <div onClick={handleClick} className="btn btn-success">
-                                            <a className="text-dark"  > Detail </a>
+                                            <a className="text-dark">Detail</a>
                                         </div>
                             </div>
                         </div>

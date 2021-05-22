@@ -8,7 +8,9 @@ import {IoIosAddCircle} from 'react-icons/io';
 import {MdUpdate} from 'react-icons/md';
 import {RiDeleteBin5Line} from 'react-icons/ri';
 import notfound from '../404page/404'
+import ExerciseService from '../../../Backend/Service/ExerciseService'
 const axios = require('axios');
+
 
 export default function AdminPro(){
     const [data,setdata]=useState("")
@@ -21,9 +23,18 @@ export default function AdminPro(){
           .then(function(data){
               setflag(true)
                 return setdata (data.data)})
-        });
-        console.log(data)
-   if(!user)     return notfound()
+    });
+    function handleRemove(id) {
+        ExerciseService.DeleteId(id).then(
+            data=>{
+                console.log(data)
+            }
+          )
+          console.log(id);
+        }
+        
+   if(!user)     
+    return notfound()
    if(user.role=='admin' )return(<div className = "container">
    <div className="box_search mt-10">
            <input type="text" className="input_search" placeholder="  Enter the exercise name or part of the body" onChange={event=>{setSearchTerm(event.target.value)}}/>
@@ -31,6 +42,7 @@ export default function AdminPro(){
    <div className="btn-content-right">
        <a type="button" class="btn-add-les" href="/admin/add">Add Lesson <IoIosAddCircle size={20}/></a>
    </div>
+   
    {
        Object.values(data).filter((a)=>{
            if(seachTerm ==""){
@@ -54,7 +66,7 @@ export default function AdminPro(){
                                Update<MdUpdate/>
                            </button>
                        </Link>
-                           <button className="btnDelete">
+                           <button className="btnDelete" onClick={() => handleRemove(a._id)}>
                                Delete<RiDeleteBin5Line/>
                            </button>
                        </div>

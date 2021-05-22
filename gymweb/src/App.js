@@ -15,6 +15,7 @@ import AdminAddLesson from './Frontend/component/AdminAddLesson/AdminAddLesson';
 import About from './Frontend/component/Info/About';
 import ContactUs from './Frontend/component/Info/ContactUs';
 import BMI from './Frontend/component/BMIChart/BMIChart';
+import AdminUpdate from'./Frontend/component/AdminUpdate/AdminUpdate';
 import AdminUpdateLesson from './Frontend/component/AdminUpdateLesson/AdminUpdateLesson';
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
 import NotFound from './Frontend/component/404page/404';
@@ -27,7 +28,7 @@ function App() {
                 <Route path="/signup" component={Form}/>
                 <Route path="/products" component={MainContent}/>
                 <Route path="/product/:id" component={Details}/>
-                <Route path="/admin/product/update/:id" component={Header}/>
+                <Route path="/admin/product/update/:id" component={AdminUpdate}/>
                 <Route path="/signin" component={FormLoginMain}/>
                 <Route path="/admin/management" component={AdminPro}/>
                 <Route path="/profile" component={Profile}/>
@@ -35,7 +36,7 @@ function App() {
                 <Route path="/about" component={About}/>
                 <Route path="/contacts" component={ContactUs}/>
                 <Route path="/bmi" component={BMI}/>
-                <Route path="/admin/update" component={AdminUpdateLesson}/>
+
                 <Route component={NotFound} />
               </Switch>
             <Footer/>

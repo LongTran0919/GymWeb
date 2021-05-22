@@ -1,9 +1,9 @@
 import React from "react";
-import './AdminAddLesson.css'
+import '../AdminAddLesson/AdminAddLesson.css'
 import {FcAddImage} from "react-icons/fc";
 import  {useState} from 'react';
-const AdminAddSession = (props) => {
-   
+const AdminUpdateSession = (props) => {
+    
   
   return (
     props.taskList.map((val, idx) => {
@@ -45,4 +45,4 @@ const AdminAddSession = (props) => {
     })
   )
 }
-export default AdminAddSession
+export default AdminUpdateSession
