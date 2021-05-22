@@ -29,7 +29,6 @@ export default function AdminUpdate(){
             imgUrl:""
         }
     ]);
-
     const{id} = useParams();
     const history = useHistory();
     // const[products, setProducts] = useContext(DataContext);
@@ -71,34 +70,34 @@ export default function AdminUpdate(){
                 console.log(details[0].taskList)        
         });
         
-        
-      
     })
     function handleChange (e) {
-        //   if (["TitleSession", "DesSession"].includes(e.target.name)) {
-        //       let taskList = [...State.State]
-        //       taskList[e.target.dataset.id][e.target.name] = e.target.value;
-        //   } else {
-        //       setState({ [e.target.name]: e.target.value })
-        //   }
-         const values=[...state];
-         values[e.target.name]=e.target.value;
-         setState(values);
-    
+        //    if (["TitleSession", "DesSession"].includes(e.target.name)) {
+        //        let taskList = [...state.TaskList]
+        //        taskList[e.target.dataset.id][e.target.name] = e.target.value;
+        //    } else {
+        //        setState({ [e.target.name]: e.target.value })
+        //    }
+        if (["TitleSession", "DesSession"].includes(e.target.name)){
+          const values=[...state];
+          values[e.target.dataset.id][e.target.name] = e.target.value;
+        }
+          else{setState({[e.target.name]:e.target.value});}
+          
      }
     function handleClick() {
         return  window.location.reload();
       }
       function handleSubmit (e) {
         e.preventDefault();
-        // let data = {formdata:this.state};
-        // console.log(data.formdata)
-        // ExerciseService.AddExercise(data.formdata).then(
-        //     data=>{
-        //         console.log(data)
-        //     }
-        //   )
-        console.log(state)
+         let data = {formdata:state};
+         console.log(data.formdata)
+        //  ExerciseService.AddExercise(data.formdata).then(
+        //      data=>{
+        //          console.log(data)
+        //      }
+        //    )
+        
         }
         function imgHandler(e){
             const reader = new FileReader();
