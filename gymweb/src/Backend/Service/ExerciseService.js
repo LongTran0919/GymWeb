@@ -22,7 +22,7 @@ export default {
         },
         DeleteId:(id)=>{
           return   axios
-          .post('http://localhost:5000/exercise/delete',id,{Headers: {
+          .post('http://localhost:5000/exercise/delete',id,{ withCredentials: true },{Headers: {
                     'Content-Type': 'application/json',
                   }}).then(res=>{
             if(res.status!==401)return res.data;

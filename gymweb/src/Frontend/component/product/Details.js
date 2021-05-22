@@ -13,12 +13,12 @@ const axios = require('axios');
 export default function Details(){
     const{id} = useParams();
     const history = useHistory();
-
     // const[products, setProducts] = useContext(DataContext);
     const [data,setdata]=useState("");
     const [flag,setflag]=useState('');
     const [exercise,setexercise]= useState('');
     const [same,setsame]=useState('')
+    const [taskList,settaskList]=useState('')
     const {isAuthenticated,user,setisAuthenticated,setUser,info,setinfo} = useContext(AuthContext); 
     useEffect(() => {
        
@@ -30,20 +30,22 @@ export default function Details(){
                   const details= Object.values(data).filter((product, index)=>{
                     return product._id == id
                 })
-             
                 setsame(Object.values(data)[Math.floor(Math.random()*Object.values(data).length)] )
                 setexercise(details[0])
-                console.log(details[0])
-           
-           
+                settaskList(details[0].taskList.map((task)=>{
+                    return (<div>
+                    <span>{task.TitleSession} : {task.DesSession}</span>  <br></br>
+                    
+                    </div>)
+                }))
+                console.log(details[0].taskList)        
         });
         
    
       
     })
     function handleClick() {
-        let link=`/product/${same._id}`
-      return <Redirect to={link} />;
+        return  window.location.reload();
       }
     
     const isauth=()=>{
@@ -65,16 +67,22 @@ export default function Details(){
                         <div className="card-fluid">
                         
                             <div className="card_body">
-                                <h2 className="text-dark">Content</h2>
+                                <h2 className="text-dark">TaskList</h2>
+                                    {
+                                        taskList
+                                    
+                                    }
+                              
                             </div>
                          
-                            <img src={img} alt="soi..." className="img_content"/>
+                            
                         </div>
                 }
                 </div>
             </div>
         
             <div className="col-md-4" >
+            <Link to={`/product/${same._id}`} style={{textDecoration: 'none'}}>
                     <h4 className="text-dark">Các bài tập Khác</h4>                     
                     <div className="card-fluid w-100 p-3 container">
                         <div className="row">
@@ -84,13 +92,13 @@ export default function Details(){
                             <div className="card_block col-md-6">
                                     <p className="card-title text-dark text-truncate"> {same.excName}</p>
                                     <p className="card-text text-muted mx-auto text-truncate"> {same.title}</p>
-                                   <div className="btn btn-success">
-                                            <a className="text-dark"  href={`/product/${same._id}`}> Detail </a>
+                                   <div onClick={handleClick} className="btn btn-success">
+                                            <a className="text-dark"  > Detail </a>
                                         </div>
                             </div>
                         </div>
                     </div>           
-                           
+                 </Link>
             </div>
     </div>
 
@@ -162,10 +170,10 @@ export default function Details(){
                         <div className="card-fluid">
                         
                             <div className="card_body">
-                                <h2 className="text-dark">Content</h2>
+                                <h2 className="text-dark">TaskList</h2>
                             </div>
-                         
-                            <img src={img} alt="soi..." className="img_content"/>
+                          
+                            
                         </div>
                 }
                 </div>
@@ -182,7 +190,7 @@ export default function Details(){
                                     <p className="card-title text-dark text-truncate"> {same.excName}</p>
                                     <p className="card-text text-muted mx-auto text-truncate"> {same.title}</p>
                                     
-                                        <div className="btn btn-success">
+                                        <div onClick={handleClick} className="btn btn-success">
                                             <a className="text-dark"  href={`/product/${same._id}`}> Detail </a>
                                         </div>
                                     
