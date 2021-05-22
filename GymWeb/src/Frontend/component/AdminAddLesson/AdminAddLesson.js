@@ -48,9 +48,6 @@ class AdminAddLesson extends React.Component {
             console.log(data.formdata)
 
 
-
-
-
             ExerciseService.AddExercise(data.formdata).then(
                 data=>{
                     console.log(data)
