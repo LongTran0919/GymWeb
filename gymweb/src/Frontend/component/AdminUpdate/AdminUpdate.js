@@ -6,7 +6,6 @@ import { AuthContext } from '../../../Backend/Context/AuthContext';
 import img from '../../IMG/Gym.jpg'
 import '../product/Card.css'
 import '../AdminAddLesson/AdminAddLesson.css'
-import TaskList from "./AdminUpdateSession"
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import {Link} from 'react-router-dom';
 import { useHistory } from "react-router-dom";
@@ -20,7 +19,17 @@ const axios = require('axios');
 
 export default function AdminUpdate(){
     
-    const [state,setState]=useState();
+    const [state,setState]=useState([
+        {
+            TaskList: [{ TitleSession: "", DesSession: ""}],
+            excName: "",
+            title:"",
+            compound: "",
+            calories:"",
+            imgUrl:""
+        }
+    ]);
+
     const{id} = useParams();
     const history = useHistory();
     // const[products, setProducts] = useContext(DataContext);
@@ -49,7 +58,6 @@ export default function AdminUpdate(){
                                 <div className="form-group">
                                     <label for="exampleInputEmail1">Title</label>
                                     <textarea type="text" className="form-control" required name="TitleSession" placeholder="Enter Session Title">{task.TitleSession}</textarea>
-                                 
                                 </div>
                                 <div className="form-group ">
                                     <label for="exampleInputEmail1">Description </label>
@@ -66,31 +74,31 @@ export default function AdminUpdate(){
         
       
     })
-    // function handleChange (e) {
-    //     if (["excName", "title"].includes(e.target.name)) {
-    //         let taskList = [...this.state.taskList]
-         
-    //         taskList[e.target.dataset.id][e.target.name] = e.target.value;
-    //     } else {
-    //         this.setState({ [e.target.name]: e.target.value })
-    //     }
-     
-    // }
+    function handleChange (e) {
+        //   if (["TitleSession", "DesSession"].includes(e.target.name)) {
+        //       let taskList = [...State.State]
+        //       taskList[e.target.dataset.id][e.target.name] = e.target.value;
+        //   } else {
+        //       setState({ [e.target.name]: e.target.value })
+        //   }
+         const values=[...state];
+         values[e.target.name]=e.target.value;
+         setState(values);
+    
+     }
     function handleClick() {
         return  window.location.reload();
       }
       function handleSubmit (e) {
         e.preventDefault();
-        let data = {formdata:this.state};
-        console.log(data.formdata)
-
-
-        ExerciseService.AddExercise(data.formdata).then(
-            data=>{
-                console.log(data)
-            }
-      
-          )
+        // let data = {formdata:this.state};
+        // console.log(data.formdata)
+        // ExerciseService.AddExercise(data.formdata).then(
+        //     data=>{
+        //         console.log(data)
+        //     }
+        //   )
+        console.log(state)
         }
         function imgHandler(e){
             const reader = new FileReader();
@@ -101,31 +109,21 @@ export default function AdminUpdate(){
             }
             reader.readAsDataURL(e.target.files[0])
           }
-          function addNewRow (){
-            this.setState((prevState) => ({
-                taskList: [...prevState.taskList, {   TitleSession: "", DesSession: ""}],
-            }));
+         
+        const handleAddEx=()=>{
+            setState([...state,{
+                 TaskList: [{ TitleSession: "", DesSession: ""}],
+            }])
         }
-    
-    
-        function deteteRow(index){
-            this.setState({
-                taskList: this.state.taskList.filter((s, sindex) => index !== sindex),
-            });
-            // const taskList1 = [...this.state.taskList];
-            // taskList1.splice(index, 1);
-            // this.setState({ taskList: taskList1 });
+        const handleDeleteEx=(index)=>{
+            const value=[...state];
+            value.splice(index, 1);
+            setState(value);
         }
-        function clickOnDelete(record){
-            this.setState({
-                taskList: this.state.taskList.filter(r => r !== record)
-            });
-        }
-        
     const isauth=()=>{
         return ( <div className="content">
         <NotificationContainer/>
-        <form onSubmit={() => handleSubmit()} >
+        <form onSubmit={(e) => handleSubmit(e)} onChange={(e) => handleChange(e)}>
             <div className="row" style={{ marginTop: 10 }}>
                 <div className="col-sm-1"></div>
                 <div className="col-sm-10">
@@ -137,7 +135,7 @@ export default function AdminUpdate(){
                                 <div className="form-group  form-check ">
                                 <label for="exampleInputEmail1">Exercise Name</label>
                                 {/* <input type="text" className="form-control styled-select" required name="excName" id="excName" value="john"/> */}
-                                <textarea type="text" className="form-control" required name="TitleSession" value={exercise.excName} placeholder="Enter Session Title"></textarea>
+                                <textarea type="text" className="form-control" required name="exName" id="exName" value={exercise.excName} placeholder="Enter Session Title"></textarea>
                                 <div>{exercise.excName}</div>
                                 </div>
                                 <div className="form-group form-check">
@@ -182,11 +180,39 @@ export default function AdminUpdate(){
                                             </tr>
                                         </thead>
                                         <tbody className="w100">
+                                            
                                            {taskList}
+                                           {state.map((task,i) =>(
+                                               <tr>
+                                                <div className="container container-ses">
+                                                <div className="row justify-content-center ">
+                                                  <form className="col-md-12 form-add">
+                                            {/* input title */}
+                                                    <div className="form-group">
+                                                        <div className="justify">
+                                                        <label for="exampleInputEmail1">Title</label>
+                                                        <button className="btn_delete" onClick={() => handleDeleteEx(i)}>X</button>
+                                                        </div>
+                                                        <input type="text" className="form-control" name="TitleSession" data-id={i}    />
+                                                    </div>
+                                            {/* input desc */}
+                                                    <div className="form-group ">
+                                                        <label for="exampleInputEmail1">Description </label>
+                                                        <textarea className="form-control"  name="DesSession"  data-id={i}  placeholder="Enter Session Description"/>
+                                                    </div>
+                                                </form>
+                                              </div>
+                                            </div>
+                                         
+                                            
+                                     
+                                            </tr>
+                                           ))}
+                                          
                                         </tbody>
                                         <tfoot>
                                             <tr><td colSpan="4">
-    
+                                            <button onClick={() => handleAddEx()} type="button" className="btn btn-primary text-center text-dark"> Add Session <IoIosAddCircle size={20}/></button>
                                             </td></tr>
                                         </tfoot>
                                     </table>

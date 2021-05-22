@@ -2,11 +2,11 @@ import React from "react";
 import '../AdminAddLesson/AdminAddLesson.css'
 import {FcAddImage} from "react-icons/fc";
 import  {useState} from 'react';
-const AdminUpdateSession = (props) => {
+const AdminUpdateSession = (state) => {
     
   
   return (
-    props.taskList.map((val, idx) => {
+    state.taskList.map((val, idx) => {
     
       let TitleSession = `TitleSession-${idx}`, DesSession = `DesSession-${idx}`  
       
@@ -37,7 +37,7 @@ const AdminUpdateSession = (props) => {
           <td>
             {
             idx===0?<div></div>
-            : <button className="btn_delete" onClick={(() => props.delete(val))} >X</button>
+            : <button className="btn_delete" onClick={(() => this.delete(val))} >X</button>
             }
           </td>
         </tr >

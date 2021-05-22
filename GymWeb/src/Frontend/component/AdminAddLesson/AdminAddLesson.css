@@ -32,3 +32,8 @@ tbody{
 .w100{
   width:100%;
 }
+.justify{
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
