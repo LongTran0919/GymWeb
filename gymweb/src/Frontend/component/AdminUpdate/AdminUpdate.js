@@ -137,25 +137,25 @@ export default function AdminUpdate(){
                                 <div className="form-group  form-check ">
                                 <label for="exampleInputEmail1">Exercise Name</label>
                                 {/* <input type="text" className="form-control styled-select" required name="excName" id="excName" value="john"/> */}
-                                <textarea type="text" className="form-control" required name="TitleSession" placeholder="Enter Session Title">{exercise.excName}</textarea>
+                                <textarea type="text" className="form-control" required name="TitleSession" value={exercise.excName} placeholder="Enter Session Title"></textarea>
                                 <div>{exercise.excName}</div>
                                 </div>
                                 <div className="form-group form-check">
                                 <label for="exampleInputEmail1">Title</label>
-                                <textarea type="text" className="form-control" required name="title" id="title" >{exercise.title}</textarea>
+                                <textarea type="text" className="form-control"  value={exercise.title} required name="title" id="title" ></textarea>
                                 </div>
                  
                                 <div className="form-group  form-check">
                                 <label for="exampleInputEmail1">Compound </label>
-                                <textarea className="form-control"  required name="compound" id="compound" >{exercise.compound}</textarea>
+                                <textarea className="form-control"  required value={exercise.compound} name="compound" id="compound" ></textarea>
                                 </div>
                                 <div className="form-group  form-check">
                                 <label for="exampleInputEmail1">Level </label>
-                                <input className="form-control" type="number" required name="level" id="level" ></input>
+                                <input className="form-control" type="number" value={exercise.level} required name="level" id="level" ></input>
                                 </div>
                                 <div className="form-group  form-check">
                                 <label for="exampleInputEmail1">Calories </label>
-                                <input className="form-control " type="number" required name="calories" id="calories" ></input>
+                                <input className="form-control " type="number" value={exercise.calories} required name="calories" id="calories" ></input>
                                 </div>
                                 
                     
@@ -163,7 +163,7 @@ export default function AdminUpdate(){
                                 <label  >Lesson Image</label>
                                   <div className="img-holder ">
                             
-                                    <img  id="img" className="img added-img  "></img>
+                                    <img  src={exercise.imgUrl} id="img" className="img added-img  "></img>
                                
                                   </div>
                                   <input type="file" name="imgUrl" class="form-control-file" id="imgUrl"  onChange={() => imgHandler()}/>
