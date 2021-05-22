@@ -38,7 +38,6 @@ export default function MainContent(){
                 }
                 }).map(a =>(
                         <div className="card_container" key={a._id}>
-                            <Link to={`/product/${a._id}`}style={{textDecoration: 'none'}}>
                                 <div className="img-container">
                                     <img src="https://images8.content-hci.com/commimg/myhotcourses/blog/post/myhc_94121.jpg" alt=""/>
                                 </div>
@@ -52,12 +51,13 @@ export default function MainContent(){
                                         <p>Level: {a.level}</p>
                                     </div>
                                 </div>
-                                <div className="btnInfo">
-                                    <button>
-                                        View More
-                                    </button>
-                                </div>
-                            </Link>
+                                <Link to={`/product/${a._id}`}style={{textDecoration: 'none'}}>
+                                    <div className="btnInfo">
+                                        <button>
+                                            View More
+                                        </button>
+                                    </div>
+                                </Link>
                         </div>
                     ))  
             }

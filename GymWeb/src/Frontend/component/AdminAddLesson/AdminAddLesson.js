@@ -48,7 +48,7 @@ class AdminAddLesson extends React.Component {
             console.log(data.formdata)
 
 
-            return;
+
 
 
             ExerciseService.AddExercise(data.formdata).then(
