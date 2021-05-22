@@ -75,8 +75,6 @@ export default function Details(){
             </div>
         
             <div className="col-md-4" >
-            
-           
                     <h4 className="text-dark">Các bài tập Khác</h4>                     
                     <div className="card-fluid w-100 p-3 container">
                         <div className="row">
@@ -86,9 +84,9 @@ export default function Details(){
                             <div className="card_block col-md-6">
                                     <p className="card-title text-dark text-truncate"> {same.excName}</p>
                                     <p className="card-text text-muted mx-auto text-truncate"> {same.title}</p>
-                                <div className="btn btn-success">
-                                    <a className="text-dark"  onClick={handleClick}> Detail </a>
-                                </div>
+                                   <div className="btn btn-success">
+                                            <a className="text-dark"  href={`/product/${same._id}`}> Detail </a>
+                                        </div>
                             </div>
                         </div>
                     </div>           
@@ -183,9 +181,11 @@ export default function Details(){
                             <div className="card_block col-md-6">
                                     <p className="card-title text-dark text-truncate"> {same.excName}</p>
                                     <p className="card-text text-muted mx-auto text-truncate"> {same.title}</p>
-                                <div className="btn btn-success">
-                                    <a className="text-dark" href="/detail"> Detail </a>
-                                </div>
+                                    
+                                        <div className="btn btn-success">
+                                            <a className="text-dark"  href={`/product/${same._id}`}> Detail </a>
+                                        </div>
+                                    
                             </div>
                         </div>
                     </div>                      

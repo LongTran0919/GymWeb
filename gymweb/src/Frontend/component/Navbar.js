@@ -9,6 +9,7 @@ import {ImHome} from "react-icons/im";
 import {GiWeightLiftingUp}   from "react-icons/gi";
 import {FcAbout} from "react-icons/fc"
 import { FcBullish } from "react-icons/fc";
+import { FcManager } from "react-icons/fc";
 import {IoIosLogIn} from "react-icons/io"
 function Navbar(){
     const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
@@ -84,6 +85,9 @@ function Navbar(){
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+                <a className=" nav-link" href="/admin/management"> <FcManager/> Management</a>
+            </li>
             <li className="nav-item">
                 <a className=" nav-link" href="/bmi"> <FcBullish/> BMI</a>
             </li>
