@@ -35,11 +35,7 @@ nav ul li{
   /* text-transform: uppercase; */
 }
 #root{
-  background: linear-gradient(
-      90deg,
-      rgb(237, 238, 238) 0%,
-      rgb(212, 254, 255) 100%
-    );
+ background-color:#ffff;
 }
 .navbar-nav>li>a{
   margin-right: 12px;

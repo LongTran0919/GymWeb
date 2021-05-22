@@ -3,19 +3,25 @@ import './Card.css';
 import {Link} from 'react-router-dom';
 import {DataContext} from './data/DataProvider';
 import {AuthContext} from '../../../Backend/Context/AuthContext'
-
+const axios = require('axios');
 export default function MainContent(){
 
 
-    const [products,setProducts]=useContext(DataContext);
-    const [data,setdata]=useState("")
-    const [seachTerm,setSearchTerm]=useState(" ");
-    const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
  
-    products[0].then(function(data){ return setdata (data)})
+    const [data,setdata]=useState("")
+    const [seachTerm,setSearchTerm]=useState('');
+    const [flag,setflag]=useState('');
+    const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
+  
+    useEffect(() => {
        
-   console.log(isAuthenticated)
-        // console.log(data)
+
+      if(!flag) axios.get('http://localhost:5000/exercise/all')
+        .then(function(data){
+            setflag(true)
+              return setdata (data.data)})
+      });
+      
   
     return(
         <div className="Container">  
@@ -27,12 +33,11 @@ export default function MainContent(){
                Object.values(data).filter((a)=>{
                 if(seachTerm ==""){
                     return a
-                }else if(a.excName.toLowerCase().includes(seachTerm.toLowerCase())){
+                }else if(a.excName.toLowerCase().includes(seachTerm.toLowerCase())||a.compound.toLowerCase().includes(seachTerm.toLowerCase())||a.level.toLowerCase().includes(seachTerm.toLowerCase())){
                      return a
                 }
                 }).map(a =>(
                         <div className="card_container" key={a._id}>
-                            <Link to={`/product/${a._id}`}style={{textDecoration: 'none'}}>
                                 <div className="img-container">
                                     <img src="https://images8.content-hci.com/commimg/myhotcourses/blog/post/myhc_94121.jpg" alt=""/>
                                 </div>
@@ -41,17 +46,18 @@ export default function MainContent(){
                                         <h3>{a.excName}</h3>
                                     </div>
                                     <div className="card_bodyy">
-                                        <p>Mô tả: {a.content}</p>
+                                        <p>Mô tả: {a.title}</p> 
                                         <p>Vị trí: {a.compound}</p>
                                         <p>Level: {a.level}</p>
                                     </div>
                                 </div>
-                                <div className="btnInfo">
-                                    <button>
-                                        View More
-                                    </button>
-                                </div>
-                            </Link>
+                                <Link to={`/product/${a._id}`}style={{textDecoration: 'none'}}>
+                                    <div className="btnInfo">
+                                        <button>
+                                            View More
+                                        </button>
+                                    </div>
+                                </Link>
                         </div>
                     ))  
             }

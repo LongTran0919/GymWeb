@@ -1,34 +1,63 @@
-import React from 'react'
+/* eslint-disable no-unreachable */
+import React,{useContext}from "react"
 import {Line} from 'react-chartjs-2'
+import axios from 'axios';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import ExerciseService from '../../../Backend/Service/ExerciseService'
+import BMiForm from'./BMIForm'
+import { AuthContext } from '../../../Backend/Context/AuthContext';
+import Authservice from '../../../Backend/Service/AuthService'
 import './BMIChart.css'
-
+import notfound from '../404page/404'
 function BMIChart() {
+
+    
+      const {isAuthenticated,user,setisAuthenticated,setUser,info} = useContext(AuthContext); 
+    
+    // const logout= e=>{
+    //     e.preventDefault();
+    //     Authservice.logout().then(data=>{
+    //             const {isAuthenticated,user}=data;
+    //             console.log("logout "+isAuthenticated)
+    //             setUser(user);
+    //             setisAuthenticated(isAuthenticated);
+                
+    //         }
+    //       )
+    // }
+    // const chbmi = Object.values(info.Bmi).map(function(item) {
+    //     return item.Bmi;
+    //   })
+    //let chbmi = Object.values(info.Bmi).map(res => res.Bmi);
+    let chbmi = Object.assign([], info.Bmi).map(({Bmi}) => Bmi);
+    let chdate = Object.assign([], info.Bmi).map(({curTime}) => curTime);
+ 
     const data={
-        labels:['Weel 1','Weel 2','Week 3','Week 4','Week 5','Week 6'],
+        labels:chdate,
         datasets:[
             {
                 label:'BMI',
-                data:[3,5,8,4,5,9]
+                data:chbmi
             }
         ]
+       
 
     }
-    return (
-        <div className="chartContainer">
-            <div className="Input">
-                <div className="Textinput">Hight :</div>
-                <input type="number" className="inputChart" min="0" max="300" />
-                <div className="Textinput pr-15">(cm)</div>
-                <div className="Textinput">Weight :</div>
-                <input type="number" className="inputChart" min="0" max="500" />
-                <div className="Textinput">(kg)</div>
-                <button className="submitBMI">Submit</button>
-            </div>
+    const Authenticatednav=()=>{
+        return(
+            <>
+            <BMiForm/>
             <div className="chart">
-                <Line data={data}/>
+                <Line data={data} />
             </div>
-        </div>
-    )
+            </>
+        )
+    }
+
+    return (
+        !isAuthenticated ?notfound():Authenticatednav()
+       
+    );
 }
 
 export default BMIChart

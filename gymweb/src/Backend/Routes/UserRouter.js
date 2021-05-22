@@ -15,7 +15,7 @@ const signToken=userID=>{
 }
 
 userRouter.post('/register',(req,res)=>{
-const {username,password,email,role} =req.body
+const {username,password,email,role,Bmi} =req.body
     User.findOne({username},(err,user)=>{
             if(err) res.status(500).json({
                 message:{msgBody:"Error has occured 1"},
@@ -26,7 +26,7 @@ const {username,password,email,role} =req.body
                 msgError:true })
                 else{
                     const newUser = new User({
-                        username,password,email,role
+                        username,password,email,role,Bmi
                     })
                     newUser.save(err=>{
                         if(err)res.status(500).json({
@@ -39,8 +39,7 @@ const {username,password,email,role} =req.body
                 }
     })
 })
-userRouter.post('/login',passport.authenticate('local',
-{session:false}),(req,res)=>{
+userRouter.post('/login',passport.authenticate('local',{session:false}),(req,res)=>{
     if(req.isAuthenticated()){
         const{_id,username,role}=req.user;
         const token=signToken(_id);
@@ -56,6 +55,57 @@ userRouter.post('/login',passport.authenticate('local',
         })
     }
 })
+
+
+userRouter.get('/info',passport.authenticate('jwt',{session:false}),(req,res)=>{
+    const {username} = req.user;
+    if(!username) res.status(500).json({
+        message:{msgBody:"Error has occured 1"},
+        msgError:true })
+     User.findOne({username},(err,user)=>{
+        
+            if(err) res.status(500).json({
+                message:{msgBody:"Error has occured 1"},
+                msgError:true })
+            if(!user){
+                res.status(404).json({
+                    message:{msgBody:"username not found "}
+            })}
+            if(user){
+                    let Userinfo = { ...JSON.parse(JSON.stringify(user)), password:"hidden" };
+                    res.status(200).json({
+                      Userinfo:Userinfo
+                    })
+
+                }
+        });
+})
+
+
+userRouter.post('/bmi',passport.authenticate('jwt',{session : false}),(req,res)=>{
+    const {Bmi} =req.body
+    const {username} = req.user;
+   
+    User.findOneAndUpdate({username:username,Bmi:{ $elemMatch:{curTime: Bmi.curTime}}}, { $set: {"Bmi.$":Bmi} } ,(err,user)=>{
+        if(err) res.status(500).json({
+            message:{msgBody:"Error has occured 1"},
+            msgError:true })
+       
+   
+       if(!user)   User.updateOne({username:username},{$addToSet:{Bmi:Bmi}}, function (err) {
+            if(err) res.status(401).json({
+                message:{msgBody:"Error has occured 1"},
+                msgError:true })
+            res.status(200).json({ message: `update success  `});
+        })
+
+        if(user) res.status(200).json({ message: `update successfully  `})
+    }) 
+
+        
+    
+    })
+
 userRouter.get('/logout',passport.authenticate('jwt',{session : false}),(req,res)=>{
     res.clearCookie('access_token');
     const{_id,username,role}=req.user;
@@ -95,6 +145,7 @@ userRouter.get('/resetpasswd',(req,res)=>{
                 }
         });
 })
+
 
 userRouter.get('/admin',passport.authenticate('jwt',{session : false}),(req,res)=>{
     if(req.user.role === 'admin'){

@@ -20,7 +20,6 @@ import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
 import NotFound from './Frontend/component/404page/404';
 function App() {
   return (
-    <DataProvider>
       <Router>
             <Navbar/>
             <Switch>
@@ -28,6 +27,7 @@ function App() {
                 <Route path="/signup" component={Form}/>
                 <Route path="/products" component={MainContent}/>
                 <Route path="/product/:id" component={Details}/>
+                <Route path="/admin/product/update/:id" component={Header}/>
                 <Route path="/signin" component={FormLoginMain}/>
                 <Route path="/admin/management" component={AdminPro}/>
                 <Route path="/profile" component={Profile}/>
@@ -40,7 +40,7 @@ function App() {
               </Switch>
             <Footer/>
       </Router>
-    </DataProvider>
+    
   );
 }
 

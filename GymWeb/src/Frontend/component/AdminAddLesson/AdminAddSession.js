@@ -1,23 +1,20 @@
 import React from "react";
-import './Lession.css'
+import './AdminAddLesson.css'
+import {FcAddImage} from "react-icons/fc";
+import  {useState} from 'react';
 const AdminAddSession = (props) => {
-  // imgHandler = (e)=>{
-  //   const reader = new FileReader();
-  //   reader.onload =() =>{
-  //     if(reader.readyState === 2){
-  //       this.setState({lessonImage: reader.result})
-  //     }
-  //   }
-  //   reader.readAsDataURL(e.target.files[0])
-  // }
+   
+  
   return (
+  
     props.taskList.map((val, idx) => {
+    
+      let TitleSession = `TitleSession-${idx}`, DesSession = `DesSession-${idx}`  
       
-      let TitleSession = `TitleSession-${idx}`, DesSession = `DesSession-${idx}`
       return (
         <tr key={val.index}>
           <div className="container container-ses">
-            <div className="row">
+            <div className="row justify-content-center ">
               <form className="col-md-12 form-add">
         
         {/* input title */}
@@ -27,19 +24,13 @@ const AdminAddSession = (props) => {
                 </div>
         
         {/* input desc */}
-                <div className="form-group">
+                <div className="form-group ">
                     <label for="exampleInputEmail1">Description </label>
                     <textarea className="form-control" required name="DesSession" data-id={idx}  aria-label="With textarea" placeholder="Enter Session Description"></textarea>
                 </div>
         
 
-                {/* <div>
-                    <div className="img-holder">
-                        <img  id="img" className="img added-img"></img>
-           
-                    </div>
-                    <input type="file" name="img-upload" id="input"  onChange={this.imgHandler}/>
-                </div> */}
+              
             </form>
           </div>
         </div>
