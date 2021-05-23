@@ -49,11 +49,31 @@ export default function AdminUpdate(){
                 settaskList(details[0].taskList)
         });
         
-    })
+    })  
+    function imgHandler(e){
+        const reader = new FileReader();
+        reader.onload =() =>{
+          if(reader.readyState === 2){
+            this.setState({lessonImage: reader.result})
+          }
+        }
+        reader.readAsDataURL(e.target.files[0])
+      }
+     
+    const handleAddEx=()=>{
+        console.log(taskList)
+      settaskList([...taskList, {TitleSession: "", DesSession: ""}])
+    }
+    const handleDeleteEx=(index)=>{
+        const value=[...taskList];
+        value.splice(index, 1);
+        settaskList(value)
+    }
 
     useEffect(() => {
         setexercise({...exercise,"TaskList":taskList} )
-
+        console.log(taskList)
+  
             settaskform(taskList.map((task,i) =>(
               
             <tr key={i} >
@@ -63,15 +83,15 @@ export default function AdminUpdate(){
              {/* input title */}
                      <div className="form-group">
                          <div className="justify">
-                         <label htmlFor="exampleInputEmail1">Title</label>
+                         <label htmlFor="exampleInputEmail1">Title </label>
                          <button className="btn_delete" onClick={(e) =>{e.preventDefault(); handleDeleteEx(i)}}>X</button>
                          </div>
-                         <input type="text" defaultValue={task.TitleSession} className="form-control" name="TitleSession" data-id={i}    />
+                         <input type="text" value={task.TitleSession} className="form-control" name="TitleSession" data-id={i}    />
                      </div>
              {/* input desc */}
                      <div className="form-group ">
                          <label htmlFor="exampleInputEmail1">Description </label>
-                         <textarea className="form-control" defaultValue={task.DesSession}  name="DesSession"  data-id={i}  placeholder="Enter Session Description"/>
+                         <textarea className="form-control" value={task.DesSession}  name="DesSession"  data-id={i}  placeholder="Enter Session Description"/>
                      </div>
                  </form>
                </div>
@@ -81,19 +101,23 @@ export default function AdminUpdate(){
             )))
         
      }, [taskList]);
+    
     function handleChange (e) {
+
         //    if (["TitleSession", "DesSession"].includes(e.target.name)) {
         //        let taskList = [...state.TaskList]
         //        taskList[e.target.dataset.id][e.target.name] = e.target.value;
         //    } else {
         //        setState({ [e.target.name]: e.target.value })
         //    }
-        if (["TitleSession", "DesSession"].includes(e.target.name)){
-          const values=[...exercise.taskList];
-          values[e.target.dataset.id][e.target.name] = e.target.value;
-          setexercise(...exercise,exercise.taskList)
-        }
-          else{setexercise({[e.target.name]:e.target.value});}
+        // if (["TitleSession", "DesSession"].includes(e.target.name)){
+        //   const values=[...taskList];
+        // //   taskList[e.target.dataset.id][e.target.name] = e.target.value;
+        //   values[e.target.dataset.id][e.target.name] = e.target.value;
+
+        //   settaskList(values)
+        // }
+        //   else{setexercise({[e.target.name]:e.target.value});}
           
      }
     // function handleClick() {
@@ -110,29 +134,7 @@ export default function AdminUpdate(){
         //    )
         
         }
-        function imgHandler(e){
-            const reader = new FileReader();
-            reader.onload =() =>{
-              if(reader.readyState === 2){
-                this.setState({lessonImage: reader.result})
-              }
-            }
-            reader.readAsDataURL(e.target.files[0])
-          }
-         
-        const handleAddEx=()=>{
-            console.log(taskList)
-          settaskList([...taskList, {TitleSession: "", DesSession: ""}])
-
-
-        }
-        const handleDeleteEx=(index)=>{
-            const value=[...taskList];
-            console.log(index)
-            value.splice(index, 1);
-            console.log(value)
-            settaskList(value)
-        }
+      
     const isauth=()=>{
         return ( <div className="content">
         <NotificationContainer/>
