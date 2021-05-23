@@ -36,7 +36,7 @@ export default function AdminUpdate(){
     const [flag,setflag]=useState('');
     const [exercise,setexercise]= useState('');
     const [same,setsame]=useState('')
-    const [taskList,settaskList]=useState('')
+    const [taskList,settaskList]=useState([{TitleSession: "", DesSession: ""}])
     const {isAuthenticated,user,setisAuthenticated,setUser,info,setinfo} = useContext(AuthContext); 
     useEffect(() => {
         if(!flag) ExerciseService.GetAll()
@@ -48,25 +48,7 @@ export default function AdminUpdate(){
                 })
                 setsame(Object.values(data)[Math.floor(Math.random()*Object.values(data).length)] )
                 setexercise(details[0])
-                settaskList(details[0].taskList.map((task)=>{
-                    return (
-                    <div>
-                        <div className="container container-ses">
-                            <div className="row justify-content-center ">
-                                <form className="col-md-12 form-add">
-                                <div className="form-group">
-                                    <label for="exampleInputEmail1">Title</label>
-                                    <textarea type="text" className="form-control" required name="TitleSession" placeholder="Enter Session Title">{task.TitleSession}</textarea>
-                                </div>
-                                <div className="form-group ">
-                                    <label for="exampleInputEmail1">Description </label>
-                                    <textarea className="form-control" required name="DesSession"  aria-label="With textarea" placeholder="Enter Session Description">{task.DesSession}</textarea>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>)
-                }))
+                settaskList(details[0].taskList)
                 console.log(details[0].taskList)        
         });
         
@@ -79,10 +61,10 @@ export default function AdminUpdate(){
         //        setState({ [e.target.name]: e.target.value })
         //    }
         if (["TitleSession", "DesSession"].includes(e.target.name)){
-          const values=[...state];
+          const values=[...exercise.taskList];
           values[e.target.dataset.id][e.target.name] = e.target.value;
         }
-          else{setState({[e.target.name]:e.target.value});}
+          else{setexercise({[e.target.name]:e.target.value});}
           
      }
     function handleClick() {
@@ -90,7 +72,7 @@ export default function AdminUpdate(){
       }
       function handleSubmit (e) {
         e.preventDefault();
-         let data = {formdata:state};
+         let data = {formdata:exercise};
          console.log(data.formdata)
         //  ExerciseService.AddExercise(data.formdata).then(
         //      data=>{
@@ -110,14 +92,14 @@ export default function AdminUpdate(){
           }
          
         const handleAddEx=()=>{
-            setState([...state,{
-                 TaskList: [{ TitleSession: "", DesSession: ""}],
+            setexercise([...exercise.taskList,{
+                  TitleSession: "", DesSession: ""
             }])
         }
         const handleDeleteEx=(index)=>{
-            const value=[...state];
+            const value=[...exercise.taskList];
             value.splice(index, 1);
-            setState(value);
+            setexercise(value);
         }
     const isauth=()=>{
         return ( <div className="content">
@@ -180,8 +162,8 @@ export default function AdminUpdate(){
                                         </thead>
                                         <tbody className="w100">
                                             
-                                           {taskList}
-                                           {state.map((task,i) =>(
+                               
+                                           {taskList.map((task,i) =>(
                                                <tr>
                                                 <div className="container container-ses">
                                                 <div className="row justify-content-center ">
@@ -202,9 +184,6 @@ export default function AdminUpdate(){
                                                 </form>
                                               </div>
                                             </div>
-                                         
-                                            
-                                     
                                             </tr>
                                            ))}
                                           

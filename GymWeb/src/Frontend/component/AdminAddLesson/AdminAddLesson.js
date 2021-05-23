@@ -20,7 +20,6 @@ class AdminAddLesson extends React.Component {
     handleChange = (e) => {
         if (["TitleSession", "DesSession"].includes(e.target.name)) {
             let taskList = [...this.state.taskList]
-         
             taskList[e.target.dataset.id][e.target.name] = e.target.value;
         } else {
             this.setState({ [e.target.name]: e.target.value })
