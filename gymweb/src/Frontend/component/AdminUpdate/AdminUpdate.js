@@ -86,12 +86,12 @@ export default function AdminUpdate(){
                          <label htmlFor="exampleInputEmail1">Title </label>
                          <button className="btn_delete" onClick={(e) =>{e.preventDefault(); handleDeleteEx(i)}}>X</button>
                          </div>
-                         <input type="text" value={task.TitleSession} className="form-control" name="TitleSession" data-id={i}    />
+                         <input  onChange={(e) => handleChange(e)} type="text" value={task.TitleSession} className="form-control" name="TitleSession" data-id={i}    />
                      </div>
              {/* input desc */}
                      <div className="form-group ">
                          <label htmlFor="exampleInputEmail1">Description </label>
-                         <textarea className="form-control" value={task.DesSession}  name="DesSession"  data-id={i}  placeholder="Enter Session Description"/>
+                         <textarea  onChange={(e) => handleChange(e)} className="form-control" value={task.DesSession}  name="DesSession"  data-id={i}  placeholder="Enter Session Description"/>
                      </div>
                  </form>
                </div>
@@ -110,13 +110,13 @@ export default function AdminUpdate(){
         //    } else {
         //        setState({ [e.target.name]: e.target.value })
         //    }
-        // if (["TitleSession", "DesSession"].includes(e.target.name)){
-        //   const values=[...taskList];
-        // //   taskList[e.target.dataset.id][e.target.name] = e.target.value;
-        //   values[e.target.dataset.id][e.target.name] = e.target.value;
+        if (["TitleSession", "DesSession"].includes(e.target.name)){
+          const values=[...taskList];
+        //   taskList[e.target.dataset.id][e.target.name] = e.target.value;
+          values[e.target.dataset.id][e.target.name] = e.target.value;
 
-        //   settaskList(values)
-        // }
+          settaskList(values)
+        }
         //   else{setexercise({[e.target.name]:e.target.value});}
           
      }
