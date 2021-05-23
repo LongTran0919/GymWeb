@@ -14,14 +14,14 @@ const axios = require('axios');
 
 export default function AdminPro(){
     const [data,setdata]=useState("")
-    const [flag,setflag]=useState('');
+  
     const [seachTerm,setSearchTerm]=useState('');
     const {isAuthenticated,user,setisAuthenticated,setUser} = useContext(AuthContext);
 
     useEffect(() => {
-        if(!flag) axios.get('http://localhost:5000/exercise/all')
+         axios.get('http://localhost:5000/exercise/all')
           .then(function(data){
-              setflag(true)
+         
                 return setdata (data.data)})
     });
     function handleRemove(id) {

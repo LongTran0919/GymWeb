@@ -76,6 +76,40 @@ const {excName ,title,typeExc,level,taskList,date_created,comment,compound,autho
        
          
     })
+    ExcRouter.post('/update',passport.authenticate('jwt',{session : false}),(req,res)=>{
+        const {data}=req.body
+        const{_id,username,role}=req.user;
+        if(role!='admin'){
+            res.status(500).json({
+            message:{msgBody:"you not have permision"},
+            msgError:true })
+           return;
+        }
+        console.log(data)
+        Exc.findOneAndUpdate({_id:data._id},data ,function(err, exc) {
+           
 
+            if(err){res.status(500).json({
+                message:{msgBody:"Error has occured 2"},
+                msgError:true })
+                return;
+            }
+            if(!exc)  { res.status(404).json({
+           
+                message:{msgBody:"not found Excercise  "},
+                msgError:false })
+                return;
+            }
+            if(exc) { res.status(200).json({
+           
+                message:{msgBody:"Excercise succesfully update!!"},
+                msgError:false })
+                return
+            }
+         
+            });
+       
+         
+    })
 
 module.exports = ExcRouter;

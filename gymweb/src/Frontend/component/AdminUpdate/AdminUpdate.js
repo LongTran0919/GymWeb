@@ -71,7 +71,7 @@ export default function AdminUpdate(){
     }
 
     useEffect(() => {
-        setexercise({...exercise,"TaskList":taskList} )
+        setexercise({...exercise,"taskList":taskList} )
         console.log(taskList)
   
             settaskform(taskList.map((task,i) =>(
@@ -117,7 +117,13 @@ export default function AdminUpdate(){
 
           settaskList(values)
         }
-        //   else{setexercise({[e.target.name]:e.target.value});}
+           else{
+            const values={...exercise,[e.target.name]:e.target.value};
+               console.log(values)
+               console.log(e.target.name)
+               setexercise({...exercise ,[e.target.name]:e.target.value} )
+               
+               ;}
           
      }
     // function handleClick() {
@@ -125,13 +131,15 @@ export default function AdminUpdate(){
     //   }
       function handleSubmit (e) {
         e.preventDefault();
-         let data = {formdata:exercise};
-         console.log(data)
-        //  ExerciseService.AddExercise(data.formdata).then(
-        //      data=>{
-        //          console.log(data)
-        //      }
-        //    )
+       
+         console.log(exercise)
+         ExerciseService.Update(exercise).then(
+             data=>{
+                 console.log(data)
+             }
+           ).catch((error)=>{
+               console.log(error)
+           })
         
         }
       
@@ -150,7 +158,7 @@ export default function AdminUpdate(){
                                 <div className="form-group  form-check ">
                                 <label htmlFor="exampleInputEmail1">Exercise Name</label>
                                 {/* <input type="text" className="form-control styled-select" required name="excName" id="excName" value="john"/> */}
-                                <textarea type="text" className="form-control" required name="exName" id="exName" value={exercise.excName} placeholder="Enter Session Title"></textarea>
+                                <textarea type="text" className="form-control" required name="excName" id="exName" value={exercise.excName} placeholder="Enter Session Title"></textarea>
                                 <div>{exercise.excName}</div>
                                 </div>
                                 <div className="form-group form-check">
