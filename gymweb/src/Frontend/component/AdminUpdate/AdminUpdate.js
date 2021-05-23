@@ -36,7 +36,7 @@ export default function AdminUpdate(){
     const [flag,setflag]=useState('');
     const [exercise,setexercise]= useState('');
     const [taskList,settaskList]=useState([])
-    const [taskform,settaskform]=useState()
+    const [taskform,settaskform]=useState('')
     const {isAuthenticated,user,setisAuthenticated,setUser,info,setinfo} = useContext(AuthContext); 
     useEffect(() => {
         if(!flag) ExerciseService.GetAll()
@@ -55,27 +55,29 @@ export default function AdminUpdate(){
         setexercise({...exercise,"TaskList":taskList} )
 
             settaskform(taskList.map((task,i) =>(
-                <tr>
+              
+            <tr key={i} >
                  <div className="container container-ses">
                  <div className="row justify-content-center ">
                    <form className="col-md-12 form-add">
              {/* input title */}
                      <div className="form-group">
                          <div className="justify">
-                         <label for="exampleInputEmail1">Title</label>
-                         <button className="btn_delete" onClick={() => handleDeleteEx(i)}>X</button>
+                         <label htmlFor="exampleInputEmail1">Title</label>
+                         <button className="btn_delete" onClick={(e) =>{e.preventDefault(); handleDeleteEx(i)}}>X</button>
                          </div>
-                         <input type="text" value={task.TitleSession} className="form-control" name="TitleSession" data-id={i}    />
+                         <input type="text" defaultValue={task.TitleSession} className="form-control" name="TitleSession" data-id={i}    />
                      </div>
              {/* input desc */}
                      <div className="form-group ">
-                         <label for="exampleInputEmail1">Description </label>
-                         <textarea className="form-control" value={task.DesSession}  name="DesSession"  data-id={i}  placeholder="Enter Session Description"/>
+                         <label htmlFor="exampleInputEmail1">Description </label>
+                         <textarea className="form-control" defaultValue={task.DesSession}  name="DesSession"  data-id={i}  placeholder="Enter Session Description"/>
                      </div>
                  </form>
                </div>
              </div>
              </tr>
+         
             )))
         
      }, [taskList]);
@@ -119,9 +121,6 @@ export default function AdminUpdate(){
           }
          
         const handleAddEx=()=>{
-            // setexercise([exercise.taskList,{
-            //       TitleSession: "", DesSession: ""
-            // }])
             console.log(taskList)
           settaskList([...taskList, {TitleSession: "", DesSession: ""}])
 
@@ -129,6 +128,7 @@ export default function AdminUpdate(){
         }
         const handleDeleteEx=(index)=>{
             const value=[...taskList];
+            console.log(index)
             value.splice(index, 1);
             console.log(value)
             settaskList(value)
@@ -146,26 +146,26 @@ export default function AdminUpdate(){
                             <div className="row justify-content-center">
                             <form className="col-md-12 form-add form-group  ">
                                 <div className="form-group  form-check ">
-                                <label for="exampleInputEmail1">Exercise Name</label>
+                                <label htmlFor="exampleInputEmail1">Exercise Name</label>
                                 {/* <input type="text" className="form-control styled-select" required name="excName" id="excName" value="john"/> */}
                                 <textarea type="text" className="form-control" required name="exName" id="exName" value={exercise.excName} placeholder="Enter Session Title"></textarea>
                                 <div>{exercise.excName}</div>
                                 </div>
                                 <div className="form-group form-check">
-                                <label for="exampleInputEmail1">Title</label>
+                                <label htmlFor="exampleInputEmail1">Title</label>
                                 <textarea type="text" className="form-control"  value={exercise.title} required name="title" id="title" ></textarea>
                                 </div>
                  
                                 <div className="form-group  form-check">
-                                <label for="exampleInputEmail1">Compound </label>
+                                <label htmlFor="exampleInputEmail1">Compound </label>
                                 <textarea className="form-control"  required value={exercise.compound} name="compound" id="compound" ></textarea>
                                 </div>
                                 <div className="form-group  form-check">
-                                <label for="exampleInputEmail1">Level </label>
+                                <label htmlFor="exampleInputEmail1">Level </label>
                                 <input className="form-control" type="number" value={exercise.level} required name="level" id="level" ></input>
                                 </div>
                                 <div className="form-group  form-check">
-                                <label for="exampleInputEmail1">Calories </label>
+                                <label htmlFor="exampleInputEmail1">Calories </label>
                                 <input className="form-control " type="number" value={exercise.calories} required name="calories" id="calories" ></input>
                                 </div>
                                 
@@ -178,7 +178,7 @@ export default function AdminUpdate(){
                                
                                   </div>
                                   <input type="file" name="imgUrl" class="form-control-file" id="imgUrl"  onChange={() => imgHandler()}/>
-                                 <label for='imgUrl' class="mb-2">
+                                 <label htmlFor='imgUrl' class="mb-2">
                                  <FcAddImage size={36}/>
                                  </label>
                                
@@ -192,13 +192,15 @@ export default function AdminUpdate(){
                                                 <th className="required" >Session</th>
                                             </tr>
                                         </thead>
-                                        <tbody className="w100">
-                                            
-                                        {taskform}
-                                           
+                                       
+                                      <tbody className="w100">
+                                       
+                                               {taskform}
+                                                
+                                     </tbody>                        
                                           
-                                        </tbody>
-                                        <tfoot>
+                                     
+                                    <tfoot>
                                             <tr><td colSpan="4">
                                             <button onClick={() => handleAddEx()} type="button" className="btn btn-primary text-center text-dark"> Add Session <IoIosAddCircle size={20}/></button>
                                             </td></tr>

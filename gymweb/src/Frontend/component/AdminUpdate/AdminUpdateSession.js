@@ -40,7 +40,7 @@ const AdminUpdateSession = (state) => {
             : <button className="btn_delete" onClick={(() => this.delete(val))} >X</button>
             }
           </td>
-        </tr >
+        </tr>
       )
     })
   )
