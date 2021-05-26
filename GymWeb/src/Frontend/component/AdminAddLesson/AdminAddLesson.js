@@ -5,6 +5,7 @@ import axios from 'axios';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import ExerciseService from '../../../Backend/Service/ExerciseService'
 import {FcAddImage} from "react-icons/fc";
+import {toast} from 'react-toastify';
 import {IoIosAddCircle} from "react-icons/io";
 import './AdminAddLesson.css'
 class AdminAddLesson extends React.Component {
@@ -46,13 +47,15 @@ class AdminAddLesson extends React.Component {
             let data = {formdata:this.state};
             console.log(data.formdata)
 
-
+            
             ExerciseService.AddExercise(data.formdata).then(
                 data=>{
                     console.log(data)
                 }
           
               )
+              toast.configure();
+              toast.success('Tạo bài tập thành công' ,{position:toast.POSITION.BOTTOM_LEFT});
     }
     imgHandler = (e)=>{
       const reader = new FileReader();

@@ -1,5 +1,5 @@
 .Container{
-  min-height: 570px;
+    min-height: 570px;
     display: flex;
     flex-direction: column;
     width:100%;
@@ -211,4 +211,21 @@
 .btnEdit:hover{
   background-color:#021B79;
 }
-  
+/*****************************/
+.spStep{
+  font-size:20px;
+  font-weight:bold;
+}
+.titltTask{
+  font-weight: bold ;
+}
+.mt-20{
+  margin-top: 20px;
+}
+.mb-20{
+  margin-bottom: 20px;
+}
+.ContainDe{
+  width:70%;
+  justify-content: center;
+}

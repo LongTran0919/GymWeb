@@ -25,7 +25,7 @@ export default {
           .post('http://localhost:5000/exercise/delete',{id:id},{ withCredentials: true },{Headers: {
                     'Content-Type': 'application/json',
                   }}).then(res=>{
-            if(res.status!==401)return res.data;
+            if(res.status!==401)return res;
           else return {"fail":"true"}
       }).catch(error=> console.log(error))
   }, 

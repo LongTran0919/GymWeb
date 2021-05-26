@@ -35,7 +35,7 @@ export default function Details(){
                 settaskList(details[0].taskList.map((task)=>{
                     return (
                     <div>
-                        <span>{task.TitleSession} : {task.DesSession}</span>  <br></br>
+                        <span className="spStep">{task.TitleSession}</span> : <div className="divStep">{task.DesSession}</div>  <br></br>
                     </div>)
                 }))
                 console.log(details[0].taskList)   
@@ -55,7 +55,7 @@ export default function Details(){
             <div className="col-md-8">
              
                 <div className="row">
-                    <h2 className="text-dark">{exercise.excName}</h2>
+                    <h2 className="text-dark titltTask mb-20">{exercise.excName}</h2>
                 </div>  
                 <div className="row">
                     <div className="float-right">{exercise.author} </div>
@@ -67,7 +67,7 @@ export default function Details(){
                 {
                         <div className="card-fluid">
                             <div className="card_body">
-                                <h2 className="text-dark">TaskList</h2>
+                                <h2 className="titltTask mt-20">TaskList</h2>
                                     {
                                         taskList
                                     }
@@ -166,7 +166,7 @@ export default function Details(){
                         <div className="card-fluid">
                         
                             <div className="card_body">
-                                <h2 className="text-dark">TaskList</h2>
+                                <h2 className="titltTask">TaskList</h2>
                             </div>
                           
                             

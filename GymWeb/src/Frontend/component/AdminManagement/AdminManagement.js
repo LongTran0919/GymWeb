@@ -8,6 +8,7 @@ import {IoIosAddCircle} from 'react-icons/io';
 import {MdUpdate} from 'react-icons/md';
 import {RiDeleteBin5Line} from 'react-icons/ri';
 import notfound from '../404page/404'
+import {toast} from 'react-toastify';
 import ExerciseService from '../../../Backend/Service/ExerciseService'
 const axios = require('axios');
 
@@ -28,9 +29,19 @@ export default function AdminPro(){
         ExerciseService.DeleteId(id).then(
             data=>{
                 console.log(data)
+                if(data.status===200){
+                    console.log(id);
+                    toast.configure();
+                    toast.success('Xóa bài tập thành công' ,{position:toast.POSITION.BOTTOM_LEFT});
+                    }
+                    else{
+                      toast.configure();
+                      toast.success('Xóa bài tập thất bại' ,{position:toast.POSITION.BOTTOM_LEFT});
+                    }
             }
+            
           )
-          console.log(id);
+          
         }
         
    if(!user)     

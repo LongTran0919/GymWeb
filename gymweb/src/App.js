@@ -16,6 +16,8 @@ import About from './Frontend/component/Info/About';
 import ContactUs from './Frontend/component/Info/ContactUs';
 import BMI from './Frontend/component/BMIChart/BMIChart';
 import AdminUpdate from'./Frontend/component/AdminUpdate/AdminUpdate';
+import Plan from './Frontend/component/Planing/Plan';
+import AddPlan from './Frontend/component/Planing/AddPlan';
 import AdminUpdateLesson from './Frontend/component/AdminUpdateLesson/AdminUpdateLesson';
 import {BrowserRouter as Router,Switch,Route} from'react-router-dom';
 import NotFound from './Frontend/component/404page/404';
@@ -36,7 +38,8 @@ function App() {
                 <Route path="/about" component={About}/>
                 <Route path="/contacts" component={ContactUs}/>
                 <Route path="/bmi" component={BMI}/>
-
+                <Route path="/plan" component={Plan}/>
+                <Route path="/addplan" component={AddPlan}/>
                 <Route component={NotFound} />
               </Switch>
             <Footer/>

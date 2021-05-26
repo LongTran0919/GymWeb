@@ -7,6 +7,7 @@ import img from '../../IMG/Gym.jpg'
 import '../product/Card.css'
 import notfound from '../404page/404'
 import '../AdminAddLesson/AdminAddLesson.css'
+import {toast} from 'react-toastify';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import {Link} from 'react-router-dom';
 import { useHistory } from "react-router-dom";
@@ -142,7 +143,28 @@ export default function AdminUpdate(){
            })
         
         }
-      
+        function handleRemove(id) {
+            ExerciseService.DeleteId(id).then(
+                data=>{
+                    console.log(data)
+                    if(data.status===200){
+                        console.log(id);
+                        toast.configure();
+                        toast.success('Xóa bài tập thành công' ,{position:toast.POSITION.BOTTOM_LEFT});
+                        setTimeout(() => {
+                            window.location='/admin/management';
+                        }, 2000);
+                        
+                        }
+                        else{
+                          toast.configure();
+                          toast.success('Xóa bài tập thất bại' ,{position:toast.POSITION.BOTTOM_LEFT});
+                        }
+                }
+                
+              )
+              
+            }
     const isauth=()=>{
         return ( <div className="content">
         <NotificationContainer/>
@@ -220,6 +242,7 @@ export default function AdminUpdate(){
                         </div>
                         <div className="card-footer text-center"> 
                             <button type="submit" className="btn btn-primary text-center text-dark">Submit</button>
+                            <button type="submit" className="btn btn-warning text-center text-dark" onClick={() => handleRemove(exercise._id)}>Delete</button>
                         </div>
                     </div>
                 </div>
