@@ -17,13 +17,12 @@ function AddPlan() {
 
   const handleCheckInDate = (date) => {
     setCheckInDate(date)
-    setplan({dateFrom:date});
     setCheckOutDate(null);
   };
 
   const handleCheckOutDate = (date) => {
     setCheckOutDate(date)
-    setplan({dateTo:date});
+    
   };
   function handleSubmit(e){
     e.preventDefault();
@@ -31,14 +30,21 @@ function AddPlan() {
     console.log(plan)
     
 }
+function handleChange(e){
+ // const values={...plan,[e.target.name]:e.target.value};
+              //  console.log(values)
+              //  console.log(e.target.name)
+               setplan({...plan ,[e.target.name]:e.target.value} )
+}
   return (
     <div className="card-body cennter">
-    <form className="center"onSubmit={(e)=>handleSubmit(e)}>
-        <input type="text" className="form-control styled-select" required name="excName" id="excName" placeholder="Enter Title Plan"/>
+    <form className="center"onSubmit={(e)=>handleSubmit(e)} onChange={(e)=> handleChange(e)}>
+        <input type="text" className="form-control styled-select"  name="title"  placeholder="Enter Title Plan"/>
         <div className="form-group form-check">
                     <div className="mt-10">
                         <label className="mr-20">Date From : </label>
-                        <DatePicker 
+                        {/* <DatePicker 
+                            name="dateFrom"
                             selected={ checkInDate }
                             minDate={new Date()}
                             onChange={ handleCheckInDate}
@@ -47,11 +53,28 @@ function AddPlan() {
                             timeIntervals={20}
                             timeCaption="time"
                             dateFormat="dd-MM-yyyy hh:mm:ss a"
-                        />
+                        /> */}
+                      <input 
+                        //onChange={ handleCheckInDate}
+                        id="party" 
+                        type="datetime-local" 
+                        name="dateFrom" 
+                        //selected={ checkInDate }
+                        >
+                      </input>
                     </div>
                     <div className="mt-10 justify-content-center">
                         <label className="mr-30">Date To : </label>
-                        <DatePicker
+                        <input 
+                        //onChange={ handleCheckOutDate}
+                        id="party" 
+                        type="datetime-local" 
+                        name="dateTo" 
+                        //selected={ checkOutDate }
+                        >
+                      </input>
+                        {/* <DatePicker
+                            name="dateTo"
                             selected={ checkOutDate }
                             minDate={checkInDate}
                             onChange={ handleCheckOutDate}
@@ -60,7 +83,7 @@ function AddPlan() {
                             timeIntervals={20}
                             timeCaption="time"
                             dateFormat="dd-MM-yyyy hh:mm:ss a"
-                        />
+                        /> */}
                     </div>
             </div>
             <button type="submit" className="btn btn-primary text-center text-dark">Submit</button>
