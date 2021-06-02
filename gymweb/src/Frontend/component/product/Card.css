@@ -229,3 +229,94 @@
   width:70%;
   justify-content: center;
 }
+
+.Container-detail{
+  justify-content: center;
+  min-height: 570px;
+  display: flex;
+  flex-direction: column;
+  width:70%;
+  height:100%;
+  padding:30px 20px 20px 20px;
+  margin : 20px auto;
+  box-sizing: border-box;  
+}
+/************Detail******************/
+.btn-sub-comment{
+  background-color: #0575E6;
+  padding: 3px 10px;
+  border-radius: 20px;
+  color: #fff;
+  border: 0.5px;
+}
+.btn-sub-comment:hover{
+  background-color: #021B79;
+ 
+  transition: 0.5s;
+}
+.mb-10{
+  margin-bottom: 10px;
+}
+.center{
+  padding: 5px auto;
+}
+.btn-sub-detail{
+  background-color: #0575E6;
+  padding: 3px 50px;
+  border-radius: 20px;
+  color: #fff;
+  border: 0.5px;
+}
+.btn-sub-detail:hover{
+  background-color: #021B79;
+ 
+  transition: 0.5s;
+}
+.mt{
+  margin-top:70px;
+}
+.w-80{
+  width: 65%;
+}
+.boder{
+  border: 2px solid;
+  padding: 20px 50px;
+  border-radius:20px;
+}
+.cmt{
+    border-radius: 10px;
+    padding: 10px 10px;
+    width:100%;
+    display: flex;
+    justify-content: between;
+    border: 1px solid #d4d4d4;
+    margin-bottom: 5px;
+    background-color:#e8fbfc;
+}
+.cmtBox{
+  display: flex;
+}
+.contetCmt{
+  align-items: center;
+  margin-left: 20px;
+}
+.UserCmt{
+  font-size:20px;
+  font-weight: bold ;
+  color: #0575E6;
+}
+.tiltleCmt{
+  width:100%;
+  font-weight: bold;
+  background-color:#d4d4d4;
+  padding:10px ;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  align-items: center;
+
+}
+.form-cmt{
+  border-radius: 20px;
+  padding: 20px 50px;
+  
+}

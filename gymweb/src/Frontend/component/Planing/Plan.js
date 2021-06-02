@@ -81,7 +81,6 @@ export default function Plan(){
             <EditingState
             />
             <MonthView
-              
             />
             <AllDayPanel />
             <Appointments />

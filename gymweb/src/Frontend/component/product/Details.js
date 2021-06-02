@@ -42,8 +42,11 @@ export default function Details(){
                 }))
                 setComment(details[0].comment.map((cmt)=>{
                     return (
-                    <div>
-                        <span className="row">{cmt.user}: {cmt.content}</span>  
+                    <div className="cmtBox">
+                        <div className="cmt">
+                            <div className="UserCmt">{cmt.user}:</div>
+                            <div className="contetCmt">{cmt.content}</div> 
+                        </div> 
                     </div>)
                 }))
 
@@ -55,26 +58,21 @@ export default function Details(){
       
     })
     function handleClick() {
-        return  window.location.reload();
+        return   window.location=`/product/${same._id}`;
       }
       function comment( ) {
-        var date = new Date().toLocaleDateString()
-        
-            // return console.log({
-            //     id:id,
-            //     comment:{"content":cmt,"date":date}
-            // })
-        
+        var date = new Date().toLocaleDateString()  
         ExerciseService.Comment({
             id:id,
             comment:{"content":cmt,"date":date}
         })
+        return  window.location.reload();
       }
     const isauth=()=>{
         return ( 
         
         
-        <div className="Container">
+        <div className="Container-detail">
         <div className=" ml-2 row">
             <div className="col-md-8">
              
@@ -101,9 +99,9 @@ export default function Details(){
                 </div>
             </div>
         
-            <div className="col-md-4" >
+            <div className="col-md-4 mt-10" >
             <Link to={`/product/${same._id}`} style={{textDecoration: 'none'}}>
-                    <h4 className="text-dark">Các bài tập Khác</h4>                     
+                    <h4 className="text-dark">Anotherc</h4>                     
                     <div className="card-fluid w-100 p-3 container">
                         <div className="row">
                             <div className="card_img col-md-6">
@@ -112,9 +110,7 @@ export default function Details(){
                             <div className="card_block col-md-6">
                                     <p className="card-title text-dark text-truncate"> {same.excName}</p>
                                     <p className="card-text text-muted mx-auto text-truncate"> {same.title}</p>
-                                   <div onClick={handleClick} className="btn btn-success">
-                                            <a className="text-dark">Detail</a>
-                                        </div>
+                                    <button className='btn-sub-detail' type='submit' onClick={handleClick}>Detail</button>
                             </div>
                         </div>
                     </div>           
@@ -123,17 +119,11 @@ export default function Details(){
     </div>
 
             <div className="row">
-
-                <div className="col-md-8">
-                <div class='row ml-2 '>
-                      {
-                          Comment
-                      }
-                      </div>  
-
-                    <form >
+            <div className="col-md-2"></div>
+                <div className="col-md-8 boder">
+                    <form className="form-cmt">
                         <div class='row'>
-                        <h3 className="text-dark">Comment</h3>
+                        <h3 className="text-dark tiltleCmt">Comment</h3>
                         <input
                             className='form-control'
                             type='text'
@@ -141,12 +131,14 @@ export default function Details(){
                             placeholder='Enter your Comment' 
                              onChange={(e)=>setcmt( e.target.value)}  />
                            
-                        </div>
-
-                                
-                        <button className='btn-primary' onClick={(e)=>{ e.preventDefault();comment()}}  >Comment</button>
+                        </div>      
+                        <button className='btn-sub-comment mt-10' onClick={(e)=>{ e.preventDefault();comment()}}  >Comment</button>
                     </form>
-                   
+                    <div class='ml-2 mt-10'>
+                      {
+                          Comment
+                      }
+                      </div>  
                 </div>
                 </div>
             </div> 
