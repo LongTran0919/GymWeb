@@ -105,7 +105,7 @@ userRouter.post('/bmi',passport.authenticate('jwt',{session : false}),(req,res)=
         
     
     })
-
+   
 userRouter.get('/logout',passport.authenticate('jwt',{session : false}),(req,res)=>{
     res.clearCookie('access_token');
     const{_id,username,role}=req.user;

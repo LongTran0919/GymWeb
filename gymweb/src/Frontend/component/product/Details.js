@@ -18,6 +18,8 @@ export default function Details(){
     const [flag,setflag]=useState('');
     const [exercise,setexercise]= useState('');
     const [same,setsame]=useState('')
+    const [cmt,setcmt]=useState()
+    const [Comment,setComment]=useState()
     const [taskList,settaskList]=useState('')
     const {isAuthenticated,user,setisAuthenticated,setUser,info,setinfo} = useContext(AuthContext); 
     useEffect(() => {
@@ -38,6 +40,13 @@ export default function Details(){
                         <span className="spStep">{task.TitleSession}</span> : <div className="divStep">{task.DesSession}</div>  <br></br>
                     </div>)
                 }))
+                setComment(details[0].comment.map((cmt)=>{
+                    return (
+                    <div>
+                        <span className="row">{cmt.user}: {cmt.content}</span>  
+                    </div>)
+                }))
+
                 console.log(details[0].taskList)   
                 console.log(details[0])            
         });
@@ -48,9 +57,24 @@ export default function Details(){
     function handleClick() {
         return  window.location.reload();
       }
-    
+      function comment( ) {
+        var date = new Date().toLocaleDateString()
+        
+            // return console.log({
+            //     id:id,
+            //     comment:{"content":cmt,"date":date}
+            // })
+        
+        ExerciseService.Comment({
+            id:id,
+            comment:{"content":cmt,"date":date}
+        })
+      }
     const isauth=()=>{
-        return ( <div className="Container">
+        return ( 
+        
+        
+        <div className="Container">
         <div className=" ml-2 row">
             <div className="col-md-8">
              
@@ -62,7 +86,7 @@ export default function Details(){
                     <img src={img} alt="soi..." className="img_title"/>
                 </div>  
                 
-                {/* session */}
+            
                 <div>
                 {
                         <div className="card-fluid">
@@ -98,50 +122,33 @@ export default function Details(){
             </div>
     </div>
 
-
-
-    {/* Comment */}    
-            {/* Your comment */}
             <div className="row">
 
                 <div className="col-md-8">
+                <div class='row ml-2 '>
+                      {
+                          Comment
+                      }
+                      </div>  
+
                     <form >
-                        {/* input textbox */}
-                        <div>
+                        <div class='row'>
                         <h3 className="text-dark">Comment</h3>
                         <input
                             className='form-control'
                             type='text'
                             name='comment'
-                            placeholder='Enter your Comment'
-                        />
+                            placeholder='Enter your Comment' 
+                             onChange={(e)=>setcmt( e.target.value)}  />
+                           
                         </div>
 
-                        <div>
-                            <p>Rating by star</p>
-                        </div>            
-                        <button className='btn-primary' type='submit'>Comment</button>
+                                
+                        <button className='btn-primary' onClick={(e)=>{ e.preventDefault();comment()}}  >Comment</button>
                     </form>
+                   
                 </div>
                 </div>
-
-
-                {/* Other comment */}
-            <div className="row">
-
-                    <div className="card-fluid w-100 p-3 container">
-                        <div className="row">
-                                <div className="card_img col-md-1 ">
-                                    <img src={img} className="img_avatar" alt="soi..." />
-                                </div>
-                                <div className=" col-md-11 ">
-                                    <p className="card-title text-dark text-truncate">username</p>
-                                    <p>dayOfComment</p>
-                                    <p className="card-text text-muted mx-auto text-truncate">Comment content</p>
-                            </div>
-                        </div>
-                    </div>
-            </div> 
             </div> 
         )
 
@@ -168,7 +175,6 @@ export default function Details(){
                             <div className="card_body">
                                 <h2 className="titltTask">TaskList</h2>
                             </div>
-                          
                             
                         </div>
                 }
@@ -189,7 +195,6 @@ export default function Details(){
                                         <div onClick={handleClick} className="btn btn-success">
                                             <a className="text-dark"  href={`/product/${same._id}`}> Detail </a>
                                         </div>
-                                    
                             </div>
                         </div>
                     </div>                      
@@ -218,7 +223,7 @@ export default function Details(){
                         <div>
                             <p>Rating by star</p>
                         </div>            
-                        <button className='btn-primary' type='submit'>Comment</button>
+                        <button className='btn-primary'  type='submit'>Comment</button>
                     </form>
                 </div>
                 </div>
@@ -245,10 +250,7 @@ export default function Details(){
         )
 
     }
-    return(
-        
-        isAuthenticated ?   isauth() :noauth()
-        )
+    return(  isAuthenticated ?   isauth() :noauth())
         
 
     

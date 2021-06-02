@@ -37,6 +37,15 @@ export default {
       if(res.status!==401)return res.data;
     else return {"fail":"true"}
 }).catch(error=> console.log(error))
+},  Comment:(data)=>{
+  return   axios
+  .post('http://localhost:5000/exercise/comment',{id:data.id,comment:data.comment},{ withCredentials: true },{Headers: {
+            'Content-Type': 'application/json',
+          }}).then(res=>{
+    if(res.status===200)return res.data;
+  else return {"fail":"true"}
+}).catch(error=> console.log(error))
 },
+ 
 
 }

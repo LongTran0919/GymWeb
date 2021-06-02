@@ -111,5 +111,25 @@ const {excName ,title,typeExc,level,taskList,date_created,comment,compound,autho
        
          
     })
+    ExcRouter.post('/comment',passport.authenticate('jwt',{session : false}),(req,res)=>{
+        const {comment,id} =req.body
+        const{_id,username,role}=req.user;
+      
+       
+        Exc.findOneAndUpdate({_id:id},{$addToSet:{comment:{...comment,user:username}}}, function (err,exc) {
+            if(err){
+                console.log(err)
+                return res.status(401).json({
+                message:{msgBody:"Error has occured 1"},
+                msgError:true })  
+            }
+            if(!exc)  return    res.status(404).json({ message: `not found    `});
+        
+    
+            if(exc) return res.status(200).json({ message: `comment successfully  `})
+        })
+            
+        
+        })
 
 module.exports = ExcRouter;

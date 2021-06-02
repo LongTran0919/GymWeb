@@ -45,9 +45,7 @@ class AdminAddLesson extends React.Component {
     handleSubmit = (e) => {
             e.preventDefault();
             let data = {formdata:this.state};
-            console.log(data.formdata)
-
-            
+            console.log(data.formdata)  
             ExerciseService.AddExercise(data.formdata).then(
                 data=>{
                     console.log(data)
