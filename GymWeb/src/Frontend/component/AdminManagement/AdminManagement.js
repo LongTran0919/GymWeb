@@ -63,7 +63,7 @@ export default function AdminPro(){
            }
            }).map(a =>(
                <div classNameName="row">                   
-               <div className="card card-lesson d-flex flex-row justify-content-between pt-10">         
+               <div className="cardd card-lesson d-flex flex-row justify-content-between pt-10">         
                    <img className="" src={img} alt="Card image cap"/>
                    <div className="flex-fill">
                        <h4>{a.excName}</h4>

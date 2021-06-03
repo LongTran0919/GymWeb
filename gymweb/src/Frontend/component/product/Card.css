@@ -72,6 +72,9 @@
     transition:all .3s ease-in-out;
     
   }
+  .cardd{
+    border: 2px solid;
+  }
   .btn{
     width:130px;
     height:35px;

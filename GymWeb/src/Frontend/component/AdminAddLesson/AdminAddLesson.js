@@ -73,8 +73,7 @@ class AdminAddLesson extends React.Component {
       const   {lessonImage,LessionDes,LessionTitle} = this.state
         let { taskList } = this.state//let { notes, date, description, taskList } = this.state
         return (
-            <div className="content">
-                <NotificationContainer/>
+            <div className="contentt">
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange} >
                     <div className="row" style={{ marginTop: 10 }}>
                         <div className="col-sm-1"></div>
@@ -145,7 +144,6 @@ class AdminAddLesson extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-1"></div>
                     </div>
                 </form>
             </div>

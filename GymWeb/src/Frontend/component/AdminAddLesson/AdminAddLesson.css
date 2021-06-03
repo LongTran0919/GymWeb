@@ -28,6 +28,12 @@ tbody{
   padding-right: 20px !important;
   border: none !important;
 }
+.contentt{
+  height: 3320px !important;
+}
+.card{
+  height: 3320px !important;
+}
 /****************Update***********/
 .w100{
   width:100%;

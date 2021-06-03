@@ -47,10 +47,6 @@ export default function   BMIForm () {
        
            )
     }
- 
-  
-
-
         return (
             <div className="content">
                 
