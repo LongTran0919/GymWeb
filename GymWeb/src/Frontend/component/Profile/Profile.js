@@ -65,7 +65,7 @@ export default function Profile(){
                              <div className="p-4 rounded shadow-sm bg-light">
                                  <p className="font-italic mb-0">user@gmail.com</p>
                                  <p className="font-italic mb-0">date of birth</p>
-                                 {lk}
+                              
                              </div>
                          </div>
                      

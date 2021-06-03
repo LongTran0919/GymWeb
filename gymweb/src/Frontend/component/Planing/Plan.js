@@ -3,7 +3,7 @@ import "./Plan.css"
 import Paper from '@material-ui/core/Paper';
 import {useContext,useState,useEffect} from 'react';
 import DatePicker from 'react-datepicker';
-import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
+import { ViewState, EditingState,IntegratedEditing } from '@devexpress/dx-react-scheduler';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import {IoIosAddCircle} from 'react-icons/io';
@@ -15,60 +15,81 @@ import {
   AppointmentForm,
   AppointmentTooltip,
   WeekView,
+  DayView,
   MonthView,
   EditRecurrenceMenu,
+
   AllDayPanel,
+
   ConfirmationDialog,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { appointments } from './data/appointments';
 export default function Plan(){
-  const [plan,setplan]=useState([
-  ])
-    const [state,setstate]=useState([
-      {
-        data: plan,
-        currentDate: Date().toLocaleString(),
-      }
-    ])
+  const [plan,setplan]=useState([])
+    const [state,setstate]=useState([{ data: plan,   currentDate: Date().toLocaleString(), }])
       
-  const [data,setdata]=useState("");
+  const [data,setdata]=useState([]);
   const [startDate, setStartDate] = useState(new Date());
-  
+  const appointments = [
+    { title: 'Mail New Leads for Follow Up', startDate: '2021-06-04T13:49','endDate':'2021-06-04T14:49' },
+    { title: 'Product Meeting', startDate: '2019-06-23T10:30', endDate: '2019-06-23T11:30' },
+    { title: 'Send Territory Sales Breakdown', startDate: '2019-06-23T12:35' },
+  ]; 
 
 
 function handleSubmit(e){
 
   e.preventDefault();
+ 
+  setdata({...data,plan:[...data.plan,plan]})
   console.log(plan)
   
+}
+function commitChanges({ added, changed, deleted }){
+  setdata({...data,plan:[...data.plan,plan]})
+
+  // if (added) {
+  //   const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
+  //   data = [...data, { id: startingAddedId, ...added }];
+  // }
+  // if (changed) {
+  //   data = data.map(appointment => (
+  //     changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment));
+  // }
+  // if (deleted !== undefined) {
+  //   data = data.filter(appointment => appointment.id !== deleted);
+  // }
+  // return { data };
+ 
 }
 function handleChange(e){
   setplan({...plan ,[e.target.name]:e.target.value} )
 }
    useEffect(() => {
-     setdata({data:plan,currentDate:Date().toLocaleString(),addedAppointment:{},appointmenztChanges:{},editingAppointment:undefined});
+     setdata({plan:[],currentDate:Date().toLocaleString(),addedAppointment:{},appointmenztChanges:{},editingAppointment:undefined});
      
  }, []);
     return (
-      <div>
+      <div className='mt-5'>
         <div>
         </div>
         <Paper>
           <Scheduler
             data={data.plan}
-            height={875}
-          >
-            <ViewState
-              currentDate={data.currentDate}
-            />
+            height={875}>
+            <ViewState currentDate={data.currentDate}/>
             <EditingState
-            />
-            <MonthView
-            />
+            onCommitChanges={commitChanges}
+          />
+            <MonthView  /> 
+            {/* startDayHour={6} endDayHour={11} */}
             <AllDayPanel />
             <Appointments />
-            <AppointmentTooltip
-            />
+            <IntegratedEditing />
+            <AppointmentTooltip    showOpenButton
+            showDeleteButton />
+            <AppointmentForm />
+           
           </Scheduler>
           <div className="card-body cennter">
         <form className="center"onSubmit={(e)=>handleSubmit(e)} onChange={(e)=> handleChange(e)}>
@@ -76,24 +97,12 @@ function handleChange(e){
         <div className="form-group form-check">
                     <div className="mt-10">
                         <label className="mr-20">Date From : </label>
-                      <input 
-                       
-                        id="party" 
-                        type="datetime-local" 
-                        name="startDate" 
-                        dateFormat="dd-MM-yyyy hh:mm:ss a"
-                      
-                        >
+                      <input  id="party" type="datetime-local" name="startDate" dateFormat="dd-MM-yyyy hh:mm:ss a" >
                       </input>
                     </div>
                     <div className="mt-10 justify-content-center">
                         <label className="mr-30">Date To : </label>
-                        <input  
-                        id="party" 
-                        type="datetime-local" 
-                        name="endDate" 
-                        dateFormat="dd-MM-yyyy hh:mm:ss a"
-                        >
+                        <input   id="party" type="datetime-local" name="endDate" dateFormat="dd-MM-yyyy hh:mm:ss a" >
                       </input>
                     </div>
             </div>

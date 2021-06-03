@@ -5,8 +5,7 @@ import './Plan.css'
 import "react-datepicker/dist/react-datepicker.css";
 
 function AddPlan() {
-    const [plan,setplan]=useState([
-    ])
+    const [plan,setplan]=useState([])
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
 
