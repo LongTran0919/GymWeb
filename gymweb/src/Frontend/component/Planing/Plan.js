@@ -1,10 +1,13 @@
 import * as React from 'react';
+import "./Plan.css"
 import Paper from '@material-ui/core/Paper';
 import {useContext,useState,useEffect} from 'react';
 import DatePicker from 'react-datepicker';
 import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import {IoIosAddCircle} from 'react-icons/io';
+import Form from'./AddPlan'
 import "react-datepicker/dist/react-datepicker.css";
 import {
   Scheduler,
@@ -19,60 +22,40 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { appointments } from './data/appointments';
 export default function Plan(){
-
+  const [plan,setplan]=useState([
+  ])
     const [state,setstate]=useState([
       {
-        data: appointments,
+        data: plan,
         currentDate: Date().toLocaleString(),
       }
     ])
       
   const [data,setdata]=useState("");
   const [startDate, setStartDate] = useState(new Date());
+  
 
-  // function changeAddedAppointment(addedAppointment) {
-  //   setdata({ addedAppointment });
-  // }
 
-  // function changeAppointmentChanges(appointmentChanges) {
-  //   setdata({ appointmentChanges });
-  // }
+function handleSubmit(e){
 
-  // function changeEditingAppointment(editingAppointment) {
-  //   setdata({ editingAppointment });
-  // }
-
-  // function commitChanges({ added, changed, deleted }) {
-  //   setdata((state) => {
-  //     let { data } = state;
-  //     if (added) {
-  //       const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
-  //       data = [...data, { id: startingAddedId, ...added }];
-  //     }
-  //     if (changed) {
-  //       data = data.map(appointment => (
-  //         changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment));
-  //     }
-  //     if (deleted !== undefined) {
-  //       data = data.filter(appointment => appointment.id !== deleted);
-  //     }
-  //     return { data };
-  //   });
-  // }
+  e.preventDefault();
+  console.log(plan)
+  
+}
+function handleChange(e){
+  setplan({...plan ,[e.target.name]:e.target.value} )
+}
    useEffect(() => {
-     setdata({data:appointments,currentDate:Date().toLocaleString(),addedAppointment:{},appointmenztChanges:{},editingAppointment:undefined});
+     setdata({data:plan,currentDate:Date().toLocaleString(),addedAppointment:{},appointmenztChanges:{},editingAppointment:undefined});
      
  }, []);
-
-  
     return (
       <div>
         <div>
-        <a className="nav-link" href="/addplan">Add new</a>
         </div>
         <Paper>
           <Scheduler
-            data={data.data}
+            data={data.plan}
             height={875}
           >
             <ViewState
@@ -86,9 +69,39 @@ export default function Plan(){
             <Appointments />
             <AppointmentTooltip
             />
-          
           </Scheduler>
+          <div className="card-body cennter">
+        <form className="center"onSubmit={(e)=>handleSubmit(e)} onChange={(e)=> handleChange(e)}>
+        <input type="text" className="form-control styled-select"  name="title"  placeholder="Enter Title Plan"/>
+        <div className="form-group form-check">
+                    <div className="mt-10">
+                        <label className="mr-20">Date From : </label>
+                      <input 
+                       
+                        id="party" 
+                        type="datetime-local" 
+                        name="startDate" 
+                        dateFormat="dd-MM-yyyy hh:mm:ss a"
+                      
+                        >
+                      </input>
+                    </div>
+                    <div className="mt-10 justify-content-center">
+                        <label className="mr-30">Date To : </label>
+                        <input  
+                        id="party" 
+                        type="datetime-local" 
+                        name="endDate" 
+                        dateFormat="dd-MM-yyyy hh:mm:ss a"
+                        >
+                      </input>
+                    </div>
+            </div>
+            <button type="submit" className="btn btn-primary text-center text-dark">Submit</button>
+      </form>
+    </div>
         </Paper>
+       
       </div>
     );
   }

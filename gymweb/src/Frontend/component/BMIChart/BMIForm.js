@@ -9,9 +9,6 @@ export default function   BMIForm () {
     const [height,setheight]= useState()
     const [weight,setweight]= useState()
 
- 
-
- 
     const  handlerHight=(e)=>{
         setheight(  e.target.value)
     }
@@ -23,7 +20,7 @@ export default function   BMIForm () {
             e.preventDefault();
        
          
-               var    Bmi = (parseInt(weight)/((parseFloat(height)*2))).toFixed(2)
+            var    Bmi = (parseInt(weight)/((parseFloat(height)*2))).toFixed(2)
 
             var curTimenew = new Date().toLocaleDateString()
             
@@ -48,13 +45,13 @@ export default function   BMIForm () {
            )
     }
         return (
-            <div className="content">
+            <div className="">
                 
                 <form onSubmit={handleSubmit} >
                     <div className="row" style={{ marginTop: 10 }}>
                         <div className="col-sm-1"></div>
                         <div className="col-sm-10">
-                            <div className="card">
+                            <div className="">
                                 <div className="card-header text-center">Add BMI Chart</div>
                                 <div className="card-body">
                                     <div className="row justify-content-center">

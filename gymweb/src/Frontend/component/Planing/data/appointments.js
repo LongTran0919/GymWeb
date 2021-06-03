@@ -1,8 +1,8 @@
 export const appointments = [
     {
-      title: 'Longggg',
-      startDate: new Date(2021, 4, 26, 9, 35),
-      endDate: new Date(2021, 4, 26, 11, 30),
+      title: 'Tap',
+      startDate: '2021-06-04T13:49',
+      endDate: '2021-06-04T13:51',
       id: 0,
     }, {
       title: 'LG',

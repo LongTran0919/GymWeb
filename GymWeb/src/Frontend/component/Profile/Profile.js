@@ -8,8 +8,6 @@ import notfound from '../404page/404'
 export default function Profile(){
     const {isAuthenticated,user,setisAuthenticated,setUser,info,setinfo} = useContext(AuthContext); 
   
- 
-   
      const isauth=()=>{
         var Bmi=info.Bmi[info.Bmi.length - 1] 
        
@@ -34,7 +32,7 @@ export default function Profile(){
                                      <!-- -> change here --> */}
                                      <h4 className="mt-0 mb-0">{user.username}</h4>
                                      {/* <!-- Address --> */}
-                                     <p className="small mb-4"> <i className="fas fa-map-marker-alt mr-2 "></i>New York</p>
+                                     <p className="small mb-4"> <i className="fas fa-map-marker-alt mr-2 "></i></p>
                                  </div>
                                  
                              </div>
@@ -67,6 +65,7 @@ export default function Profile(){
                              <div className="p-4 rounded shadow-sm bg-light">
                                  <p className="font-italic mb-0">user@gmail.com</p>
                                  <p className="font-italic mb-0">date of birth</p>
+                                 {lk}
                              </div>
                          </div>
                      
@@ -80,5 +79,4 @@ export default function Profile(){
         isAuthenticated? isauth():notfound()
      )
    
-    
 }

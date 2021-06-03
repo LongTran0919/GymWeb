@@ -51,7 +51,7 @@ export default function AdminPro(){
            <input type="text" className="input_search" placeholder="  Enter the exercise name or part of the body" onChange={event=>{setSearchTerm(event.target.value)}}/>
    </div>
    <div className="btn-content-right">
-       <a type="button" class="btn-add-les" href="/admin/add">Add Lesson <IoIosAddCircle size={20}/></a>
+       <a type="button" className="btn-add-les" href="/admin/add">Add Lesson <IoIosAddCircle size={20}/></a>
    </div>
    
    {
