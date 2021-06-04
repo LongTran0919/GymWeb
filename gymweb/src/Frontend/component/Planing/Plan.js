@@ -76,7 +76,7 @@ export default class Demo extends React.PureComponent {
       <Paper>
         <Scheduler
           data={data}
-          height={660}
+          height={660} 
         >
              <Toolbar />
           <ViewState
