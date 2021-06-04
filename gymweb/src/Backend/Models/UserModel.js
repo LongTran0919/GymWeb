@@ -28,6 +28,9 @@ const UserSchema = new mongose.Schema(
         },
         Avatar:{type:String
         },
+        Plan:{
+            type:Array
+        },
         role:{
             type:String,
             enum:['user','admin','teacher']

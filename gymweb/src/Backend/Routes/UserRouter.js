@@ -101,11 +101,28 @@ userRouter.post('/bmi',passport.authenticate('jwt',{session : false}),(req,res)=
 
         if(user) res.status(200).json({ message: `update successfully  `})
     }) 
-
-        
-    
     })
    
+    userRouter.post('/plan',passport.authenticate('jwt',{session : false}),(req,res)=>{
+        const {plan} =req.body
+        const {username} = req.user;
+       
+        User.findOneAndUpdate({username:username,}, { $set: {"Plan":plan} } ,(err,user)=>{
+            if(err) res.status(500).json({
+                message:{msgBody:"Error has occured 1"},
+                msgError:true })
+           
+       
+           if(!user)    res.status(401).json({
+                    message:{msgBody:"Error has occured 1"},
+                    msgError:true })
+            
+         
+    
+            if(user) res.status(200).json({ message: `update successfully  `})
+        }) 
+        })
+       
 userRouter.get('/logout',passport.authenticate('jwt',{session : false}),(req,res)=>{
     res.clearCookie('access_token');
     const{_id,username,role}=req.user;

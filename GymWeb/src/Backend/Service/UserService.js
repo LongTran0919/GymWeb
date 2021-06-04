@@ -19,6 +19,15 @@ export default {
               if(res.status!==401)return res.data;
             else return {"fail":"true"}
         })
-    }
+    },
+    Plan:(plan)=>{
+      return   axios
+      .post('http://localhost:5000/user/plan',{plan:plan},{ withCredentials: true },{Headers: {
+                'Content-Type': 'application/json',
+              }}).then(res=>{
+        if(res.status!==401)return res.data;
+      else return {"fail":"true"}
+  })
+}
 
 }
