@@ -172,7 +172,7 @@ export default function AdminUpdate(){
             <div className="row" style={{ marginTop: 10 }}>
                 <div className="col-sm-1"></div>
                 <div className="col-sm-10">
-                    <div className="card">
+                    <div className="">
                         <div className="card-header text-center">Add Your Exercise</div>
                         <div className="card-body">
                             <div className="row justify-content-center">

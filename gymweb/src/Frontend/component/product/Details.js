@@ -5,6 +5,7 @@ import ExerciseService from '../../../Backend/Service/ExerciseService'
 import { AuthContext } from '../../../Backend/Context/AuthContext';
 import img from '../../IMG/Gym.jpg'
 import './Card.css'
+import {toast} from 'react-toastify';
 import {Link} from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 const axios = require('axios');
@@ -16,7 +17,7 @@ export default function Details(){
     // const[products, setProducts] = useContext(DataContext);
     const [data,setdata]=useState("");
     const [flag,setflag]=useState('');
-    const [exercise,setexercise]= useState('');
+    const [exercise,setexercise]= useState( {comment:[]});
     const [same,setsame]=useState('')
     const [cmt,setcmt]=useState()
     const [Comment,setComment]=useState()
@@ -37,7 +38,7 @@ export default function Details(){
                 settaskList(details[0].taskList.map((task)=>{
                     return (
                     <div>
-                        <span className="spStep">{task.TitleSession}</span> : <div className="divStep">{task.DesSession}</div>  <br></br>
+                        <span className=" bg-light">{task.TitleSession}</span> : <div className="divStep">{task.DesSession}</div>  <br></br>
                     </div>)
                 }))
                 setComment(details[0].comment.map((cmt)=>{
@@ -50,23 +51,54 @@ export default function Details(){
                     </div>)
                 }))
 
-                console.log(details[0].taskList)   
-                console.log(details[0])            
+                // console.log(details[0].taskList)   
+                // console.log(details[0])            
         });
         
    
       
     })
+    useEffect(()=>{
+        console.log(exercise)
+        setComment(exercise.comment.map((cmt)=>{
+            return (
+            <div className="cmtBox">
+                <div className="cmt">
+                    <div className="UserCmt">{cmt.user}:</div>
+                    <div className="contetCmt">{cmt.content}</div> 
+                </div> 
+            </div>)
+        }))
+    },[exercise])
+
     function handleClick() {
         return   window.location=`/product/${same._id}`;
       }
+
       function comment( ) {
         var date = new Date().toLocaleDateString()  
-        ExerciseService.Comment({
-            id:id,
-            comment:{"content":cmt,"date":date}
-        })
-        return  window.location.reload();
+        if(isAuthenticated){ 
+            console.log(Comment)
+            setexercise({...exercise,comment:[...exercise.comment,({
+             "content":cmt,"date":date,'user':user.username
+            })]})
+
+           
+      
+            ExerciseService.Comment({
+
+                id:id,
+                comment:{"content":cmt,"date":date}
+            })
+           
+        
+        }
+       else{
+        toast.configure();
+        toast.error('Bạn phải đăng nhập để comment' ,{position:toast.POSITION.BOTTOM_LEFT});
+       }
+       
+        
       }
     const isauth=()=>{
         return ( 
@@ -119,13 +151,13 @@ export default function Details(){
     </div>
 
             <div className="row">
-            <div className="col-md-2"></div>
-                <div className="col-md-8 boder">
+            
+                <div className="col-md-12 boder">
                     <form className="form-cmt">
                         <div class='row'>
-                        <h3 className="text-dark tiltleCmt">Comment</h3>
+                        <h3 className="badge badge-dark tiltleCmt">Comment</h3>
                         <input
-                            className='form-control'
+                            className='form-control '
                             type='text'
                             name='comment'
                             placeholder='Enter your Comment' 
@@ -147,34 +179,36 @@ export default function Details(){
 
     }
     const noauth=()=>{
-        return ( <div className="Container">
+        return (  <div className="Container-detail">
         <div className=" ml-2 row">
             <div className="col-md-8">
              
                 <div className="row">
-                    <h2 className="text-dark">{exercise.excName}</h2>
+                    <h2 className="text-dark titltTask mb-20">{exercise.excName}</h2>
                 </div>  
                 <div className="row">
                     <div className="float-right">{exercise.author} </div>
                     <img src={img} alt="soi..." className="img_title"/>
                 </div>  
                 
-                {/* session */}
+            
                 <div>
                 {
                         <div className="card-fluid">
-                        
                             <div className="card_body">
-                                <h2 className="titltTask">TaskList</h2>
+                                <h2 className="titltTask mt-20">TaskList</h2>
+                                    {
+                                        taskList
+                                    }
                             </div>
-                            
                         </div>
                 }
                 </div>
             </div>
         
-            <div className="col-md-4">
-                    <h4 className="text-dark">Các bài tập Khác</h4>                     
+            <div className="col-md-4 mt-10" >
+            <Link to={`/product/${same._id}`} style={{textDecoration: 'none'}}>
+                    <h4 className="text-dark">Anotherc</h4>                     
                     <div className="card-fluid w-100 p-3 container">
                         <div className="row">
                             <div className="card_img col-md-6">
@@ -183,62 +217,40 @@ export default function Details(){
                             <div className="card_block col-md-6">
                                     <p className="card-title text-dark text-truncate"> {same.excName}</p>
                                     <p className="card-text text-muted mx-auto text-truncate"> {same.title}</p>
-                                    
-                                        <div onClick={handleClick} className="btn btn-success">
-                                            <a className="text-dark"  href={`/product/${same._id}`}> Detail </a>
-                                        </div>
+                                    <button className='btn-sub-detail' type='submit' onClick={handleClick}>Detail</button>
                             </div>
                         </div>
-                    </div>                      
+                    </div>           
+                 </Link>
             </div>
     </div>
 
-
-
-    {/* Comment */}    
-            {/* Your comment */}
             <div className="row">
-
-                <div className="col-md-8">
-                    <form >
-                        {/* input textbox */}
-                        <div>
-                        <h3 className="text-dark">Comment</h3>
+            
+                <div className="col-md-12 boder">
+                    <form className="form-cmt">
+                        <div class='row'>
+                        <h3 className="badge badge-dark tiltleCmt">Comment</h3>
                         <input
-                            className='form-control'
+                            className='form-control '
                             type='text'
                             name='comment'
-                            placeholder='Enter your Comment'
-                        />
-                        </div>
-
-                        <div>
-                            <p>Rating by star</p>
-                        </div>            
-                        <button className='btn-primary'  type='submit'>Comment</button>
+                            placeholder='Enter your Comment' 
+                             onChange={(e)=>setcmt( e.target.value)}  />
+                           
+                        </div>      
+                        <button className='btn-sub-comment mt-10' onClick={(e)=>{ e.preventDefault();comment()}}  >Comment</button>
                     </form>
+                    <div class='ml-2 mt-10'>
+                      {
+                          Comment
+                      }
+                      </div>  
                 </div>
                 </div>
-
-
-                {/* Other comment */}
-            <div className="row">
-
-                    <div className="card-fluid w-100 p-3 container">
-                        <div className="row">
-                                <div className="card_img col-md-1">
-                                    <img src={img} sizes="16" className="img_avatar" alt="soi..." />
-                                </div>
-                                <div className=" col-md-11">
-                                    <p className="card-title text-dark text-truncate">username</p>
-                                    <p>rating</p>
-                                    <p>dayOfComment</p>
-                                    <p className="card-text text-muted mx-auto text-truncate">Comment content</p>
-                            </div>
-                        </div>
-                    </div>
             </div> 
-            </div> 
+
+           
         )
 
     }

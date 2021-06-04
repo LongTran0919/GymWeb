@@ -20,16 +20,16 @@ export default function Profile(){
             return(
                 <div>
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Chọn thực phẩm khôn ngoan</a>
-                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Ăn 5 – 6 bữa mỗi ngày, thay vì 3 bữa như thông thường</a>
-                            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Nạp vào cơ thể nhiều Calories hơn lượng Calories bạn tiêu thụ hằng ngày</a>
-                            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Bổ sung nước cho cơ thể</a>
-                            <a class="list-group-item list-group-item-action" id="list-settingss-list" data-toggle="list" href="#list-settingss" role="tab" aria-controls="settings">Nghỉ ngơi hợp lý</a>
+                            <a class="list-group-item list-group-item-action badge badge-primary f20" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Chọn thực phẩm khôn ngoan</a>
+                            <a class="list-group-item list-group-item-action badge badge-secondary f20" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Ăn 5 – 6 bữa mỗi ngày, thay vì 3 bữa như thông thường</a>
+                            <a class="list-group-item list-group-item-action badge badge-success f20" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Nạp vào cơ thể nhiều Calories hơn lượng Calories bạn tiêu thụ hằng ngày</a>
+                            <a class="list-group-item list-group-item-action badge badge-info f20" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Bổ sung nước cho cơ thể</a>
+                            <a class="list-group-item list-group-item-action badge badge-danger f20" id="list-settingss-list" data-toggle="list" href="#list-settingss" role="tab" aria-controls="settings">Nghỉ ngơi hợp lý</a>
                             </div>
                         </div>
-                        <div class="col-8">
+                        <div class="col-6">
                             <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">Chọn thực phẩm để đưa vào trong thực đơn tăng cân cũng là một yếu tố quan trọng mà bạn cần lưu tâm. 
                                                                                                                                     4 nhóm chất bạn cần chú ý để tăng cường là:Protein, tinh bột, chất béo, vitamin và khoáng chất</div>
@@ -55,10 +55,10 @@ export default function Profile(){
                    <div class="row">
                         <div class="col-4">
                             <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Thay thế các loại thịt bằng cá</a>
-                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Hạn chế tinh bột và chất béo</a>
-                            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Ăn trái cây khi có cảm giác thèm ăn</a>
-                            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Chú trọng khâu chọn lựa và chế biến thực phẩm</a>
+                            <a class="list-group-item list-group-item-action badge badge-primary f20" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><span class=" ">Thay thế các loại thịt bằng cá</span></a>
+                            <a class="list-group-item list-group-item-action badge badge-secondary f20" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Hạn chế tinh bột và chất béo</a>
+                            <a class="list-group-item list-group-item-action badge badge-success f20" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Ăn trái cây khi có cảm giác thèm ăn</a>
+                            <a class="list-group-item list-group-item-action badge badge-info f20" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Chú trọng khâu chọn lựa và chế biến thực phẩm</a>
                             </div>
                         </div>
                         <div class="col-8">
@@ -91,7 +91,7 @@ export default function Profile(){
                                  <div className="profile mr-3">
                                      <img src={img} alt="avatar" className="rounded mb-2 img-thumbnail avatar"/>
  
-                                     <button type="button" className="btn-outline-dark btn-sm btn-edit btn-block">Edit Profile</button>
+                                   
                                      
                                  </div>
                                  <div className="media-body mb-5 text-white">
@@ -128,7 +128,7 @@ export default function Profile(){
  
                          {/* <!-- user profile  --> */}
                          <div className="px-4 py-3">
-                             <h5 className="mb-0">Advice</h5>
+                             <h5 className="mb-0 advice">Advice</h5>
                              <div className="p-4 rounded shadow-sm bg-light">
                                     {LK()}
                              </div>

@@ -18,8 +18,9 @@ import {
   WeekView,
   DayView,
   MonthView,
+  TodayButton,
   EditRecurrenceMenu,
- 
+  DateNavigator,
   ViewSwitcher,
   Toolbar,
   AllDayPanel,
@@ -45,6 +46,7 @@ export default class Demo extends React.PureComponent {
         return { data };
       })
     } )
+    this.currentDateChange = (currentDate) => { this.setState({ currentDate }); };
     this.commitChanges = this.commitChanges.bind(this);
   }
 
@@ -80,7 +82,9 @@ export default class Demo extends React.PureComponent {
           height={660} 
         >
              <Toolbar />
+             
           <ViewState
+            onCurrentDateChange={this.currentDateChange}
             currentDate={currentDate}
             defaultCurrentViewName="Week"
           />
@@ -93,6 +97,8 @@ export default class Demo extends React.PureComponent {
             startDayHour={6}
             endDayHour={23}
           />
+          <DateNavigator />
+              <TodayButton />
           <ViewSwitcher />
       
           <EditingState onCommitChanges={this.commitChanges}/>

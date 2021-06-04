@@ -73,12 +73,12 @@ class AdminAddLesson extends React.Component {
       const   {lessonImage,LessionDes,LessionTitle} = this.state
         let { taskList } = this.state//let { notes, date, description, taskList } = this.state
         return (
-            <div className="contentt">
+            <div className="content">
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange} >
                     <div className="row" style={{ marginTop: 10 }}>
                         <div className="col-sm-1"></div>
                         <div className="col-sm-10">
-                            <div className="card">
+                            <div className="">
                                 <div className="card-header text-center">Add Your Exercise</div>
                                 <div className="card-body">
                                     <div className="row justify-content-center">
