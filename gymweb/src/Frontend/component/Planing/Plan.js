@@ -3,7 +3,7 @@ import "./Plan.css"
 import Paper from '@material-ui/core/Paper';
 import {useContext,useState,useEffect} from 'react';
 import DatePicker from 'react-datepicker';
-import { ViewState, EditingState,IntegratedEditing } from '@devexpress/dx-react-scheduler';
+import { ViewState, EditingState,IntegratedEditing  } from '@devexpress/dx-react-scheduler';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import {IoIosAddCircle} from 'react-icons/io';
@@ -19,6 +19,7 @@ import {
   DayView,
   MonthView,
   EditRecurrenceMenu,
+ 
   ViewSwitcher,
   Toolbar,
   AllDayPanel,
@@ -81,12 +82,9 @@ export default class Demo extends React.PureComponent {
              <Toolbar />
           <ViewState
             currentDate={currentDate}
-            defaultCurrentViewName="Month"
+            defaultCurrentViewName="Week"
           />
-         <MonthView
-            startDayHour={6}
-            endDayHour={23}
-          />
+         {/* <MonthView    formatDate={String} startDayHour={6} endDayHour={23}/> */}
            <DayView
             startDayHour={6}
             endDayHour={23}
@@ -96,10 +94,10 @@ export default class Demo extends React.PureComponent {
             endDayHour={23}
           />
           <ViewSwitcher />
-          <EditingState
-            onCommitChanges={this.commitChanges}
-          />
+      
+          <EditingState onCommitChanges={this.commitChanges}/>
           <IntegratedEditing />
+          {/* <DragDropProvider allowDrag={true} allowResize={true}  /> */}
           <ConfirmationDialog />
           <Appointments />
           <AppointmentTooltip
