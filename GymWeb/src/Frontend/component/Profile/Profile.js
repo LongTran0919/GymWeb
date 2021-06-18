@@ -16,7 +16,7 @@ export default function Profile(){
     // }, [info.Bmi, lk])
     function LK(){
         var Bmi=info.Bmi[info.Bmi.length - 1] 
-        if(Bmi.Bmi<18.5)
+        if(Bmi) if(Bmi.Bmi<18.5)
             return(
                 <div>
                     <div class="row">
@@ -45,11 +45,11 @@ export default function Profile(){
                         </div>
                 </div>
             )
-        if(Bmi.Bmi>=18.5&&Bmi.Bmi<24.9)
+       if(Bmi) if(Bmi.Bmi>=18.5&&Bmi.Bmi<24.9)
             return(
                 <div>Chỉ sô BMi cân đối tiếp tục giữ vững chế độ ăn uống và luyện tập</div>
             )
-            if(Bmi.Bmi>=25)
+            if(Bmi)   if(Bmi.Bmi>=25)
                 return(
                 <div>
                    <div class="row">
@@ -110,16 +110,16 @@ export default function Profile(){
                      <div className="bg-light p-4 d-flex justify-content-end text-center">
                          <ul className="list-inline mb-0">
                              <li className="list-inline-item">
-                                 <h5 className="font-weight-bold mb-0 d-block">{Bmi.height}m</h5><small className="text-muted"> 
+                                 <h5 className="font-weight-bold mb-0 d-block">{!Bmi?0:Bmi.height}m</h5><small className="text-muted"> 
                                          <img className="fas fa-image mr-1"></img>Height</small>
                              </li>
                          <li className="list-inline-item">
-                                         <h5 className="font-weight-bold mb-0 d-block">{Bmi.weight}kg</h5><small className="text-muted"> 
+                                         <h5 className="font-weight-bold mb-0 d-block">{!Bmi?0:Bmi.weight}kg</h5><small className="text-muted"> 
                                          <img className="fas fa-user mr-1"></img>Weight</small>
                              </li>
  
                              <li className="list-inline-item">
-                                         <h5 className="font-weight-bold mb-0 d-block">{Bmi.Bmi}</h5><small className="text-muted"> 
+                                         <h5 className="font-weight-bold mb-0 d-block">{!Bmi?0:Bmi.Bmi}</h5><small className="text-muted"> 
                                          <img className="fas fa-user mr-1"></img>BMI</small>
                              </li>
                          </ul>
