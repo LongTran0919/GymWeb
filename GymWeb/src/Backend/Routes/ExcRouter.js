@@ -7,9 +7,11 @@ const Exc= require('../Models/ExerciseModel');
 const cors = require('cors');
  
  ExcRouter.post('/add', passport.authenticate('jwt',{session : false}),(req,res)=>{
-const {excName ,title,typeExc,level,taskList,date_created,comment,compound,author,calories,decription}=req.body;
-        try{ const newExc = new Exc({ decription, excName ,title,typeExc,level,taskList,date_created,comment,compound,author,calories })
-                console.log(newExc)
+   
+const {excName ,title,typeExc,level,taskList,date_created,comment,compound,calories,decription,lessonImage}=req.body;
+    var author =req.user.username;
+        try{ const newExc = new Exc({ decription, excName ,title,typeExc,level,taskList,date_created,comment,compound,author,calories,lessonImage })
+                
         newExc.save(err=>{
                     if(err)res.status(500).json({
                         message:{msgBody:"Error has occured 2"},

@@ -113,7 +113,7 @@ export default function Details(){
                 </div>  
                 <div className="row">
                     <div className="float-right">{exercise.author} </div>
-                    <img src={img} alt="soi..." className="img_title"/>
+                    <img src={exercise.lessonImage?exercise.lessonImage:'https://images8.content-hci.com/commimg/myhotcourses/blog/post/myhc_94121.jpg'} alt="soi..." className="img_title"/>
                 </div>  
                 
             

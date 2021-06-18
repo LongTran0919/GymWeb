@@ -206,7 +206,7 @@ export default function AdminUpdate(){
                                 <label  >Lesson Image</label>
                                   <div className="img-holder ">
                             
-                                    <img  src={exercise.imgUrl} id="img" className="img added-img  "></img>
+                                    <img  src={exercise.lessonImage?exercise.lessonImage:''} id="img" className="img added-img  "></img>
                                
                                   </div>
                                   <input type="file" name="imgUrl" class="form-control-file" id="imgUrl"  onChange={() => imgHandler()}/>

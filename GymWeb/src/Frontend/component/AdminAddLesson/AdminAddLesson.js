@@ -46,6 +46,7 @@ class AdminAddLesson extends React.Component {
             e.preventDefault();
             let data = {formdata:this.state};
             console.log(data.formdata)  
+        
             ExerciseService.AddExercise(data.formdata).then(
                 data=>{
                     console.log(data)

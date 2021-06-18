@@ -41,7 +41,7 @@ const useForm = (callback, validate) => {
       data=>{console.log(data)
         const {isAuthenticated,user}=data;
         if(isAuthenticated){
-          console.log("ok")
+         
           console.log(data.Cookies);
           authContext.setUser(user);
           authContext.setisAuthenticated(isAuthenticated);

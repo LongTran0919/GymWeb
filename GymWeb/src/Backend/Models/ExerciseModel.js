@@ -39,6 +39,9 @@ const ExerciseSchema = new mongose.Schema(
          },
          imgUrl:{
              type:String
+         },
+         lessonImage:{
+            type:String
          }
         
     }

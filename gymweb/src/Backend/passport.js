@@ -17,7 +17,6 @@ passport.use(new JWTStrategy({
     secretOrKey:process.env.secretkey
 
 },
-
     (payload,done)=>{
          User.findById({_id:payload.sub},
       

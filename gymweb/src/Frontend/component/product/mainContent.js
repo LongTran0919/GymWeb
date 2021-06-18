@@ -39,7 +39,7 @@ export default function MainContent(){
                 }).map(a =>(
                         <div className="card_container" key={a._id}>
                                 <div className="img-container">
-                                    <img src="https://images8.content-hci.com/commimg/myhotcourses/blog/post/myhc_94121.jpg" alt=""/>
+                                    <img src={a.lessonImage?a.lessonImage:'https://images8.content-hci.com/commimg/myhotcourses/blog/post/myhc_94121.jpg'} alt=""/>
                                 </div>
                                 <div className="card-content">
                                     <div className="card_titlee">

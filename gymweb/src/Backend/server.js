@@ -3,9 +3,15 @@ const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const cookieParser = require('cookie-parser')
+ 
+const cookieParser = require('cookie-parser');
+ 
+var bodyParser = require('body-parser');
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb', extended: true}))
+ 
 app.use(cookieParser());
-app.use(express.json());
+// app.use(express.json());
 app.use(function(req, res, next) {
    res.header("Access-Control-Allow-Origin", "http://localhost:3000");// update to match the domain you will make the request from
    
@@ -20,6 +26,7 @@ app.use(cors({ credentials: true ,origin: [
   "http://127.0.0.1",
   "http://104.142.122.231",
 ],}))
+
 const uri=process.env.URI;
 
 const  connection =async()=>{
