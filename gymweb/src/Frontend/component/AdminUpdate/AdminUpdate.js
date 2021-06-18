@@ -27,7 +27,7 @@ export default function AdminUpdate(){
             title:"",
             compound: "",
             calories:"",
-            imgUrl:""
+            lessonImage:""
         }
     ]);
     const{id} = useParams();
@@ -55,10 +55,13 @@ export default function AdminUpdate(){
         const reader = new FileReader();
         reader.onload =() =>{
           if(reader.readyState === 2){
-            this.setState({lessonImage: reader.result})
+            setState({lessonImage: reader.result})
+            console.log( reader.result)
+            setexercise({...exercise,lessonImage: reader.result})
           }
         }
-        reader.readAsDataURL(e.target.files[0])
+     
+         reader.readAsDataURL(e.target.files[0])
       }
      
     const handleAddEx=()=>{
@@ -102,7 +105,7 @@ export default function AdminUpdate(){
             )))
         
      }, [taskList]);
-    
+    useEffect(()=>{console.log(exercise)},[exercise])
     function handleChange (e) {
 
         //    if (["TitleSession", "DesSession"].includes(e.target.name)) {
@@ -209,7 +212,7 @@ export default function AdminUpdate(){
                                     <img  src={exercise.lessonImage?exercise.lessonImage:''} id="img" className="img added-img  "></img>
                                
                                   </div>
-                                  <input type="file" name="imgUrl" class="form-control-file" id="imgUrl"  onChange={() => imgHandler()}/>
+                                  <input type="file" name="imgUrl" class="form-control-file" id="imgUrl"  onChange={imgHandler}/>
                                  <label htmlFor='imgUrl' class="mb-2">
                                  <FcAddImage size={36}/>
                                  </label>
